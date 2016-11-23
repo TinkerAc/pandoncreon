@@ -61,7 +61,26 @@ public class Joueur {
 		}
 	}
 	public void choisirUneOperation(int n) {
-		
+		switch (n) {
+		case 0:
+			defausser();
+			break;
+		case 1:
+			piocher(Partie.getPartie().getCartes());
+			break;
+		case 2:
+			utiliser();
+			break;
+		case 3:
+			sacrifier();
+			break;
+		case 4:
+			capaciter();
+			break;
+		default:
+			//
+			break;
+		}
 	}
 	
 	public int getNbPriere() {

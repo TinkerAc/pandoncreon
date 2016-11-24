@@ -13,13 +13,15 @@ public class Joueur {
 	private int pointActionNeant;
 	private int pointActionNuit;
 	private int nbPriere;
+	private Process process;
+	private Joueur nextJoueur;
 	
 	Joueur() {
 		cartesEnMain = new ArrayList<CarteAction>();
 		carteDivinite = new Divinite();
-		pointActionJour = 0;
-		pointActionNeant = 0;
-		pointActionNuit = 0;
+		setPointActionJour(0);
+		setPointActionNeant(0);
+		setPointActionNuit(0);
 		nbPriere = 0;
 	}
 	
@@ -49,16 +51,7 @@ public class Joueur {
 	}
 	public int lancerDeCosnologie() {
 		Random random = new Random();
-		switch(random.nextInt(3)) {
-		case 0:
-			return 0;
-		case 1:
-			return 1;
-		case 2:
-			return 2;
-		default:
-			return -1;
-		}
+		return random.nextInt(3);
 	}
 	public void choisirUneOperation(int n) {
 		switch (n) {
@@ -83,8 +76,52 @@ public class Joueur {
 		}
 	}
 	
+	public void process() {
+		this.process.start();
+	}
+	
+	
+	
+	
+	//---------------------------------
+	
 	public int getNbPriere() {
 		return nbPriere;
+	}
+	public String getOrigineDivinite() {
+		return carteDivinite.getOrigine();
+	}
+
+	public int getPointActionJour() {
+		return pointActionJour;
+	}
+
+	public void setPointActionJour(int pointActionJour) {
+		this.pointActionJour = pointActionJour;
+	}
+
+	public int getPointActionNeant() {
+		return pointActionNeant;
+	}
+
+	public void setPointActionNeant(int pointActionNeant) {
+		this.pointActionNeant = pointActionNeant;
+	}
+
+	public int getPointActionNuit() {
+		return pointActionNuit;
+	}
+
+	public void setPointActionNuit(int pointActionNuit) {
+		this.pointActionNuit = pointActionNuit;
+	}
+
+	public Joueur getNextJoueur() {
+		return nextJoueur;
+	}
+
+	public void setNextJoueur(Joueur nextJoueur) {
+		this.nextJoueur = nextJoueur;
 	}
  }
 

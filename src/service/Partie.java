@@ -10,7 +10,6 @@ public class Partie {
 	private ArrayList<Joueur> joueurs;
 	private Cartes cartes;
 	private Tour tour;
-	private Tour tourAvant;
 	private CartesSurTable carteSurTable;
 	
 	private Partie() {
@@ -41,6 +40,7 @@ public class Partie {
 				max = tmp;
 				index = i;
 			}
+			i++;
 		}
 		return index;
 		
@@ -49,11 +49,26 @@ public class Partie {
 		joueurs.remove(j);
 	}
 	
+	/**
+	 * 开始一局游戏
+	 * */
 	public void commencerPartie() {
-	}
-	public void terminerPartie() {
+		int i = 0;
+		while(i < joueurs.size() - 1) {
+			joueurs.get(i).setNextJoueur(joueurs.get(i + 1));
+		}
+		tour = new Tour(joueurs, 0);
+		tour.commencerNouveauTour();
 	}
 	
+	
+	
+	public void terminerPartie() {
+		
+	}
+	public Tour getCurrentTour() {
+		return this.tour;
+	}
 	public Cartes getCartes() {
 		return this.cartes;
 	}

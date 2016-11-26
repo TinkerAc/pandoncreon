@@ -25,6 +25,9 @@ public class Tour {
 	}
 	public void terminerLeTour() {
 		nextTour = new Tour(joueurs, this.premiereJoueur);
+		
+		//测试代码 ，用后删除！！！
+		System.out.println("进入下一圈");
 		nextTour.commencerNouveauTour();
 	}
 	private void distribuerPointAction() {

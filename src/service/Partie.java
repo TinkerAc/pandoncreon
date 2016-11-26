@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Partie {
 	
-	private static Partie partie;
+	private static Partie partie = new Partie();
 	
 	private int nbJoueurs;
 	private ArrayList<Joueur> joueurs;
@@ -14,15 +14,18 @@ public class Partie {
 	
 	private Partie() {
 		this.nbJoueurs = 0;
-		this.joueurs = null;
+		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = Cartes.getInstance();
 		this.carteSurTable = CartesSurTable.getCartesSurTable();
 	}
-	
 	public static Partie getPartie() {
-		partie = new Partie();
+		if(partie == null){
+			partie = new Partie();
+		}
 		return partie;
 	}
+	
+	/*-----------------------------*/
 	public void addJoueurs() {
 		joueurs.add(new Joueur());
 	}
@@ -53,11 +56,22 @@ public class Partie {
 	 * 开始一局游戏
 	 * */
 	public void commencerPartie() {
+		//测试代码 ，用后删除！！！ 
+		System.out.println("开始一局游戏");
+		
 		int i = 0;
+		//测试代码 ，用后删除！！！
+		this.addJoueurs();
+		this.addJoueurs();
+		this.addJoueurs();
+		
 		while(i < joueurs.size() - 1) {
 			joueurs.get(i).setNextJoueur(joueurs.get(i + 1));
+			i++;
 		}
 		tour = new Tour(joueurs, 0);
+		//测试代码 ，用后删除！！！
+		System.out.println("进入第一圈");
 		tour.commencerNouveauTour();
 	}
 	

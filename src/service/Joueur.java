@@ -23,31 +23,34 @@ public class Joueur {
 		setPointActionNeant(0);
 		setPointActionNuit(0);
 		nbPriere = 0;
+		process = new Process(this);
 	}
 	
 	public void defausser(CarteAction...index) {
-		for(int i = 0; i < index.length; i++) {
+		System.out.println("ÈÓÅÆ");
+		/*for(int i = 0; i < index.length; i++) {
 			cartesEnMain.remove(index[i]);
-		}
+		}*/
 	}
 	
 	public void piocher(Cartes cartes) {
-		if(cartesEnMain.size() == 7) {
+		System.out.println("³éÅÆ");
+		/*if(cartesEnMain.size() == 7) {
 			return;
 		}
 		while(cartesEnMain.size() < 7) {
 			cartesEnMain.add(cartes.returnCarte());
-		}
+		}*/
 		
 	}
 	public void utiliser() {
-		
+		System.out.println("ÓÃÅÆ");
 	}
 	public void sacrifier() {
-		
+		System.out.println("ÎþÉü");
 	}
 	public void capaciter() {
-		
+		System.out.println("³¬ÄÜÁ¦");
 	}
 	public int lancerDeCosnologie() {
 		Random random = new Random();

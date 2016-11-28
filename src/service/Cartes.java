@@ -1,14 +1,20 @@
 package service;
 
+import java.util.ArrayList;
+
 import pandoncreon.*;
 
 public class Cartes {
-	private CarteAction[] cartes;
+	private ArrayList<CarteAction> cartes;
 	private int nbCartes;
 	private static Cartes pile;
 	
 	private Cartes() {
+		cartes = new ArrayList<CarteAction>();
 		
+		
+		
+		nbCartes = cartes.size();
 	}
 	public void melanger() {
 		
@@ -17,14 +23,18 @@ public class Cartes {
 		return null;
 	}
 	
+	
+	/*-----------------------------------*/
 	public static Cartes getInstance() {
-		pile = new Cartes();
+		if(pile == null) {
+			pile = new Cartes();
+		}
 		return pile;
 	}
 	public int getNbCartes() {
 		return this.nbCartes;
 	}
-	public CarteAction[] getCartes() {
+	public ArrayList<CarteAction> getCartes() {
 		return this.cartes;
 	}
 	

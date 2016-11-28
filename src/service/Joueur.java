@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import pandoncreon.*;
 
@@ -15,9 +16,11 @@ public class Joueur {
 	private int nbPriere;
 	private Process process;
 	private Joueur nextJoueur;
+	private CartesSurTable CST = CartesSurTable.getCartesSurTable();
+	
 	
 	Joueur() {
-		cartesEnMain = new ArrayList<CarteAction>();
+		setCartesEnMain(new ArrayList<CarteAction>());
 		carteDivinite = new Divinite();
 		setPointActionJour(0);
 		setPointActionNeant(0);
@@ -45,6 +48,24 @@ public class Joueur {
 	}
 	public void utiliser() {
 		System.out.println("ÓÃÅÆ");
+		Scanner sc = new Scanner(System.in);
+		int i = sc.nextInt();
+		CarteAction c = cartesEnMain.remove(i);
+		
+		switch(c.getType()) {
+		case "Croyant":
+			CST.getCroyantPublic().add(c);
+			break;
+		case "Guide":
+			break;
+		case "DeuxEx":
+			break;
+		case "Apocalypse":
+			break;
+		}
+		
+		
+		
 	}
 	public void sacrifier() {
 		System.out.println("ÎþÉü");
@@ -125,6 +146,14 @@ public class Joueur {
 
 	public void setNextJoueur(Joueur nextJoueur) {
 		this.nextJoueur = nextJoueur;
+	}
+
+	public ArrayList<CarteAction> getCartesEnMain() {
+		return cartesEnMain;
+	}
+
+	public void setCartesEnMain(ArrayList<CarteAction> cartesEnMain) {
+		this.cartesEnMain = cartesEnMain;
 	}
  }
 

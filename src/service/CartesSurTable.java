@@ -9,11 +9,26 @@ public class CartesSurTable {
 	private ArrayList<CarteAction> croyantPublic;
 	private ArrayList<CarteAction> guides;
 	private CartesSurTable() {
-		croyantPublic = new ArrayList<CarteAction>();
-		guides = new ArrayList<CarteAction>();
+		setCroyantPublic(new ArrayList<CarteAction>());
+		setGuides(new ArrayList<CarteAction>());
 	}
 	public static CartesSurTable getCartesSurTable() {
 		cartesSurTable = new CartesSurTable();
 		return cartesSurTable;
+	}
+	
+	
+	/*---------------------------------------------*/
+	public ArrayList<CarteAction> getCroyantPublic() {
+		return croyantPublic;
+	}
+	public void setCroyantPublic(ArrayList<CarteAction> croyantPublic) {
+		this.croyantPublic = croyantPublic;
+	}
+	public ArrayList<CarteAction> getGuides() {
+		return guides;
+	}
+	public void setGuides(ArrayList<CarteAction> guides) {
+		this.guides = guides;
 	}
 }

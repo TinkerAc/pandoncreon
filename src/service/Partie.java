@@ -13,10 +13,10 @@ public class Partie {
 	private CartesSurTable carteSurTable;
 	
 	private Partie() {
-		this.nbJoueurs = 0;
+		this.setNbJoueurs(0);
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = Cartes.getInstance();
-		this.carteSurTable = CartesSurTable.getCartesSurTable();
+		this.setCarteSurTable(CartesSurTable.getCartesSurTable());
 	}
 	public static Partie getPartie() {
 		if(partie == null){
@@ -28,6 +28,7 @@ public class Partie {
 	/*-----------------------------*/
 	public void addJoueurs() {
 		joueurs.add(new Joueur());
+		this.setNbJoueurs(this.getNbJoueurs() + 1);
 	}
 	public void deleteJoueurs() {
 		joueurs.remove(joueurs.size() - 1);
@@ -85,6 +86,18 @@ public class Partie {
 	}
 	public Cartes getCartes() {
 		return this.cartes;
+	}
+	public int getNbJoueurs() {
+		return nbJoueurs;
+	}
+	public void setNbJoueurs(int nbJoueurs) {
+		this.nbJoueurs = nbJoueurs;
+	}
+	public CartesSurTable getCarteSurTable() {
+		return carteSurTable;
+	}
+	public void setCarteSurTable(CartesSurTable carteSurTable) {
+		this.carteSurTable = carteSurTable;
 	}
 }
 

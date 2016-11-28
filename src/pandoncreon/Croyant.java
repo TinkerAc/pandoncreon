@@ -1,20 +1,14 @@
 package pandoncreon;
 
-public class Croyant extends CarteAction{
+public abstract class Croyant extends CarteAction{
 
-	private int nbPriere;
+	protected int nbPriere;
 	
-	
-	
-	@Override
-	public void utiliser() {
-		// TODO Auto-generated method stub
-		
+	protected Croyant() {
+		this.type = "Croyant";
 	}
-
-	@Override
-	public void sacrifier() {
-		// TODO Auto-generated method stub
+	
+	public void utiliser() {
 		
 	}
 	

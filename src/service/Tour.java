@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Tour {
 	private ArrayList<Joueur> joueurs;
@@ -11,6 +12,9 @@ public class Tour {
 	
 	Tour(ArrayList<Joueur> joueurs, Tour tourAvant) {
 		this.joueurs = joueurs;
+		for(Iterator<Joueur> it = joueurs.iterator();it.hasNext();) {
+			it.next().setDone(false);
+		}
 		this.premiereJoueur = tourAvant.getPremiereJoueur();
 	}
 	Tour(ArrayList<Joueur> joueurs, int premiere) {

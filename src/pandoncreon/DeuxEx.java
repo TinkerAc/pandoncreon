@@ -1,6 +1,13 @@
 package pandoncreon;
 
+import service.Joueur;
+
 public class DeuxEx extends CarteAction {
+
+	public DeuxEx() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void utiliser() {
@@ -9,7 +16,7 @@ public class DeuxEx extends CarteAction {
 	}
 
 	@Override
-	public void sacrifier() {
+	public void sacrifier(Joueur joueur) {
 		// TODO Auto-generated method stub
 		
 	}

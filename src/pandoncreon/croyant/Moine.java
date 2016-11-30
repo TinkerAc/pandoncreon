@@ -1,13 +1,11 @@
-package croyant;
+package pandoncreon.croyant;
 
 import pandoncreon.*;
 import service.Joueur;
 
 public class Moine extends Croyant {
 	
-	
-	
-	Moine() {
+	public Moine() {
 		super();
 		this.nbPriere = 2;
 		this.nom = "Moine";
@@ -16,7 +14,8 @@ public class Moine extends Croyant {
 	}
 
 	@Override
-	public void sacrifier() {
+	public void sacrifier(Joueur joueur) {
+		this.joueur = joueur;
 		this.joueur.setPointActionJour(joueur.getPointActionJour() + 1);		
 	}
 

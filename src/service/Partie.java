@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Partie {
 	
@@ -19,9 +20,7 @@ public class Partie {
 		this.setCarteSurTable(CartesSurTable.getCartesSurTable());
 	}
 	public static Partie getPartie() {
-		if(partie == null){
-			partie = new Partie();
-		}
+		
 		return partie;
 	}
 	
@@ -60,15 +59,20 @@ public class Partie {
 		//测试代码 ，用后删除！！！ 
 		System.out.println("开始一局游戏");
 		
-		int i = 0;
 		//测试代码 ，用后删除！！！
 		this.addJoueurs();
 		this.addJoueurs();
 		this.addJoueurs();
 		
-		while(i < joueurs.size() - 1) {
-			joueurs.get(i).setNextJoueur(joueurs.get(i + 1));
-			i++;
+		Iterator<Joueur> it = joueurs.iterator();
+		
+		while(it.hasNext()) {
+			Joueur j = it.next();
+			if(it.hasNext()) {
+				j.setNextJoueur(it.next());;
+			}else {
+				j.setNextJoueur(joueurs.get(0));
+			}
 		}
 		tour = new Tour(joueurs, 0);
 		//测试代码 ，用后删除！！！
@@ -98,6 +102,9 @@ public class Partie {
 	}
 	public void setCarteSurTable(CartesSurTable carteSurTable) {
 		this.carteSurTable = carteSurTable;
+	}
+	public ArrayList<Joueur> getJoueurs() {
+		return this.joueurs;
 	}
 }
 

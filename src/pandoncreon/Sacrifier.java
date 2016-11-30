@@ -1,5 +1,7 @@
 package pandoncreon;
 
+import service.Joueur;
+
 public interface Sacrifier {
-	public void sacrifier();
+	public void sacrifier(Joueur joueur);
 }

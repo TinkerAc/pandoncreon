@@ -1,8 +1,10 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import pandoncreon.*;
+import pandoncreon.croyant.*;
 
 public class Cartes {
 	private ArrayList<CarteAction> cartes;
@@ -11,7 +13,38 @@ public class Cartes {
 	
 	private Cartes() {
 		cartes = new ArrayList<CarteAction>();
-		
+		cartes.add(new Moine());
+		cartes.add(new Moine());
+		cartes.add(new Moine());
+		cartes.add(new Moine());
+		cartes.add(new Moine());
+		cartes.add(new DeuxEx());
+		cartes.add(new DeuxEx());
+		cartes.add(new DeuxEx());
+		cartes.add(new Demon());
+		cartes.add(new Ermite());
+		cartes.add(new Ermite());
+		cartes.add(new Esprits());
+		cartes.add(new Demon());
+		cartes.add(new Ermite());
+		cartes.add(new Ermite());
+		cartes.add(new Esprits());
+		cartes.add(new Demon());
+		cartes.add(new Ermite());
+		cartes.add(new Ermite());
+		cartes.add(new Esprits());
+		cartes.add(new Demon());
+		cartes.add(new Ermite());
+		cartes.add(new Ermite());
+		cartes.add(new Esprits());
+		cartes.add(new Demon());
+		cartes.add(new Ermite());
+		cartes.add(new Ermite());
+		cartes.add(new Esprits());
+		cartes.add(new Demon());
+		cartes.add(new Ermite());
+		cartes.add(new Ermite());
+		cartes.add(new Esprits());
 		
 		
 		nbCartes = cartes.size();
@@ -20,7 +53,7 @@ public class Cartes {
 		
 	}
 	public CarteAction returnCarte() {
-		return null;
+		return cartes.get(new Random().nextInt(cartes.size()));
 	}
 	
 	

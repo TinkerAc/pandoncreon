@@ -154,8 +154,7 @@ public class Joueur {
 		case "DeuxEx":
 			break;
 		case "Apocalypse":
-			int rs = Partie.getPartie().compareNbPriere();
-			
+			Partie.getPartie().ApocalypseProcess(this);
 			break;
 		}
 		

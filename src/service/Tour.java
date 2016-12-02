@@ -7,8 +7,8 @@ public class Tour {
 	private ArrayList<Joueur> joueurs;
 	private int premiereJoueur;
 	private Tour nextTour;
-	
-	
+	private boolean enableApocalypse;
+	private static int nTour = 1;
 	
 	Tour(ArrayList<Joueur> joueurs, Tour tourAvant) {
 		this.joueurs = joueurs;
@@ -21,12 +21,18 @@ public class Tour {
 		for(Iterator<Joueur> it = joueurs.iterator();it.hasNext();) {
 			it.next().setDone(false);
 		}
+		if(tourAvant.isEnableApocalypse() == false) {
+			this.setEnableApocalypse(true);
+		}
 	}
 	Tour(ArrayList<Joueur> joueurs, int premiere) {
 		this.joueurs = joueurs;
 		this.premiereJoueur = premiere;
 		for(Iterator<Joueur> it = joueurs.iterator();it.hasNext();) {
 			it.next().setDone(false);
+		}
+		if(nTour == 1) {
+			this.enableApocalypse = false;
 		}
 	}
 	
@@ -90,6 +96,18 @@ public class Tour {
 	}
 	public int getPremiereJoueur() {
 		return premiereJoueur;
+	}
+	public boolean isEnableApocalypse() {
+		return enableApocalypse;
+	}
+	public void setEnableApocalypse(boolean enableApocalypse) {
+		this.enableApocalypse = enableApocalypse;
+	}
+	public static int getnTour() {
+		return nTour;
+	}
+	public static void setnTour(int nTour) {
+		Tour.nTour = nTour;
 	}
 }
 

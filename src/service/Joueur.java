@@ -70,12 +70,18 @@ public class Joueur {
 		}
 		
 	}
+	
+	
+	/*
+	 * 之后需要对此方法拆分，将四种情况分别封装到对应的卡牌类里面
+	 * 
+	 * */
 	public void utiliser() {
 		System.out.println("请选择一张牌：");
 		showCards();
 		Scanner sc = new Scanner(System.in);
 		int i = sc.nextInt();
-		CarteAction c = cartesEnMain.remove(i);
+		CarteAction c = cartesEnMain.remove(i); //c 为要使用的牌
 		
 		switch(c.getType()) {
 		case "Croyant":
@@ -104,25 +110,52 @@ public class Joueur {
 			}
 			break;
 		case "Guide":
+			GuideSpirituel guide = (GuideSpirituel)c;
+			
 			List<CarteAction> croyants = CST.getCroyantPublic();
 			Iterator<CarteAction> it = croyants.iterator();
-			//Scanner sc = new Scanner(System.in);
+
+			
+			int iDeCroyant = 0; //信徒卡编号
 			while(it.hasNext()) {
-				
+				System.out.println(iDeCroyant);
 				System.out.println(it.next().toString());
 			}
-			System.out.println("请选择要引领的信徒卡");
 			try {
-				
-				
+				while(true) {
+					if(CST.getCroyantPublic().size() == 0) {
+						System.out.println("桌上没有信徒卡！");
+						break;
+					}
+					if(guide.getNbCroyant() == guide.getNbCroyantMax()) {
+						System.out.println("信徒卡达到上限！");
+						System.out.println("回合结束");
+						break;
+					}
+					System.out.println("请选择要引领的信徒卡: ");
+					int n = sc.nextInt();
+					if(n >= 0 && n < CST.getCroyantPublic().size()) {
+						Croyant ca =(Croyant) CST.getCroyantPublic().remove(n);
+						guide.getCroyants().add(ca);
+						guide.setNbCroyant(guide.getNbCroyant() + 1);
+						System.out.println("精神引领成功！");
+					}
+				}
 				
 			}catch(Exception e) {
-				e.printStackTrace();
+				System.out.println("非法输入!!!");
+				/*
+				 * 暂时不处理 
+				 * 将精神引领封装之后再处理非法输入
+				 * 
+				 * */
 			}
 			break;
 		case "DeuxEx":
 			break;
 		case "Apocalypse":
+			int rs = Partie.getPartie().compareNbPriere();
+			
 			break;
 		}
 		
@@ -240,6 +273,22 @@ public class Joueur {
 
 	public void setDone(boolean isDone) {
 		this.isDone = isDone;
+	}
+
+	public List<Croyant> getCroyants() {
+		return croyants;
+	}
+
+	public void setCroyants(List<Croyant> croyants) {
+		this.croyants = croyants;
+	}
+
+	public List<GuideSpirituel> getGuides() {
+		return guides;
+	}
+
+	public void setGuides(List<GuideSpirituel> guides) {
+		this.guides = guides;
 	}
  }
 

@@ -12,14 +12,22 @@ public class Tour {
 	
 	Tour(ArrayList<Joueur> joueurs, Tour tourAvant) {
 		this.joueurs = joueurs;
+		this.premiereJoueur = tourAvant.getPremiereJoueur();
+		if(this.premiereJoueur == joueurs.size() - 1) {
+			premiereJoueur = 0;
+		}else {
+			premiereJoueur ++;
+		}
 		for(Iterator<Joueur> it = joueurs.iterator();it.hasNext();) {
 			it.next().setDone(false);
 		}
-		this.premiereJoueur = tourAvant.getPremiereJoueur();
 	}
 	Tour(ArrayList<Joueur> joueurs, int premiere) {
 		this.joueurs = joueurs;
 		this.premiereJoueur = premiere;
+		for(Iterator<Joueur> it = joueurs.iterator();it.hasNext();) {
+			it.next().setDone(false);
+		}
 	}
 	
 	public void commencerNouveauTour() {
@@ -28,7 +36,7 @@ public class Tour {
 		terminerLeTour();
 	}
 	public void terminerLeTour() {
-		nextTour = new Tour(joueurs, this.premiereJoueur);
+		nextTour = new Tour(joueurs, this);
 		
 		//测试代码 ，用后删除！！！
 		System.out.println("进入下一圈");

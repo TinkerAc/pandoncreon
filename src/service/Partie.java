@@ -68,10 +68,13 @@ public class Partie {
 		
 		while(it.hasNext()) {
 			Joueur j = it.next();
+			j.piocher(cartes);
 			if(it.hasNext()) {
-				j.setNextJoueur(it.next());;
+				j.setNextJoueur(joueurs.get(j.getNumj() + 1));
+				System.out.println("玩家" + j.getNumj() +"设置下家成功！");
 			}else {
 				j.setNextJoueur(joueurs.get(0));
+				System.out.println("玩家" + j.getNumj() +"设置下家循环完成！");
 			}
 		}
 		tour = new Tour(joueurs, 0);

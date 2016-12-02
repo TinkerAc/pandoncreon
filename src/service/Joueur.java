@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -36,22 +37,22 @@ public class Joueur {
 	}
 	
 	public void defausser() {
-		showCards();
-		System.out.println("请选择要扔掉的牌：");
-		
 		Scanner sc = new Scanner(System.in);
-		//Scanner ss = new Scanner();
+		boolean end = false;
 		try {
 			do{
+				showCards();
+				System.out.println("请选择要扔掉的牌：");
 				int i = sc.nextInt();
-				if(i >=0 && i < cartesEnMain.size()) {
+				if(i >= 0 && i < cartesEnMain.size()) {
 					cartesEnMain.remove(i);
 				}else {
 					System.out.println("该卡牌不存在！！！请重新输入");
 					continue;
 				}
-				System.out.println("结束扔牌请输入'No'");
-			}while(sc.nextLine() != "No");
+				System.out.println("输入任意键继续扔牌，结束扔牌请输入'No'");
+				end = sc.next().equals("No");
+			}while(!end);
 		}catch(Exception e) {
 			System.out.println("非法输入!!!请重新输入！！！");
 			defausser();
@@ -103,8 +104,21 @@ public class Joueur {
 			}
 			break;
 		case "Guide":
-			
-			
+			List<CarteAction> croyants = CST.getCroyantPublic();
+			Iterator<CarteAction> it = croyants.iterator();
+			//Scanner sc = new Scanner(System.in);
+			while(it.hasNext()) {
+				
+				System.out.println(it.next().toString());
+			}
+			System.out.println("请选择要引领的信徒卡");
+			try {
+				
+				
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		case "DeuxEx":
 			break;

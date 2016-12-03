@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import pandoncreon.Divinite;
-import pandoncreon.Divinites.*;
+import carteModule.Divinite;
+import carteModule.Divinites.*;
 
 public class CartesDivinite {
 	private static List<Divinite> pile = new LinkedList<Divinite>();

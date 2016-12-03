@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 import carteManager.Cartes;
 import carteManager.CartesDivinite;
-import pandoncreon.Croyant;
+import carteModule.Croyant;
+import player.Joueur;
 
 public class Partie {
 	

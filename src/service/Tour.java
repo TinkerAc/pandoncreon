@@ -3,6 +3,8 @@ package service;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import player.Joueur;
+
 public class Tour {
 	private ArrayList<Joueur> joueurs;
 	private int premiereJoueur;

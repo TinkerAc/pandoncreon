@@ -3,8 +3,8 @@ package carteManager;
 import java.util.ArrayList;
 import java.util.Random;
 
-import pandoncreon.*;
-import pandoncreon.croyant.*;
+import carteModule.*;
+import carteModule.croyant.*;
 
 public class Cartes {
 	private ArrayList<CarteAction> cartes;

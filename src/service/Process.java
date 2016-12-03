@@ -2,10 +2,12 @@ package service;
 
 import java.util.Scanner;
 
+import player.Joueur;
+
 public class Process {
 	private Joueur joueur;
 	
-	Process(Joueur j) {
+	public Process(Joueur j) {
 		this.joueur = j;
 		
 	}

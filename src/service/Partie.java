@@ -2,7 +2,11 @@ package service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
 
+import carteManager.Cartes;
+import carteManager.CartesDivinite;
 import pandoncreon.Croyant;
 
 public class Partie {
@@ -97,15 +101,30 @@ public class Partie {
 		System.out.println("开始一局游戏");
 		
 		//测试代码 ，用后删除！！！
-		this.addJoueurs();
-		this.addJoueurs();
-		this.addJoueurs();
+		System.out.println("初始化玩家数：");
+		Scanner sc = new Scanner(System.in);
+		int n = 0;
+		boolean FLAG = false;
+		while(!FLAG) {
+			try {
+				n = sc.nextInt();
+				FLAG = true;
+			}catch(Exception e) {
+				System.out.println("非法输入！！！请重新输入！！！");
+				FLAG = false;
+			}
+		}
+		//添加玩家
+		for(int i = 0;i < n; i++) {
+			this.addJoueurs();
+		}
 		
 		Iterator<Joueur> it = joueurs.iterator();
 		
 		while(it.hasNext()) {
 			Joueur j = it.next();
 			j.piocher(cartes);
+			j.setCarteDivinite(CartesDivinite.getInstance().returnDivinite());
 			if(it.hasNext()) {
 				j.setNextJoueur(joueurs.get(j.getNumj() + 1));
 				System.out.println("玩家" + j.getNumj() +"设置下家成功！");

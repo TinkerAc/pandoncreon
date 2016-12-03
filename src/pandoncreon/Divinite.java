@@ -1,10 +1,10 @@
 package pandoncreon;
 
-public class Divinite extends Carte {
+import service.Partie;
+
+public abstract class Divinite extends Carte {
 	
-	public void capacite() {
-		
-	}
+	public abstract void capacite(Partie partie);
 	public String getOrigine() {
 		return super.origine;
 	}

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import carteManager.Cartes;
 import pandoncreon.*;
 
 
@@ -26,7 +27,7 @@ public class Joueur {
 	private boolean isDone; //判断一圈游戏中是否已经操作结束
 	Joueur() {
 		setCartesEnMain(new ArrayList<CarteAction>());
-		carteDivinite = new Divinite();
+		//carteDivinite = new Divinite();
 		setPointActionJour(0);
 		setPointActionNeant(0);
 		setPointActionNuit(0);
@@ -77,6 +78,7 @@ public class Joueur {
 	 * 
 	 * */
 	public void utiliser() {
+		showPointAction();
 		System.out.println("请选择一张牌：");
 		showCards();
 		Scanner sc = new Scanner(System.in);
@@ -85,30 +87,38 @@ public class Joueur {
 		
 		switch(c.getType()) {
 		case "Croyant":
-			switch(c.getOrigine()) {
+			Croyant cc = (Croyant)c;
+			switch(cc.getOrigine()) {
 			case Carte.JOUR:
 				if(this.pointActionJour >= 1) {
-					CST.getCroyantPublic().add(c);
+					CST.getCroyantPublic().add(cc);
 					this.pointActionJour -= 1;
 				}else {
-					cartesEnMain.add(c);
+					System.out.println("行动点不足");
+					cartesEnMain.add(cc);
 				}
+				break;
 			case Carte.NEANT:
 				if(this.pointActionNeant >= 1) {
-					CST.getCroyantPublic().add(c);
+					CST.getCroyantPublic().add(cc);
 					this.pointActionNeant -= 1;
 				}else {
-					cartesEnMain.add(c);
+					System.out.println("行动点不足");
+					cartesEnMain.add(cc);
 				}
+				break;
 			case Carte.NUIT:
 				if(this.pointActionNuit >= 1) {
-					CST.getCroyantPublic().add(c);
+					CST.getCroyantPublic().add(cc);
 					this.pointActionNuit -= 1;
 				}else {
-					cartesEnMain.add(c);
+					System.out.println("行动点不足");
+					cartesEnMain.add(cc);
 				}
+				break;
+			default :
+				break;
 			}
-			break;
 		case "Guide":
 			GuideSpirituel guide = (GuideSpirituel)c;
 			
@@ -206,7 +216,11 @@ public class Joueur {
 			System.out.println(cartesEnMain.get(i).toString());
 		}
 	}
-	
+	public void showPointAction() {
+		System.out.println("当前白天行动点：" + this.getPointActionJour());
+		System.out.println("当前虚无行动点：" + this.getPointActionNeant() );
+		System.out.println("当前黑夜行动点：" + this.getPointActionNuit());
+	}
 	
 	
 	//---------------------------------
@@ -288,6 +302,10 @@ public class Joueur {
 
 	public void setGuides(List<GuideSpirituel> guides) {
 		this.guides = guides;
+	}
+	
+	public void setCarteDivinite(Divinite d) {
+		this.carteDivinite = d;
 	}
  }
 

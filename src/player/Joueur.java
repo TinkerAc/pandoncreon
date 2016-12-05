@@ -13,31 +13,11 @@ import service.Partie;
 import service.Process;
 
 
-public class Joueur {
-	private ArrayList<CarteAction> cartesEnMain;
-	private Divinite carteDivinite;
-	private int pointActionJour;
-	private int pointActionNeant;
-	private int pointActionNuit;
-	private int nbPriere;
-	private List<Croyant> croyants = new ArrayList<Croyant>();
-	private List<GuideSpirituel> guides = new ArrayList<GuideSpirituel>();
-	private Process process;
-	private Joueur nextJoueur;
-	private CartesSurTable CST = CartesSurTable.getCartesSurTable();
-	private int numj;
-	private static int NombreJ = 0;
-	private boolean isDone; //判断一圈游戏中是否已经操作结束
+public class Joueur extends JoueurABS {
+	
+	
 	public Joueur() {
-		setCartesEnMain(new ArrayList<CarteAction>());
-		//carteDivinite = new Divinite();
-		setPointActionJour(0);
-		setPointActionNeant(0);
-		setPointActionNuit(0);
-		nbPriere = 0;
-		process = new Process(this);
-		this.setNumj(NombreJ);
-		NombreJ ++;
+		super();
 	}
 	
 	public void defausser() {
@@ -64,16 +44,6 @@ public class Joueur {
 		
 	}
 	
-	public void piocher(Cartes cartes) {
-		System.out.println("抽牌");
-		if(cartesEnMain.size() == 7) {
-			return;
-		}
-		while(cartesEnMain.size() < 7) {
-			cartesEnMain.add(cartes.returnCarte());
-		}
-		
-	}
 	
 	
 	/*
@@ -110,6 +80,7 @@ public class Joueur {
 					cartesEnMain.add(cc);
 				}
 				break;
+			
 			case Carte.NUIT:
 				if(this.pointActionNuit >= 1) {
 					CST.getCroyantPublic().add(cc);
@@ -122,6 +93,7 @@ public class Joueur {
 			default :
 				break;
 			}
+			break;
 		case "Guide":
 			GuideSpirituel guide = (GuideSpirituel)c;
 			
@@ -165,6 +137,8 @@ public class Joueur {
 			}
 			break;
 		case "DeuxEx":
+			DeuxEx de = (DeuxEx)c;
+			de.sacrifier(this);
 			break;
 		case "Apocalypse":
 			Partie.getPartie().ApocalypseProcess(this);
@@ -176,7 +150,6 @@ public class Joueur {
 	}
 	public void sacrifier() {
 		System.out.println("牺牲");
-		
 	}
 	public void capaciter() {
 		System.out.println("超能力");
@@ -185,7 +158,23 @@ public class Joueur {
 		Random random = new Random();
 		return random.nextInt(3);
 	}
-	public void choisirUneOperation(int n) {
+	public void choisirUneOperation() {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("选择一个操作：0：扔牌，1：抽牌，2：出牌，3：牺牲，4：超能力");
+		
+		boolean FLAG = false;
+		int n = -1;
+		while(!FLAG) {
+			try {
+				n = sc.nextInt();
+				FLAG = true;
+			}catch(Exception e) {
+				System.out.println("非法输入！！！请重新输入！！！");
+				FLAG = false;
+			}
+		}
+		
 		switch (n) {
 		case 0:
 			defausser();
@@ -208,108 +197,8 @@ public class Joueur {
 		}
 	}
 	
-	public void process() {
-		this.process.start();
-	}
 	
 	
-	public void showCards() {
-		for(int i = 0; i < cartesEnMain.size(); i++) {
-			System.out.println(i);
-			System.out.println(cartesEnMain.get(i).toString());
-		}
-	}
-	public void showPointAction() {
-		System.out.println("当前白天行动点：" + this.getPointActionJour());
-		System.out.println("当前虚无行动点：" + this.getPointActionNeant() );
-		System.out.println("当前黑夜行动点：" + this.getPointActionNuit());
-	}
-	
-	
-	//---------------------------------
-	
-	public int getNbPriere() {
-		return nbPriere;
-	}
-	public String getOrigineDivinite() {
-		return carteDivinite.getOrigine();
-	}
-
-	public int getPointActionJour() {
-		return pointActionJour;
-	}
-
-	public void setPointActionJour(int pointActionJour) {
-		this.pointActionJour = pointActionJour;
-	}
-
-	public int getPointActionNeant() {
-		return pointActionNeant;
-	}
-
-	public void setPointActionNeant(int pointActionNeant) {
-		this.pointActionNeant = pointActionNeant;
-	}
-
-	public int getPointActionNuit() {
-		return pointActionNuit;
-	}
-
-	public void setPointActionNuit(int pointActionNuit) {
-		this.pointActionNuit = pointActionNuit;
-	}
-
-	public Joueur getNextJoueur() {
-		return nextJoueur;
-	}
-
-	public void setNextJoueur(Joueur nextJoueur) {
-		this.nextJoueur = nextJoueur;
-	}
-
-	public ArrayList<CarteAction> getCartesEnMain() {
-		return cartesEnMain;
-	}
-
-	public void setCartesEnMain(ArrayList<CarteAction> cartesEnMain) {
-		this.cartesEnMain = cartesEnMain;
-	}
-
-	public int getNumj() {
-		return numj;
-	}
-
-	public void setNumj(int numj) {
-		this.numj = numj;
-	}
-
-	public boolean isDone() {
-		return isDone;
-	}
-
-	public void setDone(boolean isDone) {
-		this.isDone = isDone;
-	}
-
-	public List<Croyant> getCroyants() {
-		return croyants;
-	}
-
-	public void setCroyants(List<Croyant> croyants) {
-		this.croyants = croyants;
-	}
-
-	public List<GuideSpirituel> getGuides() {
-		return guides;
-	}
-
-	public void setGuides(List<GuideSpirituel> guides) {
-		this.guides = guides;
-	}
-	
-	public void setCarteDivinite(Divinite d) {
-		this.carteDivinite = d;
-	}
  }
 
 

@@ -11,8 +11,9 @@ public class GuideSpirituel extends CarteAction{
 	private List<Croyant> croyants = new ArrayList<Croyant>();
 	
 	
-	GuideSpirituel() {
+	public GuideSpirituel() {
 		super();
+		this.type = "Guide";
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -6,7 +6,7 @@ public class DeuxEx extends CarteAction {
 
 	public DeuxEx() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.type = "DeuxEx";
 	}
 
 	@Override

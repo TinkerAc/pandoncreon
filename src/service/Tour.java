@@ -71,8 +71,7 @@ public class Tour {
 			int k = 0;
 			while(k < joueurs.size()) {
 				Joueur j = joueurs.get(k);
-				if(j.getOrigineDivinite() == "Aube" || j.getOrigineDivinite()
-						== "Crepuscule") {
+				if(j.getOrigineDivinite() == "Aube" || j.getOrigineDivinite() == "Crepuscule") {
 					j.setPointActionNeant(j.getPointActionNeant() + 1);
 				}
 				k++;
@@ -84,7 +83,7 @@ public class Tour {
 			while(i1 < joueurs.size()) {
 				Joueur j = joueurs.get(i1);
 				if(j.getOrigineDivinite() == "Nuit") {
-					j.setPointActionJour(j.getPointActionJour() + 2);
+					j.setPointActionNuit(j.getPointActionNuit() + 2);
 				}else if(j.getOrigineDivinite() == "Crepuscule") {
 					j.setPointActionNuit(j.getPointActionNuit() + 1);
 				}
@@ -92,6 +91,7 @@ public class Tour {
 			}
 			break;
 		default:
+			System.out.println("·ÖÅäÊ§°Ü£¡£¡£¡");
 			return;
 		}
 		

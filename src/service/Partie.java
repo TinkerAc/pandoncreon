@@ -32,10 +32,12 @@ public class Partie {
 	}
 	
 	/*-----------------------------*/
+	
 	public void addJoueurs() {
 		joueurs.add(new Joueur());
 		this.setNbJoueurs(this.getNbJoueurs() + 1);
 	}
+	
 	public void deleteJoueurs() {
 		joueurs.remove(joueurs.size() - 1);
 	}
@@ -125,7 +127,7 @@ public class Partie {
 		while(it.hasNext()) {
 			Joueur j = it.next();
 			j.piocher(cartes);
-			j.setCarteDivinite(CartesDivinite.getInstance().returnDivinite());
+			
 			if(it.hasNext()) {
 				j.setNextJoueur(joueurs.get(j.getNumj() + 1));
 				System.out.println("玩家" + j.getNumj() +"设置下家成功！");

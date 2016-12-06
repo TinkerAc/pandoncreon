@@ -7,6 +7,7 @@ import carteModule.Carte;
 import carteModule.CarteAction;
 import carteModule.DeuxEx;
 import player.Joueur;
+import service.Partie;
 
 public class Diversion extends DeuxEx {
 
@@ -19,7 +20,7 @@ public class Diversion extends DeuxEx {
 	
 	@Override
 	public void sacrifier(Joueur joueur) {
-		ArrayList<Joueur> js = parite.getJoueurs();
+		ArrayList<Joueur> js = Partie.getPartie().getJoueurs();
 		System.out.println("Prendre 3 cartes dans la main d'un autre joueur:");
 		System.out.println("choisir un joueur:");
 		for(int i = 0; i < js.size(); i++) {

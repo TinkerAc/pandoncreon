@@ -41,7 +41,7 @@ public class Cartes {
 		
 		cartes.add(new Travailleurs1());
 		
-		cartes.add(new Aliene());
+		cartes.add(new Aliene1());
 		
 		cartes.add(new Vampire());
 		cartes.add(new Vampire());

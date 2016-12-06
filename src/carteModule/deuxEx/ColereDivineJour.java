@@ -11,6 +11,7 @@ import carteModule.DeuxEx;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.CartesSurTable;
+import service.Partie;
 
 public class ColereDivineJour extends DeuxEx {
 	
@@ -23,7 +24,7 @@ public class ColereDivineJour extends DeuxEx {
 
 	@Override
 	public void sacrifier(Joueur joueur) {
-		ArrayList<Joueur> js = parite.getJoueurs();
+		ArrayList<Joueur> js = Partie.getPartie().getJoueurs();
 		System.out.println("D¨¦truire une carte Guide Spirituel d'Origine Nuit ou N¨¦ant:");
 		System.out.print("choisir un joueur: ");
 		for(int i = 0; i < js.size(); i++){

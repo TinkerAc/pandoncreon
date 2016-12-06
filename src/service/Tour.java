@@ -48,6 +48,11 @@ public class Tour {
 		
 		//测试代码 ，用后删除！！！
 		System.out.println("进入下一圈");
+		
+		Iterator<Joueur> it = joueurs.iterator();
+		while(it.hasNext()) {
+			it.next().setEnableSacrifier(true);
+		}
 		nextTour.commencerNouveauTour();
 	}
 	private void distribuerPointAction() {

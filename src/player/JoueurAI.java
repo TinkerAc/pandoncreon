@@ -1,5 +1,8 @@
 package player;
 
+import carteModule.Croyant;
+import carteModule.GuideSpirituel;
+
 public class JoueurAI extends JoueurABS {
 
 	public JoueurAI() {
@@ -32,6 +35,18 @@ public class JoueurAI extends JoueurABS {
 
 	@Override
 	public void choisirUneOperation() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void poserCroyant(Croyant c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void poserGuide(GuideSpirituel g) {
 		// TODO Auto-generated method stub
 		
 	}

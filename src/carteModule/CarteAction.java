@@ -9,7 +9,7 @@ public abstract class CarteAction extends Carte implements Sacrifier {
 	protected Joueur joueur;
 	protected Partie parite;
 	
-	CarteAction() {
+	public CarteAction() {
 		this.parite = Partie.getPartie();
 	}
 	

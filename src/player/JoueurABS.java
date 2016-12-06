@@ -6,8 +6,10 @@ import java.util.Random;
 
 import carteManager.Cartes;
 import carteManager.CartesDivinite;
+import carteModule.Apocalypse;
 import carteModule.CarteAction;
 import carteModule.Croyant;
+import carteModule.DeuxEx;
 import carteModule.Divinite;
 import carteModule.GuideSpirituel;
 import service.CartesSurTable;
@@ -39,7 +41,7 @@ public abstract class JoueurABS {
 	protected Joueur nextJoueur;
 	protected CartesSurTable CST = CartesSurTable.getCartesSurTable();
 	protected boolean isDone; //判断一圈游戏中是否已经操作结束
-	
+	protected boolean EnableSacrifier;
 	
 	public JoueurABS() {
 		setCartesEnMain(new ArrayList<CarteAction>());
@@ -50,6 +52,7 @@ public abstract class JoueurABS {
 		this.setNumj(NombreJ);
 		this.carteDivinite = CartesDivinite.getInstance().returnDivinite();
 		NombreJ ++;
+		this.setEnableSacrifier(true);
 	}
 	
 	public abstract void defausser();
@@ -95,6 +98,14 @@ public abstract class JoueurABS {
 		this.process = new Process((Joueur) this);
 		this.process.start();
 	}
+	
+	public abstract void poserCroyant(Croyant c);
+	public abstract void poserGuide(GuideSpirituel g);
+	
+	
+	
+	
+	
 	
 	
 	/*-----------------------------------------*/
@@ -165,8 +176,6 @@ public abstract class JoueurABS {
 		this.nextJoueur = nextJoueur;
 	}
 
-	
-
 	public boolean isDone() {
 		return isDone;
 	}
@@ -174,6 +183,15 @@ public abstract class JoueurABS {
 	public void setDone(boolean isDone) {
 		this.isDone = isDone;
 	}
+
+	public boolean isEnableSacrifier() {
+		return EnableSacrifier;
+	}
+
+	public void setEnableSacrifier(boolean enableSacrifier) {
+		EnableSacrifier = enableSacrifier;
+	}
+
 
 	
 	

@@ -114,6 +114,7 @@ public class Partie {
 				FLAG = true;
 			}catch(Exception e) {
 				System.out.println("非法输入！！！请重新输入！！！");
+				sc.next();
 				FLAG = false;
 			}
 		}

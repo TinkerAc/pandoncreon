@@ -4,20 +4,20 @@ import carteModule.Carte;
 import carteModule.Croyant;
 import player.Joueur;
 
-public class Revolutionnaires extends Croyant {
+public class Aliene3 extends Croyant {
 	
-	public Revolutionnaires() {
+	public Aliene3() {
 		super();
 		this.nbPriere = 2;
-		this.nom = "Vampire";
+		this.nom = "Ali¨¦n¨¦";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};
-		this.description = "Impose le sacrifice d'un Croyant d'un autre joueur, qui choisit la carte. La capacit¨¦ sp¨¦ciale du sacrifice est jou¨¦e.";
+		this.description = "Vous piochez deux cartes au hasard dans la main d'une autre Divinit¨¦.";
 	}
 	
 	@Override
 	public void sacrifier(Joueur joueur) {
-		new Ermite().sacrifier(joueur);
+		new Travailleurs3().sacrifier(joueur);
 	}
 
 }

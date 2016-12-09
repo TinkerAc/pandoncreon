@@ -8,16 +8,18 @@ import carteModule.Croyant;
 import player.Joueur;
 import service.Partie;
 import util.Input;
-public class Aliene1 extends Croyant {
 
-	public Aliene1() {
+public class Travailleurs2 extends Croyant {
+	
+	public Travailleurs2() {
 		super();
 		this.nbPriere = 2;
-		this.nom = "Aliéné";
-		this.origine = Carte.NEANT;
-		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};
+		this.nom = "Travailleurs";
+		this.origine = Carte.JOUR;
+		this.dogmes = new String[]{Carte.NATURE,Carte.SYMBOLES,Carte.MYSTIQUE};
 		this.description = "Empêche une Divinité possédant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour.";
 	}
+	
 	
 	@Override
 	public void sacrifier(Joueur joueur) {
@@ -30,7 +32,7 @@ public class Aliene1 extends Croyant {
 		while(it.hasNext()) {
 			Joueur j = it.next();
 			String origine = j.getOrigineDivinite();
-			if(origine == Carte.NATURE
+			if(origine == Carte.CHAOS
 					 || origine == Carte.MYSTIQUE) {
 				jsPourChoisir.add(j);
 				System.out.println("可选玩家：" + j.getNumj());
@@ -53,10 +55,8 @@ public class Aliene1 extends Croyant {
 				System.out.println("该玩家不可选！！！请重新选择！！！");
 			}
 		}
+		
+		
 	}
 
 }
-
-
-
-

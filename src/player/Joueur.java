@@ -98,7 +98,9 @@ public class Joueur extends JoueurABS {
 		
 	}
 	public void sacrifier() {
-		System.out.println("ÎşÉü");
+		
+		
+	
 	}
 	public void capaciter() {
 		System.out.println("³¬ÄÜÁ¦");

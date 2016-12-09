@@ -8,15 +8,16 @@ import carteModule.Croyant;
 import player.Joueur;
 import service.Partie;
 import util.Input;
-public class Aliene1 extends Croyant {
 
-	public Aliene1() {
+public class Alchimistes extends Croyant {
+
+	public Alchimistes() {
 		super();
 		this.nbPriere = 2;
-		this.nom = "Ali¨¦n¨¦";
-		this.origine = Carte.NEANT;
-		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};
-		this.description = "Emp¨ºche une Divinit¨¦ poss¨¦dant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour.";
+		this.nom = "Alchimistes";
+		this.origine = Carte.NUIT;
+		this.dogmes = new String[]{Carte.NATURE,Carte.CHAOS,Carte.SYMBOLES};
+		this.description = "Emp¨ºche une Divinit¨¦ poss¨¦dant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.";
 	}
 	
 	@Override
@@ -30,7 +31,7 @@ public class Aliene1 extends Croyant {
 		while(it.hasNext()) {
 			Joueur j = it.next();
 			String origine = j.getOrigineDivinite();
-			if(origine == Carte.NATURE
+			if(origine == Carte.HUMAIN
 					 || origine == Carte.MYSTIQUE) {
 				jsPourChoisir.add(j);
 				System.out.println("¿ÉÑ¡Íæ¼Ò£º" + j.getNumj());
@@ -56,7 +57,3 @@ public class Aliene1 extends Croyant {
 	}
 
 }
-
-
-
-

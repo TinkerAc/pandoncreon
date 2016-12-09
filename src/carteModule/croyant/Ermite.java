@@ -1,12 +1,13 @@
 package carteModule.croyant;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import carteModule.Carte;
 import carteModule.Croyant;
 import player.Joueur;
-import service.ProcessSacrifier;
+import util.Input;
 
 public class Ermite extends Croyant {
 
@@ -15,24 +16,20 @@ public class Ermite extends Croyant {
 		this.nbPriere = 1;
 		this.nom = "Ermite";
 		this.origine = Carte.JOUR;
+		this.dogmes = new String[]{Carte.NATURE,Carte.MYSTIQUE,Carte.SYMBOLES};
 		this.description = "Impose le sacrifice d'un Croyant d'un autre joueur, qui choisit la carte. La capacit¨¦ sp¨¦ciale du sacrifice est jou¨¦e.";
 	}
 	
 	@Override
 	public void sacrifier(Joueur joueur) {
 		ArrayList<Joueur> js = parite.getJoueurs();
+		Iterator<Joueur> it = js.iterator();
 		System.out.print("choisir un joueur: ");
-		for(int i = 0; i < js.size(); i++) {
-			if(i != js.indexOf(this.joueur)) {
-				System.out.print(i + " ");
-			}
+		while(it.hasNext()) {
+			System.out.println("Íæ¼Ò" + it.next().getNumj());
 		}
-		System.out.print('\n');
-		
-		Scanner sc = new Scanner(System.in);
-		Joueur j1 = js.get(sc.nextInt());
-		
-		new ProcessSacrifier(j1).start();;
+		int i = Input.getInt();
+		js.get(i).sacrifier();
 	}
 
 }

@@ -38,6 +38,10 @@ public class Carte {
 		sb.append("----------------------------------------------------------------------" + '\n');
 		return sb.toString();
 	}
+	
+	public String[] getDogmes() {
+		return this.dogmes;
+	}
 }
 
 

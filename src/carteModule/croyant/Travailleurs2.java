@@ -13,7 +13,7 @@ public class Travailleurs2 extends Croyant {
 	
 	public Travailleurs2() {
 		super();
-		this.nbPriere = 2;
+		this.setNbPriere(2);
 		this.nom = "Travailleurs";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{Carte.NATURE,Carte.SYMBOLES,Carte.MYSTIQUE};

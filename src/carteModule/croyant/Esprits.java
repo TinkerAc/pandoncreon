@@ -8,7 +8,7 @@ public class Esprits extends Croyant {
 
 	public Esprits() {
 		super();
-		this.nbPriere = 2;
+		this.setNbPriere(2);
 		this.nom = "Esprits";
 		this.origine = Carte.NEANT;
 		this.description = "Donne un point d'Action d'Origine N¨¦ant.";

@@ -12,7 +12,7 @@ import util.Input;
 public class Travailleurs3 extends Croyant {
 	public Travailleurs3() {
 		super();
-		this.nbPriere = 2;
+		this.setNbPriere(2);
 		this.nom = "Travailleurs";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.MYSTIQUE};

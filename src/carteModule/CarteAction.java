@@ -15,4 +15,8 @@ public abstract class CarteAction extends Carte implements Sacrifier {
 	
 	public abstract void utiliser();
 	
+	public void setJoueur(Joueur j) {
+		this.joueur = j;
+	}
+	
 }

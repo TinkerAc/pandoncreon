@@ -13,7 +13,7 @@ public class Ermite extends Croyant {
 
 	public Ermite() {
 		super();
-		this.nbPriere = 1;
+		this.setNbPriere(1);
 		this.nom = "Ermite";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{Carte.NATURE,Carte.MYSTIQUE,Carte.SYMBOLES};

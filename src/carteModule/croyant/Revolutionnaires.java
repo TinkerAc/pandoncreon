@@ -8,7 +8,7 @@ public class Revolutionnaires extends Croyant {
 	
 	public Revolutionnaires() {
 		super();
-		this.nbPriere = 2;
+		this.setNbPriere(2);
 		this.nom = "Vampire";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};

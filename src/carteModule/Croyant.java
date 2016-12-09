@@ -14,5 +14,13 @@ public abstract class Croyant extends CarteAction{
 	public void utiliser() {
 		
 	}
+
+	public int getNbPriere() {
+		return nbPriere;
+	}
+
+	public void setNbPriere(int nbPriere) {
+		this.nbPriere = nbPriere;
+	}
 	
 }

@@ -12,7 +12,7 @@ public class Vampire extends Croyant {
 	
 	public Vampire() {
 		super();
-		this.nbPriere = 1;
+		this.setNbPriere(1);
 		this.nom = "Vampire";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{Carte.NATURE,Carte.HUMAIN,Carte.SYMBOLES};

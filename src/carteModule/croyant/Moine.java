@@ -7,7 +7,7 @@ public class Moine extends Croyant {
 	
 	public Moine() {
 		super();
-		this.nbPriere = 2;
+		this.setNbPriere(2);
 		this.nom = "Moine";
 		this.origine = Carte.JOUR;
 		this.description = "Donne un point d'Action d'Origine Jour.";

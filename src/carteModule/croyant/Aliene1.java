@@ -12,7 +12,7 @@ public class Aliene1 extends Croyant {
 
 	public Aliene1() {
 		super();
-		this.nbPriere = 2;
+		this.setNbPriere(2);
 		this.nom = "Ali¨¦n¨¦";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};

@@ -50,6 +50,18 @@ public class JoueurAI extends JoueurABS {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void sacrifierCroyant() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sacrifierGuide() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

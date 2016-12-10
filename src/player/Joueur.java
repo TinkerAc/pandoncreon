@@ -1,6 +1,5 @@
 package player;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
@@ -13,6 +12,7 @@ import carteModule.*;
 import service.CartesSurTable;
 import service.Partie;
 import service.Process;
+import util.Input;
 
 
 public class Joueur extends JoueurABS {
@@ -90,6 +90,31 @@ public class Joueur extends JoueurABS {
 			de.sacrifier(this);
 			break;
 		case "Apocalypse":
+			Apocalypse ap = (Apocalypse)c;
+			if(ap.getOrigine() == "jour") {
+				if(this.getPointActionJour() >= 1) {
+					this.setPointActionJour(this.getPointActionJour() - 1);
+				}else {
+					System.out.println("行动点不足！！！");
+					return;
+				}
+			}
+			if(ap.getOrigine() == "neant") {
+				if(this.getPointActionNeant() >= 1) {
+					this.setPointActionNeant(this.getPointActionNeant() - 1);
+				}else {
+					System.out.println("行动点不足！！！");
+					return;
+				}
+			}
+			if(ap.getOrigine() == "nuit") {
+				if(this.getPointActionNuit() >= 1) {
+					this.setPointActionNuit(this.getPointActionNuit() - 1);
+				}else {
+					System.out.println("行动点不足！！！");
+					return;
+				}
+			}
 			Partie.getPartie().ApocalypseProcess(this);
 			break;
 		}
@@ -98,13 +123,38 @@ public class Joueur extends JoueurABS {
 		
 	}
 	public void sacrifier() {
-		
-		
+		ArrayList<CarteAction> c = new ArrayList<CarteAction>(); 
+		Iterator<GuideSpirituel> it = this.guides.iterator();
+		int j = 1;
+		while(it.hasNext()) {
+			GuideSpirituel g = it.next();
+			c.add(g);
+			int i = 0;
+			System.out.println("编号" + j);
+			System.out.println(g.toString());
+			while(i < g.getCroyants().size()) {
+				j++;
+				c.add(g.getCroyants().get(i));
+				System.out.println("编号" + j);
+				System.out.println(g.getCroyants().get(i).toString());
+			}
+			j++;
+		}
+		System.out.println("请选择要牺牲的牌：");
+		int i = Input.getInt() - 1;
+		if(c.get(i).getType() == "croyant") {
+			
+			c.get(i).sacrifier(this);
+			
+		}else {
+			this.sacrifierGuide((GuideSpirituel)c.get(i));
+		}
+	}
 	
-	}
 	public void capaciter() {
-		System.out.println("超能力");
+		this.carteDivinite.capacite(Partie.getPartie());
 	}
+	
 	public int lancerDeCosnologie() {
 		Random random = new Random();
 		return random.nextInt(3);
@@ -234,6 +284,16 @@ public class Joueur extends JoueurABS {
 			guide.setNbCroyant(guide.getNbCroyant() + 1);
 			System.out.println("精神引领成功！");
 		}
+	}
+
+	@Override
+	public void sacrifierCroyant() {
+		
+	}
+
+	@Override
+	public void sacrifierGuide(GuideSpirituel g) {
+		g.sacrifier(this);
 	}
 
 	

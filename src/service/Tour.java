@@ -11,6 +11,7 @@ public class Tour {
 	private Tour nextTour;
 	private boolean enableApocalypse;
 	private static int nTour = 1;
+	private String rsDeLancer;
 	
 	Tour(ArrayList<Joueur> joueurs, Tour tourAvant) {
 		this.joueurs = joueurs;
@@ -31,11 +32,14 @@ public class Tour {
 		this.joueurs = joueurs;
 		this.premiereJoueur = premiere;
 		for(Iterator<Joueur> it = joueurs.iterator();it.hasNext();) {
-			it.next().setDone(false);
+			Joueur j = it.next();
+			j.setDone(false);
+			j.setEnableGetPoint(true);
 		}
 		if(nTour == 1) {
 			this.enableApocalypse = false;
 		}
+		Partie.getPartie().setCurrentTour(this);
 	}
 	
 	public void commencerNouveauTour() {
@@ -60,6 +64,7 @@ public class Tour {
 		switch(n) {
 		case 0:
 			System.out.println("jour");
+			this.setRsDeLancer("jour");
 			int i = 0;
 			while(i < joueurs.size()) {
 				Joueur j = joueurs.get(i);
@@ -73,6 +78,7 @@ public class Tour {
 			break;
 		case 1:
 			System.out.println("neant");
+			this.setRsDeLancer("neant");
 			int k = 0;
 			while(k < joueurs.size()) {
 				Joueur j = joueurs.get(k);
@@ -84,6 +90,7 @@ public class Tour {
 			break;
 		case 2:
 			System.out.println("nuit");
+			this.setRsDeLancer("nuit");
 			int i1 = 0;
 			while(i1 < joueurs.size()) {
 				Joueur j = joueurs.get(i1);
@@ -115,6 +122,12 @@ public class Tour {
 	}
 	public static void setnTour(int nTour) {
 		Tour.nTour = nTour;
+	}
+	public String getRsDeLancer() {
+		return rsDeLancer;
+	}
+	public void setRsDeLancer(String rsDeLancer) {
+		this.rsDeLancer = rsDeLancer;
 	}
 }
 

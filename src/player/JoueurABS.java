@@ -6,10 +6,8 @@ import java.util.Random;
 
 import carteManager.Cartes;
 import carteManager.CartesDivinite;
-import carteModule.Apocalypse;
 import carteModule.CarteAction;
 import carteModule.Croyant;
-import carteModule.DeuxEx;
 import carteModule.Divinite;
 import carteModule.GuideSpirituel;
 import service.CartesSurTable;
@@ -22,7 +20,7 @@ import service.Process;
  * 
  * 包含：玩家的通用方法
  * 
- * @author 谢昕辰
+ * @author XIE Xinchen
  * 
  * */
 
@@ -42,6 +40,7 @@ public abstract class JoueurABS {
 	protected CartesSurTable CST = CartesSurTable.getCartesSurTable();
 	protected boolean isDone; //判断一圈游戏中是否已经操作结束
 	protected boolean EnableSacrifier;
+	protected boolean EnableGetPoint;
 	
 	public JoueurABS() {
 		setCartesEnMain(new ArrayList<CarteAction>());
@@ -102,8 +101,8 @@ public abstract class JoueurABS {
 	public abstract void poserCroyant(Croyant c);
 	public abstract void poserGuide(GuideSpirituel g);
 	
-	
-	
+	public abstract void sacrifierCroyant();
+	public abstract void sacrifierGuide(GuideSpirituel g);
 	
 	
 	
@@ -190,6 +189,14 @@ public abstract class JoueurABS {
 
 	public void setEnableSacrifier(boolean enableSacrifier) {
 		EnableSacrifier = enableSacrifier;
+	}
+
+	public boolean isEnableGetPoint() {
+		return EnableGetPoint;
+	}
+
+	public void setEnableGetPoint(boolean enableGetPoint) {
+		EnableGetPoint = enableGetPoint;
 	}
 
 

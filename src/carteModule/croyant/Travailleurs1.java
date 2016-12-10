@@ -1,7 +1,6 @@
 package carteModule.croyant;
 
 import carteModule.Carte;
-import carteModule.CarteAction;
 import carteModule.Croyant;
 import player.Joueur;
 

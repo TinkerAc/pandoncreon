@@ -2,8 +2,6 @@ package carteModule.croyant;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
-
 import carteModule.Carte;
 import carteModule.Croyant;
 import player.Joueur;
@@ -29,7 +27,7 @@ public class Ermite extends Croyant {
 			System.out.println("Íæ¼Ò" + it.next().getNumj());
 		}
 		int i = Input.getInt();
-		js.get(i).sacrifier();
+		js.get(i).sacrifierGuide();
 	}
 
 }

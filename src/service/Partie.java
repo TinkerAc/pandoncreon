@@ -18,6 +18,7 @@ public class Partie {
 	private ArrayList<Joueur> joueurs;
 	private Cartes cartes;
 	private Tour tour;
+	private Tour currentTour;
 	private CartesSurTable carteSurTable;
 	
 	private Partie() {
@@ -220,6 +221,12 @@ public class Partie {
 	}
 	public ArrayList<Joueur> getJoueurs() {
 		return this.joueurs;
+	}
+	public Tour getCurrentTour2() {
+		return this.currentTour;
+	}
+	public void setCurrentTour(Tour currentTour) {
+		this.currentTour = currentTour;
 	}
 }
 

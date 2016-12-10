@@ -1,23 +1,27 @@
 package carteModule;
 
+import java.util.Random;
+
 import player.Joueur;
 
 public class Apocalypse extends CarteAction{
 
+	private static final String[] origines = {Carte.JOUR, Carte.NEANT, Carte.NUIT, null, null};
+	
 	Apocalypse() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.type = "apocalypse";
+		this.dogmes = null;
+		this.origine = origines[new Random().nextInt(5)];
 	}
 
 	@Override
 	public void utiliser() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void sacrifier(Joueur joueur) {
-		// TODO Auto-generated method stub
 		utiliser();
 	}
 

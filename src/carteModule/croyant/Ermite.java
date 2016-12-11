@@ -27,7 +27,7 @@ public class Ermite extends Croyant {
 			System.out.println("Íæ¼Ò" + it.next().getNumj());
 		}
 		int i = Input.getInt();
-		js.get(i).sacrifierGuide();
+		//js.get(i).sacrifierGuide();
 	}
 
 }

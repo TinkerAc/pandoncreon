@@ -9,6 +9,7 @@ import carteManager.Cartes;
 import carteManager.CartesDivinite;
 import carteModule.Croyant;
 import player.Joueur;
+import player.JoueurAI;
 
 public class Partie {
 	
@@ -35,7 +36,7 @@ public class Partie {
 	/*-----------------------------*/
 	
 	public void addJoueurs() {
-		joueurs.add(new Joueur());
+		joueurs.add(new JoueurAI());
 		this.setNbJoueurs(this.getNbJoueurs() + 1);
 	}
 	

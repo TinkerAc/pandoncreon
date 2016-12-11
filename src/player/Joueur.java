@@ -1,314 +1,205 @@
 package player;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import carteManager.Cartes;
-import carteModule.*;
+import carteManager.CartesDivinite;
+import carteModule.CarteAction;
+import carteModule.Croyant;
+import carteModule.Divinite;
+import carteModule.GuideSpirituel;
 import service.CartesSurTable;
-import service.Partie;
 import service.Process;
-import util.Input;
 
+/**
+ * 玩家的抽象类
+ * 
+ * 组合：玩家的基本信息，控制流程类
+ * 
+ * 包含：玩家的通用方法
+ * 
+ * @author XIE Xinchen
+ * 
+ * */
 
-public class Joueur extends JoueurABS {
-	
+public abstract class Joueur {
+	protected ArrayList<CarteAction> cartesEnMain;
+	protected Divinite carteDivinite;
+	protected int pointActionJour;
+	protected int pointActionNeant;
+	protected int pointActionNuit;
+	protected int nbPriere;
+	protected List<Croyant> croyants = new ArrayList<Croyant>();
+	protected List<GuideSpirituel> guides = new ArrayList<GuideSpirituel>();
+	protected int numj;
+	protected static int NombreJ = 0;
+	protected Process process;
+	protected Joueur nextJoueur;
+	protected CartesSurTable CST = CartesSurTable.getCartesSurTable();
+	protected boolean isDone; //判断一圈游戏中是否已经操作结束
+	protected boolean EnableSacrifier;
+	protected boolean EnableGetPoint;
 	
 	public Joueur() {
-		super();
+		setCartesEnMain(new ArrayList<CarteAction>());
+		setPointActionJour(0);
+		setPointActionNeant(0);
+		setPointActionNuit(0);
+		nbPriere = 0;
+		this.setNumj(NombreJ);
+		this.carteDivinite = CartesDivinite.getInstance().returnDivinite();
+		NombreJ ++;
+		this.setEnableSacrifier(true);
 	}
 	
-	public void defausser() {
-		Scanner sc = new Scanner(System.in);
-		boolean end = false;
-		try {
-			do{
-				showCards();
-				System.out.println("请选择要扔掉的牌：");
-				int i = sc.nextInt();
-				if(i >= 0 && i < cartesEnMain.size()) {
-					cartesEnMain.remove(i);
-				}else {
-					System.out.println("该卡牌不存在！！！请重新输入");
-					continue;
-				}
-				System.out.println("输入任意键继续扔牌，结束扔牌请输入'No'");
-				end = sc.next().equals("No");
-			}while(!end);
-		}catch(Exception e) {
-			System.out.println("非法输入!!!请重新输入！！！");
-			defausser();
-		}
-		
-	}
+	public abstract void defausser();
 	
-	
-	
-	/*
-	 * 之后需要对此方法拆分，将四种情况分别封装到对应的卡牌类里面
-	 * 
-	 * */
-	public void utiliser() {
-		showPointAction();
-		System.out.println("请选择一张牌：");
-		showCards();
-		Scanner sc = new Scanner(System.in);
-		int i = -1;
-		boolean FLAG = false;
-		while(!FLAG) {
-			try{
-				i = sc.nextInt();
-				if(i >= 0 && i < cartesEnMain.size()) {
-					FLAG = true;
-				}else {
-					System.out.println("找不到该卡片，请重新输入！");
-					FLAG = false;
-				}
-			}catch(InputMismatchException e) {
-				System.out.println("非法输入");
-				sc.next();
-				FLAG = false;
-			}
+	public void piocher(Cartes cartes) {
+		System.out.println("玩家" + this.numj + "抽牌...");
+		if(cartesEnMain.size() == 7) {
+			return;
 		}
-		CarteAction c = cartesEnMain.remove(i); //c 为要使用的牌
-		
-		switch(c.getType()) {
-		case "Croyant":
-			Croyant cc = (Croyant)c;
-			poserCroyant(cc);
-			break;
-		case "Guide":
-			GuideSpirituel guide = (GuideSpirituel)c;
-			poserGuide(guide);
-			break;
-		case "DeuxEx":
-			DeuxEx de = (DeuxEx)c;
-			de.sacrifier(this);
-			break;
-		case "Apocalypse":
-			Apocalypse ap = (Apocalypse)c;
-			if(ap.getOrigine() == "jour") {
-				if(this.getPointActionJour() >= 1) {
-					this.setPointActionJour(this.getPointActionJour() - 1);
-				}else {
-					System.out.println("行动点不足！！！");
-					return;
-				}
-			}
-			if(ap.getOrigine() == "neant") {
-				if(this.getPointActionNeant() >= 1) {
-					this.setPointActionNeant(this.getPointActionNeant() - 1);
-				}else {
-					System.out.println("行动点不足！！！");
-					return;
-				}
-			}
-			if(ap.getOrigine() == "nuit") {
-				if(this.getPointActionNuit() >= 1) {
-					this.setPointActionNuit(this.getPointActionNuit() - 1);
-				}else {
-					System.out.println("行动点不足！！！");
-					return;
-				}
-			}
-			Partie.getPartie().ApocalypseProcess(this);
-			break;
-		}
-		
-		
-		
-	}
-	public void sacrifier() {
-		ArrayList<CarteAction> c = new ArrayList<CarteAction>(); 
-		Iterator<GuideSpirituel> it = this.guides.iterator();
-		int j = 1;
-		while(it.hasNext()) {
-			GuideSpirituel g = it.next();
-			c.add(g);
-			int i = 0;
-			System.out.println("编号" + j);
-			System.out.println(g.toString());
-			while(i < g.getCroyants().size()) {
-				j++;
-				c.add(g.getCroyants().get(i));
-				System.out.println("编号" + j);
-				System.out.println(g.getCroyants().get(i).toString());
-			}
-			j++;
-		}
-		System.out.println("请选择要牺牲的牌：");
-		int i = Input.getInt() - 1;
-		if(c.get(i).getType() == "croyant") {
-			
-			c.get(i).sacrifier(this);
-			
-		}else {
-			this.sacrifierGuide((GuideSpirituel)c.get(i));
+		while(cartesEnMain.size() < 7) {
+			cartesEnMain.add(cartes.returnCarte());
 		}
 	}
 	
-	public void capaciter() {
-		this.carteDivinite.capacite(Partie.getPartie());
-	}
+	public abstract void utiliser();
+	
+	public abstract void sacrifier();
+	
+	public abstract void capaciter();
 	
 	public int lancerDeCosnologie() {
 		Random random = new Random();
 		return random.nextInt(3);
 	}
-	public void choisirUneOperation() {
-		
-		Scanner sc = new Scanner(System.in);
-		System.out.println("选择一个操作：0：扔牌，1：抽牌，2：出牌，3：牺牲，4：超能力");
-		
-		boolean FLAG = false;
-		int n = -1;
-		while(!FLAG) {
-			try {
-				n = sc.nextInt();
-				FLAG = true;
-			}catch(Exception e) {
-				System.out.println("非法输入！！！请重新输入！！！");
-				sc.next();
-				FLAG = false;
-			}
+	
+	public abstract void choisirUneOperation();
+	
+	public void showCards() {
+		for(int i = 0; i < cartesEnMain.size(); i++) {
+			System.out.println(i);
+			System.out.println(cartesEnMain.get(i).toString());
 		}
-		
-		switch (n) {
-		case 0:
-			defausser();
-			break;
-		case 1:
-			piocher(Partie.getPartie().getCartes());
-			break;
-		case 2:
-			utiliser();
-			break;
-		case 3:
-			sacrifier();
-			break;
-		case 4:
-			capaciter();
-			break;
-		default:
-			//
-			break;
-		}
+	}
+	public void showPointAction() {
+		System.out.println("玩家起源" + this.getOrigineDivinite());
+		System.out.println("当前白天行动点：" + this.getPointActionJour());
+		System.out.println("当前虚无行动点：" + this.getPointActionNeant() );
+		System.out.println("当前黑夜行动点：" + this.getPointActionNuit());
+	}
+	
+
+	public void process() {
+		this.process = new Process((Joueur) this);
+		this.process.start();
+	}
+	
+	public abstract void poserCroyant(Croyant c);
+	public abstract void poserGuide(GuideSpirituel g);
+	
+	public abstract void sacrifierCroyant();
+	public abstract void sacrifierGuide(GuideSpirituel g);
+	
+	
+	
+	
+	/*-----------------------------------------*/
+	public ArrayList<CarteAction> getCartesEnMain() {
+		return cartesEnMain;
+	}
+	public void setCartesEnMain(ArrayList<CarteAction> cartesEnMain) {
+		this.cartesEnMain = cartesEnMain;
+	}
+	public Divinite getCarteDivinite() {
+		return carteDivinite;
+	}
+	public void setCarteDivinite(Divinite carteDivinite) {
+		this.carteDivinite = carteDivinite;
+	}
+	public int getPointActionJour() {
+		return pointActionJour;
+	}
+	public void setPointActionJour(int pointActionJour) {
+		this.pointActionJour = pointActionJour;
+	}
+	public int getPointActionNeant() {
+		return pointActionNeant;
+	}
+	public void setPointActionNeant(int pointActionNeant) {
+		this.pointActionNeant = pointActionNeant;
+	}
+	public int getPointActionNuit() {
+		return pointActionNuit;
+	}
+	public void setPointActionNuit(int pointActionNuit) {
+		this.pointActionNuit = pointActionNuit;
+	}
+	public int getNbPriere() {
+		return nbPriere;
+	}
+	public void setNbPriere(int nbPriere) {
+		this.nbPriere = nbPriere;
+	}
+	public List<Croyant> getCroyants() {
+		return croyants;
+	}
+	public void setCroyants(List<Croyant> croyants) {
+		this.croyants = croyants;
+	}
+	public List<GuideSpirituel> getGuides() {
+		return guides;
+	}
+	public void setGuides(List<GuideSpirituel> guides) {
+		this.guides = guides;
+	}
+	public int getNumj() {
+		return numj;
+	}
+	public void setNumj(int numj) {
+		this.numj = numj;
+	}
+	
+	public String getOrigineDivinite() {
+		return carteDivinite.getOrigine();
 	}
 
-	@Override
-	public void poserCroyant(Croyant cc) {
-		switch(cc.getOrigine()) {
-		case Carte.JOUR:
-			if(this.pointActionJour >= 1) {
-				CST.getCroyantPublic().add(cc);
-				this.pointActionJour -= 1;
-			}else {
-				System.out.println("行动点不足");
-				cartesEnMain.add(cc);
-			}
-			break;
-		case Carte.NEANT:
-			if(this.pointActionNeant >= 1) {
-				CST.getCroyantPublic().add(cc);
-				this.pointActionNeant -= 1;
-			}else {
-				System.out.println("行动点不足");
-				cartesEnMain.add(cc);
-			}
-			break;
-		
-		case Carte.NUIT:
-			if(this.pointActionNuit >= 1) {
-				CST.getCroyantPublic().add(cc);
-				this.pointActionNuit -= 1;
-			}else {
-				System.out.println("行动点不足");
-				cartesEnMain.add(cc);
-			}
-			break;
-		default :
-			break;
-		}
-		
-		
+	public Joueur getNextJoueur() {
+		return nextJoueur;
 	}
 
-	@Override
-	public void poserGuide(GuideSpirituel guide) {
-		List<CarteAction> croyants = CST.getCroyantPublic();
-		Iterator<CarteAction> it = croyants.iterator();
-		Scanner sc = new Scanner(System.in);
-		
-		int iDeCroyant = 0; //信徒卡编号
-		
-		while(it.hasNext()) {
-			System.out.println(iDeCroyant);
-			System.out.println(it.next().toString());
-		}
-		while(true) {
-			if(CST.getCroyantPublic().size() == 0) {
-				System.out.println("桌上没有信徒卡！");
-				break;
-			}
-			if(guide.getNbCroyant() == guide.getNbCroyantMax()) {
-				System.out.println("信徒卡达到上限！");
-				System.out.println("回合结束");
-				break;
-			}
-			
-			System.out.println("请选择要引领的信徒卡: ");
-			int n = -1;
-			boolean FLAG = false;
-			while(!FLAG) {
-				try{
-					n = sc.nextInt();
-					if(n >= 0 && n < CST.getCroyantPublic().size()) {
-						FLAG = true;
-					}else {
-						System.out.println("找不到该卡片，请重新输入！");
-						sc.next();
-						FLAG = false;
-					}
-				}catch(InputMismatchException e) {
-					System.out.println("非法输入");
-					FLAG = false;
-				}
-			}
-			
-			Croyant ca =(Croyant) CST.getCroyantPublic().remove(n);
-			guide.getCroyants().add(ca);
-			guide.setNbCroyant(guide.getNbCroyant() + 1);
-			System.out.println("精神引领成功！");
-		}
+	public void setNextJoueur(Joueur nextJoueur) {
+		this.nextJoueur = nextJoueur;
 	}
 
-	@Override
-	public void sacrifierCroyant() {
-		
+	public boolean isDone() {
+		return isDone;
 	}
 
-	@Override
-	public void sacrifierGuide(GuideSpirituel g) {
-		g.sacrifier(this);
+	public void setDone(boolean isDone) {
+		this.isDone = isDone;
 	}
+
+	public boolean isEnableSacrifier() {
+		return EnableSacrifier;
+	}
+
+	public void setEnableSacrifier(boolean enableSacrifier) {
+		EnableSacrifier = enableSacrifier;
+	}
+
+	public boolean isEnableGetPoint() {
+		return EnableGetPoint;
+	}
+
+	public void setEnableGetPoint(boolean enableGetPoint) {
+		EnableGetPoint = enableGetPoint;
+	}
+
 
 	
- }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+}

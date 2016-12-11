@@ -10,6 +10,7 @@ import carteManager.CartesDivinite;
 import carteModule.Croyant;
 import player.Joueur;
 import player.JoueurAI;
+import player.JoueurPhysics;
 
 public class Partie {
 	
@@ -120,6 +121,7 @@ public class Partie {
 				FLAG = false;
 			}
 		}
+		this.joueurs.add(new JoueurPhysics());
 		//Ìí¼ÓÍæ¼Ò
 		for(int i = 0;i < n; i++) {
 			this.addJoueurs();

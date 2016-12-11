@@ -254,6 +254,7 @@ public class JoueurPhysics extends Joueur {
 			if(guide.getNbCroyant() == guide.getNbCroyantMax()) {
 				System.out.println("信徒卡达到上限！");
 				System.out.println("回合结束");
+				this.cartesEnMain.add(guide);
 				break;
 			}
 			

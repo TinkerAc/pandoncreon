@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import carteModule.Carte;
 import carteModule.Croyant;
+import carteModule.GuideSpirituel;
 import player.Joueur;
 import util.Input;
 
@@ -25,20 +26,32 @@ public class Vampire extends Croyant {
 		Iterator<Joueur> it = js.iterator();
 		System.out.print("choisir un joueur: ");
 		while(it.hasNext()) {
-			System.out.println("玩家" + it.next().getNumj());
+			System.out.println("joueur" + it.next().getNumj());
 		}
 		int i = Input.getInt();
 		ArrayList<Croyant> cs = (ArrayList<Croyant>) js.get(i).getCroyants();
 		Iterator<Croyant> ic = cs.iterator();
-		System.out.println("请选择一张croyant");
+		int count = 0;
+		System.out.println("choisir un Croyant");
 		while(ic.hasNext()) {
+			System.out.println(count);
 			System.out.println(ic.next().toString());
+			count++;
 		}
 		int n = Input.getInt();
 		js.get(i).getCroyants().remove(n).sacrifier(js.get(i));
-		/*
-		 * 怎么从guide里面移出去？？
-		 * */
+
+		this.joueur.getCroyants().remove(this);
+		this.joueur.setNbPriere(this.joueur.getNbPriere() - this.getNbPriere());
+		Iterator<GuideSpirituel> it2 = this.joueur.getGuides().iterator();
+		while(it2.hasNext()){
+			if(it2.next().getCroyants().contains(this)){
+				it2.next().getCroyants().remove(this);
+				it2.next().setNbCroyant(it2.next().getNbCroyant() - 1);
+			}
+		}
+		this.setJoueur(null);
+
 	}
 
 }

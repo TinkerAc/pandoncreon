@@ -57,12 +57,15 @@ public abstract class Joueur {
 	public abstract void defausser();
 	
 	public void piocher(Cartes cartes) {
-		System.out.println("玩家" + this.numj + "抽牌...");
-		if(cartesEnMain.size() == 7) {
+		System.out.println("piocher cartes");
+		if(cartesEnMain.size() >= 7) {
 			return;
 		}
 		while(cartesEnMain.size() < 7) {
-			cartesEnMain.add(cartes.returnCarte());
+			CarteAction ca = cartes.returnCarte();
+			cartes.getCartes().remove(ca);
+			cartesEnMain.add(ca);
+			ca.setJoueur(this);
 		}
 	}
 	
@@ -86,10 +89,10 @@ public abstract class Joueur {
 		}
 	}
 	public void showPointAction() {
-		System.out.println("玩家起源" + this.getOrigineDivinite());
-		System.out.println("当前白天行动点：" + this.getPointActionJour());
-		System.out.println("当前虚无行动点：" + this.getPointActionNeant() );
-		System.out.println("当前黑夜行动点：" + this.getPointActionNuit());
+		System.out.println("l'Origine du joueur: " + this.getOrigineDivinite());
+		System.out.println("Point d'Action Jour:" + this.getPointActionJour());
+		System.out.println("Point d'Action Néant:" + this.getPointActionNeant() );
+		System.out.println("Point d'Action Nuit:" + this.getPointActionNuit());
 	}
 	
 

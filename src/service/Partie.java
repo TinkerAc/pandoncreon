@@ -10,7 +10,7 @@ import carteManager.CartesDivinite;
 import carteModule.Croyant;
 import player.Joueur;
 import player.JoueurAI;
-import player.JoueurPhysics;
+import player.JoueurPhysique;
 
 public class Partie {
 	
@@ -104,10 +104,10 @@ public class Partie {
 	 * */
 	public void commencerPartie() {
 		//测试代码 ，用后删除！！！ 
-		System.out.println("开始一局游戏");
+		System.out.println("Une nouvelle partie commence");
 		
 		//测试代码 ，用后删除！！！
-		System.out.println("初始化玩家数：");
+		System.out.println("Initialiser le nombre de joueurs:");
 		Scanner sc = new Scanner(System.in);
 		int n = 0;
 		boolean FLAG = false;
@@ -116,12 +116,13 @@ public class Partie {
 				n = sc.nextInt();
 				FLAG = true;
 			}catch(Exception e) {
-				System.out.println("非法输入！！！请重新输入！！！");
+				System.out.println("input illégal, importer encore une fois!");
 				sc.next();
 				FLAG = false;
 			}
 		}
-		this.joueurs.add(new JoueurPhysics());
+		this.joueurs.add(new JoueurPhysique());
+		this.setNbJoueurs(this.getNbJoueurs() + 1);
 		//添加玩家
 		for(int i = 0;i < n; i++) {
 			this.addJoueurs();
@@ -135,15 +136,15 @@ public class Partie {
 			
 			if(it.hasNext()) {
 				j.setNextJoueur(joueurs.get(j.getNumj() + 1));
-				System.out.println("玩家" + j.getNumj() +"设置下家成功！");
+				System.out.println("joueur" + j.getNumj() +" a réussi d'installer le joueur prochain");
 			}else {
 				j.setNextJoueur(joueurs.get(0));
-				System.out.println("玩家" + j.getNumj() +"设置下家循环完成！");
+				System.out.println("joueur" + j.getNumj() +" a réussi d'installer une boucle de joueurs prochains!");
 			}
 		}
 		tour = new Tour(joueurs, 0);
 		//测试代码 ，用后删除！！！
-		System.out.println("进入第一圈");
+		System.out.println("le premier tour commence");
 		tour.commencerNouveauTour();
 	}
 	
@@ -162,36 +163,37 @@ public class Partie {
 		int index = this.compareNbPriere();
 		if(this.getNbJoueurs() <= 3) {
 			if(index != -1) {
-				System.out.println("玩家" + this.joueurs.get(index).getNumj() + "获胜！！！");
+				System.out.println("joueur" + this.joueurs.get(index).getNumj() + "gagne!!!");
 				this.terminerPartie();
 			}else {
-				System.out.println("世界末日无效！");
+				System.out.println("Apocalypse n'a pas d'effet!");
 				System.gc();
 				this.tour = new Tour(this.joueurs, j.getNumj());
 				tour.setEnableApocalypse(false);
-				System.out.println("进入下一回合！");
+				System.out.println("un nouveau tour commence!");
 				tour.commencerNouveauTour();
 			}
 		}else {
 			if(index != -1) {
 				Joueur jF = this.getJoueurs().get(index); //失败玩家
-				System.out.println("玩家" + j.getNumj() + "滚蛋！！！");
+				System.out.println("joueur" + jF.getNumj() + "est éliminé");
 				Iterator<Croyant> itCroyantDeJF = jF.getCroyants().iterator();
 				while(itCroyantDeJF.hasNext()) {
 					this.carteSurTable.getCroyantPublic().add(itCroyantDeJF.next());
+					itCroyantDeJF.next().setJoueur(null);
 				}
 				this.eliminerJoueur(this.getJoueurs().get(index));
 				System.gc();
 				this.tour = new Tour(this.joueurs, j.getNumj());
 				tour.setEnableApocalypse(false);
-				System.out.println("进入下一回合！");
+				System.out.println("un nouveau tour commence!");
 				tour.commencerNouveauTour();
 			}else {
-				System.out.println("世界末日无效！");
+				System.out.println("Apocalypse n'a pas d'effet!");
 				System.gc();
 				this.tour = new Tour(this.joueurs, j.getNumj());
 				tour.setEnableApocalypse(false);
-				System.out.println("进入下一回合！");
+				System.out.println("un nouveau tour commence!");
 				tour.commencerNouveauTour();
 			}
 		}

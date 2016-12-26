@@ -18,7 +18,7 @@ public class Process {
 	public void start() {
 		
 		//测试代码 ，用后删除！！！
-		System.out.println("玩家" + this.joueur.getNumj());
+		System.out.println("joueur" + this.joueur.getNumj());
 		joueur.choisirUneOperation();
 		joueur.setDone(true);
 		pass();

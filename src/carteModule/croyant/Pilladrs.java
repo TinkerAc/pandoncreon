@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import carteModule.Carte;
 import carteModule.Croyant;
+import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.Partie;
 import util.Input;
@@ -26,10 +27,10 @@ public class Pilladrs extends Croyant {
 		while(it.hasNext()) {
 			Joueur j = it.next();
 			if(! j.isDone()) {
-				System.out.println("玩家" + j.getNumj() + "可选");
+				System.out.println("joueur au choix" + j.getNumj());
 			}
 		}
-		System.out.println("输入要选择的玩家：");
+		System.out.println("choisir un joueur:");
 		int i = Input.getInt();
 		Joueur jT = js.get(i);
 		joueur.setPointActionJour(joueur.getPointActionJour() + jT.getPointActionJour());
@@ -38,6 +39,18 @@ public class Pilladrs extends Croyant {
 		jT.setPointActionJour(0);
 		jT.setPointActionNeant(0);
 		jT.setPointActionNuit(0);
+		
+		this.joueur.getCroyants().remove(this);
+		this.joueur.setNbPriere(this.joueur.getNbPriere() - this.getNbPriere());
+		Iterator<GuideSpirituel> it2 = this.joueur.getGuides().iterator();
+		while(it2.hasNext()){
+			if(it2.next().getCroyants().contains(this)){
+				it2.next().getCroyants().remove(this);
+				it2.next().setNbCroyant(it2.next().getNbCroyant() - 1);
+			}
+		}
+		this.setJoueur(null);
+
 	}
 
 }

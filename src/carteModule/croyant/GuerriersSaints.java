@@ -29,25 +29,45 @@ public class GuerriersSaints extends Croyant {
 		while(it.hasNext()) {
 			Joueur j = it.next();
 			if(j.getGuides().size() != 0) {
-				System.out.println("玩家" + j.getNumj());
+				System.out.println("joueur" + j.getNumj());
 			}
 		
 		}
 		int i = Input.getInt();
 		ArrayList<GuideSpirituel> gs = (ArrayList<GuideSpirituel> )js.get(i).getGuides();
+		int count = 0;
 		Iterator<GuideSpirituel> ig = gs.iterator();
 		while(ig.hasNext()) {
+			System.out.println("Guide Spirituel " + count + " :");
 			System.out.println(ig.next().toString());
+			count++;
 		}
-		System.out.println("选择一张guide：");
+		System.out.println("choisir un Guide Spirituel:");
 		int n = Input.getInt();
 		ArrayList<Croyant> cs = (ArrayList<Croyant>)gs.get(n).getCroyants();
-		int index = 0;
-		while(index < cs.size()) {
-			CartesSurTable.getCartesSurTable().getCroyantPublic().add(cs.remove(index));
-			index++;
+		Iterator<Croyant> ic = cs.iterator();
+		CartesSurTable cst = CartesSurTable.getCartesSurTable();
+		while(ic.hasNext()){
+			cst.getCroyantPublic().add(ic.next());
+			js.get(i).getCroyants().remove(ic.next());
+			js.get(i).setNbPriere(js.get(i).getNbPriere() - ic.next().getNbPriere());
+			cs.remove(ic.next());
+			gs.get(n).setNbCroyant(gs.get(n).getNbCroyant() - 1);
+			ic.next().setJoueur(null);
 		}
 		js.get(i).getCartesEnMain().add(gs.remove(n));
+		
+		this.joueur.getCroyants().remove(this);
+		this.joueur.setNbPriere(this.joueur.getNbPriere() - this.getNbPriere());
+		Iterator<GuideSpirituel> it2 = this.joueur.getGuides().iterator();
+		while(it2.hasNext()){
+			if(it2.next().getCroyants().contains(this)){
+				it2.next().getCroyants().remove(this);
+				it2.next().setNbCroyant(it2.next().getNbCroyant() - 1);
+			}
+		}
+		this.setJoueur(null);
+
 	}
 
 }

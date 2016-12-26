@@ -51,7 +51,7 @@ public class Tour {
 		nextTour = new Tour(joueurs, this);
 		
 		//测试代码 ，用后删除！！！
-		System.out.println("进入下一圈");
+		System.out.println("un nouvel tour commence");
 		
 		Iterator<Joueur> it = joueurs.iterator();
 		while(it.hasNext()) {
@@ -70,7 +70,7 @@ public class Tour {
 				Joueur j = joueurs.get(i);
 				if(j.getOrigineDivinite() == "jour") {
 					j.setPointActionJour(j.getPointActionJour() + 2);
-				} else if(j.getOrigineDivinite() == "Aube") {
+				} else if(j.getOrigineDivinite() == "aube") {
 					j.setPointActionJour(j.getPointActionJour() + 1);
 				}
 				i++;
@@ -96,14 +96,14 @@ public class Tour {
 				Joueur j = joueurs.get(i1);
 				if(j.getOrigineDivinite() == "nuit") {
 					j.setPointActionNuit(j.getPointActionNuit() + 2);
-				}else if(j.getOrigineDivinite() == "Crepuscule") {
+				}else if(j.getOrigineDivinite() == "crepuscule") {
 					j.setPointActionNuit(j.getPointActionNuit() + 1);
 				}
 				i1++;
 			}
 			break;
 		default:
-			System.out.println("分配失败！！！");
+			System.out.println("distribution échouée!");
 			return;
 		}
 		

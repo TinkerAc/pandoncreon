@@ -21,7 +21,7 @@ public class JoueurAI extends Joueur {
 		
 	@Override
 	public void defausser() {
-		System.out.println("玩家" + this.numj + "扔了牌...");
+		System.out.println("joueurAI" + this.numj + " a défaussé ses cartes");
 		this.getCartesEnMain().clear();
 	}
 
@@ -33,10 +33,10 @@ public class JoueurAI extends Joueur {
 			switch(c.getOrigine()) {
 			case "jour":
 				if(this.getPointActionJour() > 0) {
-					this.setPointActionJour(this.getPointActionJour() - 1);
+
 					if(c.getType() == "croyant") {
 						this.poserCroyant((Croyant) c);
-						System.out.println("玩家" + this.numj + "poser了一张croyant");
+						System.out.println("joueurAI" + this.numj + " a posé un croyant");
 						System.out.println(c.toString());
 					}
 					if(c.getType() == "guide") {
@@ -53,23 +53,28 @@ public class JoueurAI extends Joueur {
 					}*/
 					if(c.getType() == "Apocalypse") {
 						Apocalypse ap = (Apocalypse)c;
+						pointActionJour--;
+						ap.setJoueur(null);
 						Partie.getPartie().ApocalypseProcess(this);
 					}
 					
 				}
+				else{
+					System.out.println("Point d'Action n'est pas suffisant, échouant d'uti");
+				}
 				break;
 			case "neant":
 				if(this.getPointActionNeant() > 0) {
-					this.setPointActionNeant(this.getPointActionNeant() - 1);
+
 					if(c.getType() == "croyant") {
 						this.poserCroyant((Croyant) c);
-						System.out.println("玩家" + this.numj + "poser了一张croyant");
+						System.out.println("joueurAI" + this.numj + " a posé un croyant");
 						System.out.println(c.toString());
 					}
 					if(c.getType() == "guide") {
 						if(CST.getCroyantPublic().size() > 0) {
 							this.poserGuide((GuideSpirituel)c);
-							System.out.println("玩家" + this.numj + "poser了一张guide");
+							System.out.println("joueurAI" + this.numj + " a posé un guide");
 							System.out.println(c.toString());
 						}else {
 							continue;
@@ -81,17 +86,22 @@ public class JoueurAI extends Joueur {
 					}*/
 					if(c.getType() == "Apocalypse") {
 						Apocalypse ap = (Apocalypse)c;
+						pointActionNeant--;
+						ap.setJoueur(null);
 						Partie.getPartie().ApocalypseProcess(this);
 					}
 					
 				}
+				else{
+					System.out.println("Point d'Action n'est pas suffisant, la méthode utiliser() a échoué");
+				}
 				break;
 			case "nuit":
 				if(this.getPointActionNuit() > 0) {
-					this.setPointActionNuit(this.getPointActionNuit() - 1);
+
 					if(c.getType() == "croyant") {
 						this.poserCroyant((Croyant) c);
-						System.out.println("玩家" + this.numj + "poser了一张croyant");
+						System.out.println("joueurAI" + this.numj + " a posé un croyant");
 						System.out.println(c.toString());
 					}
 					if(c.getType() == "guide") {
@@ -107,9 +117,14 @@ public class JoueurAI extends Joueur {
 					}*/
 					if(c.getType() == "Apocalypse") {
 						Apocalypse ap = (Apocalypse)c;
+						pointActionNeant--;
+						ap.setJoueur(null);
 						Partie.getPartie().ApocalypseProcess(this);
 					}
 					
+				}
+				else{
+					System.out.println("Point d'Action n'est pas suffisant, la méthode utiliser() a échoué");
 				}
 				break;
 			}
@@ -149,8 +164,11 @@ public class JoueurAI extends Joueur {
 			if(this.pointActionJour >= 1) {
 				CST.getCroyantPublic().add(cc);
 				this.pointActionJour -= 1;
+				cartesEnMain.remove(cc);
+				cc.setJoueur(null);
+				System.out.println("poser Croyant a réussi");
 			}else {
-				System.out.println("行动点不足");
+				System.out.println("Point d'Action n'est pas suffisant");
 				cartesEnMain.add(cc);
 			}
 			break;
@@ -158,8 +176,11 @@ public class JoueurAI extends Joueur {
 			if(this.pointActionNeant >= 1) {
 				CST.getCroyantPublic().add(cc);
 				this.pointActionNeant -= 1;
+				cartesEnMain.remove(cc);
+				cc.setJoueur(null);
+				System.out.println("poser Croyant a réussi");
 			}else {
-				System.out.println("行动点不足");
+				System.out.println("Point d'Action n'est pas suffisant");
 				cartesEnMain.add(cc);
 			}
 			break;
@@ -168,8 +189,11 @@ public class JoueurAI extends Joueur {
 			if(this.pointActionNuit >= 1) {
 				CST.getCroyantPublic().add(cc);
 				this.pointActionNuit -= 1;
+				cartesEnMain.remove(cc);
+				cc.setJoueur(null);
+				System.out.println("poser Croyant a réussi");
 			}else {
-				System.out.println("行动点不足");
+				System.out.println("Point d'Action n'est pas suffisant");
 				cartesEnMain.add(cc);
 			}
 			break;
@@ -192,13 +216,13 @@ public class JoueurAI extends Joueur {
 		}
 		while(true) {
 			if(CST.getCroyantPublic().size() == 0) {
-				System.out.println("桌上没有信徒卡！");
+				System.out.println("Il n'y a pas de Croyants au milieu de la table!");
 				this.cartesEnMain.add(guide);
 				break;
 			}
 			if(guide.getNbCroyant() == guide.getNbCroyantMax()) {
-				System.out.println("信徒卡达到上限！");
-				System.out.println("回合结束");
+				System.out.println("Le nombre de Croyants atteint le max!");
+				System.out.println("Le tour de ce joueur termine");
 				this.cartesEnMain.add(guide);
 				break;
 			}
@@ -206,7 +230,10 @@ public class JoueurAI extends Joueur {
 			Croyant ca =(Croyant) CST.getCroyantPublic().remove(0);
 			guide.getCroyants().add(ca);
 			guide.setNbCroyant(guide.getNbCroyant() + 1);
-			System.out.println("精神引领成功！");
+			this.getCroyants().add(ca);
+			ca.setJoueur(this);
+			nbPriere += ca.getNbPriere();
+			System.out.println("Guide Spirituel a réussi!");
 		}
 	}
 

@@ -8,7 +8,7 @@ public class Apocalypse extends CarteAction{
 
 	private static final String[] origines = {Carte.JOUR, Carte.NEANT, Carte.NUIT, null, null};
 	
-	Apocalypse() {
+	public Apocalypse() {
 		super();
 		this.type = "apocalypse";
 		this.dogmes = null;

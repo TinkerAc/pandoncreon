@@ -28,6 +28,10 @@ public class Carte {
 		return this.origine;
 	}
 
+	public String getName() {
+		return this.nom;
+	}
+	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("----------------------------------------------------------------------\n");

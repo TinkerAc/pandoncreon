@@ -28,9 +28,9 @@ public class Partie {
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = Cartes.getInstance();
 		this.setCarteSurTable(CartesSurTable.getCartesSurTable());
+		this.commencerPartie();
 	}
 	public static Partie getPartie() {
-		
 		return partie;
 	}
 	
@@ -124,7 +124,7 @@ public class Partie {
 		this.joueurs.add(new JoueurPhysique());
 		this.setNbJoueurs(this.getNbJoueurs() + 1);
 		//添加玩家
-		for(int i = 0;i < n; i++) {
+		for(int i = 0;i < n - 1; i++) {
 			this.addJoueurs();
 		}
 		
@@ -142,12 +142,16 @@ public class Partie {
 				System.out.println("joueur" + j.getNumj() +" a réussi d'installer une boucle de joueurs prochains!");
 			}
 		}
-		tour = new Tour(joueurs, 0);
+		/*tour = new Tour(joueurs, 0);
 		//测试代码 ，用后删除！！！
 		System.out.println("le premier tour commence");
-		tour.commencerNouveauTour();
+		tour.commencerNouveauTour();*/
 	}
 	
+	public void start() {
+		tour = new Tour(joueurs, 0);
+		tour.commencerNouveauTour();
+	}
 	
 	
 	public void terminerPartie() {

@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Panel;
 import java.awt.image.BufferedImage;
 
@@ -18,6 +19,10 @@ import player.Joueur;
 
 public class Panel_control extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//人物模型
 	Joueur player;
 	//按钮区域
@@ -37,6 +42,8 @@ public class Panel_control extends JPanel {
 	 * */
 	public Panel_control(Joueur player, Panel_main main) {
 		super();
+		this.setSize(main.getWidth(), 300);
+		
 		this.main = main;
 		this.player = player;
 		
@@ -44,21 +51,16 @@ public class Panel_control extends JPanel {
 		handCard = new Panel_handCard(player);
 		info = new Panel_info();
 		
-		BoxLayout layout=new BoxLayout(this, BoxLayout.X_AXIS);
-		this.setLayout(layout);
+		//BoxLayout layout=new BoxLayout(this, BoxLayout.X_AXIS);
+		this.setLayout(new FlowLayout());
 		this.add(buttonGroup);
 		this.add(handCard);
 		this.add(info);
 		this.setVisible(true);
+		System.out.println("控制面板创建完成");
 	}
 	
-	public static void main(String args[]) {
-		
-		Panel_control p = new Panel_control(null, null);
-		JFrame f = new JFrame();
-		f.add(p);
-		f.setVisible(true);
-	}
+	
 	
 }
 

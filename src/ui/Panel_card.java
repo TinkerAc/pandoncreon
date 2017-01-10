@@ -1,10 +1,13 @@
 package ui;
 
+import java.awt.Graphics;
 import java.awt.event.MouseListener;
-
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import carteModule.Carte;
+import util.ImgUtil;
 
 public class Panel_card extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +20,8 @@ public class Panel_card extends JPanel {
 	boolean enableToUse;
 	//Êó±ê¼àÌý
 	MouseListener listener;
+	//±³¾°Í¼Æ¬
+	BufferedImage bgimg;
 	
 	public Panel_card(Carte carte) {
 		super();
@@ -25,6 +30,12 @@ public class Panel_card extends JPanel {
 		
 		
 	}
+	
+	public void paintComponent(Graphics g) {
+		ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("img/" + carte.getName() +".png"));
+		g.drawImage(icon.getImage(), 0, 0, this.getSize().width, this.getSize().height, this);
+	}
+	
 	
 	
 }

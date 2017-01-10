@@ -7,6 +7,10 @@ import javax.swing.JPanel;
 
 public class Panel_buttonGroup extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton piocher;
 	private JButton defausser;
 	private JButton utiliser;
@@ -29,7 +33,8 @@ public class Panel_buttonGroup extends JPanel {
 		this.add(sacrifier);
 		this.add(capaciter);
 		
-		
+		this.setVisible(true);
+		System.out.println("按钮组创建完成");
 	}
 	
 	

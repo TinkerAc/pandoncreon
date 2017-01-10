@@ -11,6 +11,7 @@ public class Apocalypse extends CarteAction{
 	public Apocalypse() {
 		super();
 		this.type = "apocalypse";
+		this.nom = "Apocalypse";
 		this.dogmes = null;
 		this.origine = origines[new Random().nextInt(5)];
 	}

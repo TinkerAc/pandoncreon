@@ -49,12 +49,12 @@ public class Panel_control extends JPanel {
 		
 		buttonGroup = new Panel_buttonGroup();
 		handCard = new Panel_handCard(player);
-		info = new Panel_info();
+		info = new Panel_info(this.player);
 		
 		//BoxLayout layout=new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(new FlowLayout());
 		this.add(buttonGroup);
-		this.add(handCard);
+		//this.add(handCard);
 		this.add(info);
 		this.setVisible(true);
 		System.out.println("控制面板创建完成");

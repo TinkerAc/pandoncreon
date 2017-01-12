@@ -20,29 +20,17 @@ public class InitFrame extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InitFrame frame = new InitFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public InitFrame() {
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1366, 768);
+		super();
+		this.setVisible(true);
+		setResizable(true);
+		setBounds(0, 0, 1366, 768);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -66,23 +54,15 @@ public class InitFrame extends JFrame {
 		JButton btnStart = new JButton("START");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int nomJ = (int)spinner.getValue();
+				
 				setVisible(false);
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							
-							MainFrame frame = new MainFrame();
-							frame.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
+				Frame_Main frame = new Frame_Main((int)spinner.getValue());
+				Partie.getPartie().start();
 			}
 		});
 		btnStart.setFont(new Font("Times New Roman", Font.BOLD, 48));
 		btnStart.setBounds(564, 461, 209, 58);
 		contentPane.add(btnStart);
+
 	}
 }

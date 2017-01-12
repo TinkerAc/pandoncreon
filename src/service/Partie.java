@@ -22,13 +22,13 @@ public class Partie {
 	private Tour tour;
 	private Tour currentTour;
 	private CartesSurTable carteSurTable;
+	private CartesDivinite cartesDivinites = CartesDivinite.getInstance();
 	
 	private Partie() {
-		this.setNbJoueurs(0);
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = Cartes.getInstance();
 		this.setCarteSurTable(CartesSurTable.getCartesSurTable());
-		this.commencerPartie();
+		//this.commencerPartie();
 	}
 	public static Partie getPartie() {
 		return partie;
@@ -38,7 +38,6 @@ public class Partie {
 	
 	public void addJoueurs() {
 		joueurs.add(new JoueurAI());
-		this.setNbJoueurs(this.getNbJoueurs() + 1);
 	}
 	
 	public void deleteJoueurs() {
@@ -108,7 +107,8 @@ public class Partie {
 		
 		//测试代码 ，用后删除！！！
 		System.out.println("Initialiser le nombre de joueurs:");
-		Scanner sc = new Scanner(System.in);
+		
+		/*Scanner sc = new Scanner(System.in);
 		int n = 0;
 		boolean FLAG = false;
 		while(!FLAG) {
@@ -120,11 +120,11 @@ public class Partie {
 				sc.next();
 				FLAG = false;
 			}
-		}
+		}*/
 		this.joueurs.add(new JoueurPhysique());
-		this.setNbJoueurs(this.getNbJoueurs() + 1);
+		
 		//添加玩家
-		for(int i = 0;i < n - 1; i++) {
+		for(int i = 0;i < this.nbJoueurs - 1; i++) {
 			this.addJoueurs();
 		}
 		
@@ -202,11 +202,6 @@ public class Partie {
 			}
 		}
 	}
-	
-	
-	
-	
-	
 	
 	
 	

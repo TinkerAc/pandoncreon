@@ -34,7 +34,6 @@ public class Panel_handCard extends JPanel {
 		Iterator<CarteAction> it = player.getCartesEnMain().iterator();
 		while(it.hasNext()) {
 			CarteAction c = (CarteAction)it.next();
-			System.out.println(c.toString());
 			listCards.add(new Panel_card(c));
 		}
 		Iterator<Panel_card> ic = listCards.iterator();

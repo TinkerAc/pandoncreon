@@ -18,25 +18,24 @@ public class Frame_Main extends JFrame {
 	//游戏主面板
 	private Panel_main main;
 	
-	public Frame_Main() {
+	public Frame_Main(int n) {
 		super();
 		this.setTitle("傻逼游戏");
 		this.setSize(1366, 768);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setLayout(new FlowLayout());
 		
-		
-		this.main = new Panel_main(2);
+		Partie.getPartie().setNbJoueurs(n);
+		Partie.getPartie().commencerPartie();
+		this.main = new Panel_main(Partie.getPartie().getNbJoueurs() - 1);
 		
 		this.setContentPane(main);
 		
 		this.setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		start();
 	}
-	private void start() {
-		Partie.getPartie().start();
-	}
+
 	
 	
 }

@@ -17,7 +17,7 @@ public class Alchimistes3 extends Croyant {
 	public Alchimistes3() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Alchimistes";
+		this.nom = "Alchimistes3";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{Carte.NATURE,Carte.CHAOS,Carte.SYMBOLES};
 		this.description = "Vous piochez deux cartes au hasard dans la main d'une autre Divinit¨¦.";

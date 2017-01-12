@@ -16,7 +16,7 @@ public class Alchimistes extends Croyant {
 	public Alchimistes() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Alchimistes";
+		this.nom = "Alchimistes1";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{Carte.NATURE,Carte.CHAOS,Carte.SYMBOLES};
 		this.description = "Emp¨ºche une Divinit¨¦ poss¨¦dant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.";

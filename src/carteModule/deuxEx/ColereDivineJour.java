@@ -17,7 +17,7 @@ public class ColereDivineJour extends DeuxEx {
 	
 	public ColereDivineJour(){
 		super();
-		this.nom = "Col¨¨re Divine";
+		this.nom = "Col¨¨reDivineJour";
 		this.origine = Carte.JOUR;
 		this.description = "D¨¦truit une carte Guide Spirituel d'Origine Nuit ou N¨¦ant, dont la capacit¨¦ sp¨¦ciale n'a pas effet. Les Croyants attach¨¦s reviennent au centre de la table.";
 	}

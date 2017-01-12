@@ -16,7 +16,7 @@ public class Aliene2 extends Croyant {
 	public Aliene2() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Ali¨¦n¨¦";
+		this.nom = "Ali¨¦n¨¦2";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};
 		this.description = "Emp¨ºche une Divinit¨¦ poss¨¦dant le Dogme Chaos ou Mystique de sacrifier un de ses Guides Spirituels ";

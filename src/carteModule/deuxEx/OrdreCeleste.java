@@ -16,7 +16,7 @@ public class OrdreCeleste extends DeuxEx {
 
 	public OrdreCeleste(){
 		super();
-		this.nom = "Ordre C¨¦leste";
+		this.nom = "OrdreC¨¦leste";
 		this.origine = Carte.JOUR;
 		this.description = "Vous r¨¦cup¨¦rez un des Guides Spirituels pos¨¦s devant une autre Divinit¨¦ et le placez devant vous avec les Croyants qui y sont attach¨¦s.";
 	}

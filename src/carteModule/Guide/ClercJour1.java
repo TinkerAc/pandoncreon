@@ -14,7 +14,7 @@ public class ClercJour1 extends GuideSpirituel {
 	
 	public ClercJour1(){
 		super();
-		this.nom = "Clerc";
+		this.nom = "ClercJour1";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{"chaos","humain"};
 		this.description = "Fait gagner un nombre de points d'Action ¨¦gal au nombre de cartes de Croyants rattach¨¦es. L'Origine des points d'Action est au choix du joueur.";

@@ -15,7 +15,7 @@ public class Lycanthropes extends Croyant {
 	public Lycanthropes() {
 		super();
 		this.setNbPriere(4);
-		this.nom = "Int¨¦gristes";
+		this.nom = "Lycanthropes";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{Carte.NATURE,Carte.HUMAIN,Carte.CHAOS};
 		this.description = "Retirez tous les Croyants attach¨¦s ¨¤ l'un des Guides Spirituels d'une autre Divinit¨¦. Les Croyants reviennent au milieu de la table, le Guide Spirituel est d¨¦fauss¨¦.";

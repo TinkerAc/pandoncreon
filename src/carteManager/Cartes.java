@@ -18,34 +18,26 @@ public class Cartes {
 		cartes = new ArrayList<CarteAction>();
 		
 		//Croyant
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		
 		cartes.add(new Demon());
 		cartes.add(new Demon());
 		cartes.add(new Demon());
 		cartes.add(new Demon());
 		cartes.add(new Demon());
-		
 		cartes.add(new Esprits());
 		cartes.add(new Esprits());
 		cartes.add(new Esprits());
 		cartes.add(new Esprits());
 		cartes.add(new Esprits());
-		
 		cartes.add(new Ermite());
 		cartes.add(new Ermite());
-		
 		cartes.add(new Travailleurs1());
-		
+		cartes.add(new Travailleurs2());
+		cartes.add(new Travailleurs3());
 		cartes.add(new Aliene1());
-		
+		cartes.add(new Aliene2());
+		cartes.add(new Aliene3());
 		cartes.add(new Vampire());
 		cartes.add(new Vampire());
-		
 		cartes.add(new Revolutionnaires());
 		cartes.add(new Integristes());
 		cartes.add(new GuerriersSaints());
@@ -73,6 +65,11 @@ public class Cartes {
 		cartes.add(new Martyr2());
 		cartes.add(new Martyr3());
 		cartes.add(new Messie());
+		cartes.add(new Paladin());
+		cartes.add(new Paladin());
+		cartes.add(new Paladin());
+		cartes.add(new Paladin());
+		cartes.add(new Paladin());
 		cartes.add(new Shaman());
 		cartes.add(new Sorcier());
 		cartes.add(new Tyran());
@@ -550,11 +547,7 @@ public class Cartes {
 		cartes.add(new Apocalypse());
 		
 		//Croyant
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
+		
 		
 		cartes.add(new Demon());
 		cartes.add(new Demon());
@@ -626,11 +619,6 @@ public class Cartes {
 		cartes.add(new Apocalypse());
 		
 		//Croyant
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
 		
 		cartes.add(new Demon());
 		cartes.add(new Demon());
@@ -702,11 +690,7 @@ public class Cartes {
 		cartes.add(new Apocalypse());
 		
 		//Croyant
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
-		cartes.add(new Moine());
+		
 		
 		cartes.add(new Demon());
 		cartes.add(new Demon());

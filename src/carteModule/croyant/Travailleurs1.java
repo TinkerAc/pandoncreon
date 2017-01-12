@@ -16,7 +16,7 @@ public class Travailleurs1 extends Croyant {
 	public Travailleurs1() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Travailleurs";
+		this.nom = "Travailleurs1";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.MYSTIQUE};
 		this.description = "Emp¨ºche une Divinit¨¦ poss¨¦dant le Dogme Nature ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour.";

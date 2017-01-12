@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,13 +26,16 @@ public class Panel_handCard extends JPanel {
 		super();
 		this.setSize(773, 107);
 		this.setLayout(new FlowLayout());
+		this.setBackground(Color.CYAN);
 		
 		this.player = player;
 		listCards = new ArrayList<Panel_card>();
 		
 		Iterator<CarteAction> it = player.getCartesEnMain().iterator();
 		while(it.hasNext()) {
-			listCards.add(new Panel_card((CarteAction)it.next()));
+			CarteAction c = (CarteAction)it.next();
+			System.out.println(c.toString());
+			listCards.add(new Panel_card(c));
 		}
 		Iterator<Panel_card> ic = listCards.iterator();
 		while(ic.hasNext()) {

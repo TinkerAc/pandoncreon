@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import carteModule.Carte;
+import carteModule.CarteAction;
 import util.ImgUtil;
 
 public class Panel_card extends JPanel {
@@ -23,7 +24,7 @@ public class Panel_card extends JPanel {
 	//±³¾°Í¼Æ¬
 	BufferedImage bgimg;
 	
-	public Panel_card(Carte carte) {
+	public Panel_card(CarteAction carte) {
 		super();
 		this.carte = carte;
 		this.isSelected = false;

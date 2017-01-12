@@ -14,7 +14,7 @@ public class Revolutionnaires extends Croyant {
 	public Revolutionnaires() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Vampire";
+		this.nom = "R¨¦volutionnaires";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};
 		this.description = "Impose le sacrifice d'un Croyant d'un autre joueur, qui choisit la carte. La capacit¨¦ sp¨¦ciale du sacrifice est jou¨¦e.";

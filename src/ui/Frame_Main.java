@@ -25,7 +25,7 @@ public class Frame_Main extends JFrame {
 		this.setLayout(new FlowLayout());
 		
 		
-		this.main = new Panel_main();
+		this.main = new Panel_main(2);
 		
 		this.setContentPane(main);
 		

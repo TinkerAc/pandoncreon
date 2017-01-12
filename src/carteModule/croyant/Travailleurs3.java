@@ -17,7 +17,7 @@ public class Travailleurs3 extends Croyant {
 	public Travailleurs3() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Travailleurs";
+		this.nom = "Travailleurs3";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.MYSTIQUE};
 		this.description = "Vous piochez deux cartes au hasard dans la main d'une autre Divinit¨¦.";

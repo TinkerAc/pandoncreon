@@ -15,7 +15,7 @@ public class GuerriersSaints extends Croyant {
 	public GuerriersSaints() {
 		super();
 		this.setNbPriere(4);
-		this.nom = "Int¨¦gristes";
+		this.nom = "GuerriersSaints";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{Carte.NATURE,Carte.MYSTIQUE,Carte.SYMBOLES};
 		this.description = "Un Guide Spirituel revient dans la main de sa Divinit¨¦. Ses Croyants reviennent au centre de la table.";

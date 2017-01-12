@@ -17,7 +17,7 @@ public class Aliene3 extends Croyant {
 	public Aliene3() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Ali¨¦n¨¦";
+		this.nom = "Ali¨¦n¨¦3";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};
 		this.description = "Vous piochez deux cartes au hasard dans la main d'une autre Divinit¨¦.";

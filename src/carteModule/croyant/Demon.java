@@ -12,8 +12,9 @@ public class Demon extends Croyant {
 	public Demon() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Demon";
+		this.nom = "D¨¦mon";
 		this.origine = Carte.NUIT;
+		this.dogmes = new String[]{Carte.CHAOS,Carte.HUMAIN,Carte.SYMBOLES};
 		this.description = "Donne un point d'Action d'Origine Nuit.";
 	}
 	

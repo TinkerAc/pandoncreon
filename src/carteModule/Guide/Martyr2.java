@@ -8,7 +8,7 @@ public class Martyr2 extends GuideSpirituel {
 	
 	public Martyr2() {
 		super();
-		this.nom = "Martyr";
+		this.nom = "MartyrNuit";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{Carte.SYMBOLES,Carte.HUMAIN};
 		this.description = "Equivalent ид la pose d'une carte Apocalypse.";

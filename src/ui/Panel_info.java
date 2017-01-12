@@ -1,11 +1,13 @@
 package ui;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import player.Joueur;
@@ -25,6 +27,7 @@ public class Panel_info extends JPanel {
 	private Joueur player;
 	//行动点表格控件
 	private JTable pointAction;
+	private JScrollPane scr;
 	//经文数标签
 	private JLabel priere;
 	private JLabel nPriere;
@@ -39,11 +42,14 @@ public class Panel_info extends JPanel {
 		String[] headers = {"Jour","Neant","Nuit"};	
 		Object[][] points = new Object[][]{{player.getPointActionJour(), player.getPointActionNeant(), player.getPointActionNuit()}};
 		this.pointAction = new JTable(points, headers);
-		
+		pointAction.setPreferredScrollableViewportSize(new Dimension(150,20));
+		pointAction.getTableHeader().setReorderingAllowed(false);
+		scr = new JScrollPane(pointAction);
+		scr.setSize(200, 20);
 		
 		this.priere = new JLabel("已获经文：");
 		this.nPriere = new JLabel(new Integer(player.getNbPriere()).toString());
-		info.add(pointAction);
+		info.add(scr);
 		info.add(priere);
 		info.add(nPriere);
 		

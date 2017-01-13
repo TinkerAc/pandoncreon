@@ -12,17 +12,9 @@ public class ProcessPlayer extends Process {
 	public void start() {
 		
 		
-		//joueur.setDone(true);
+		joueur.choisirUneOperation();
 		
-		Runnable run = new Runnable() {
-			@Override
-			public void run() {
-				while(!joueur.isDone()){}
-				
-			}
-			
-		};
-		new Thread(run).start();
+		joueur.setDone(true);
 		pass();
 	}
 	

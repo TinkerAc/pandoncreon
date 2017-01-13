@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,13 +8,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import carteManager.Cartes;
-import player.JoueurPhysique;
+import util.AideGUI;
 
 public class Panel_buttonGroup extends JPanel {
 	
 	/**
-	 * 玩家的操作按钮
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton piocher;
@@ -21,69 +21,77 @@ public class Panel_buttonGroup extends JPanel {
 	private JButton utiliser;
 	private JButton sacrifier;
 	private JButton capaciter;
-	private JoueurPhysique player;
 	
-	public Panel_buttonGroup(JoueurPhysique player) {
+	public Panel_buttonGroup() {
 		super();
 		this.setLayout(new FlowLayout());
 		
+		this.piocher = createButton("piocher");
+		this.defausser = createButton("défausser");
+		this.utiliser = createButton("utiliser");
+		this.sacrifier = createButton("sacrifier");
+		this.capaciter = createButton("capacité");
 		
-		
-		this.piocher = createButton("摸牌");
-		this.defausser = createButton("弃牌");
-		this.utiliser = createButton("出牌");
-		this.sacrifier = createButton("牺牲");
-		this.capaciter = createButton("超能力");
-		
-		this.add(piocher);
 		this.add(defausser);
+		this.add(piocher);
 		this.add(utiliser);
 		this.add(sacrifier);
 		this.add(capaciter);
 		
-		this.piocher.addActionListener(new ActionListener() {
-
-			@Override
+		defausser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				player.piocher(Cartes.getInstance());
+				try {
+					AideGUI.getInstance().deposerInt(0);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-			
 		});
 		
-		this.defausser.addActionListener(new ActionListener() {
-
-			@Override
+		piocher.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				player.defausser();
+				try {
+					AideGUI.getInstance().deposerInt(1);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-			
+		});
+
+		
+		utiliser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					AideGUI.getInstance().deposerInt(2);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 		});
 		
-		this.sacrifier.addActionListener(new ActionListener() {
-
-			@Override
+		sacrifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				player.sacrifier();
+				try {
+					AideGUI.getInstance().deposerInt(3);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-			
 		});
 		
-		this.utiliser.addActionListener(new ActionListener() {
-
-			@Override
+		capaciter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				player.utiliser();
+				try {
+					AideGUI.getInstance().deposerInt(4);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
-			
-		});
-		
-		this.capaciter.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				player.capaciter();
-			}
-			
 		});
 		
 		this.setVisible(true);

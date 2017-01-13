@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import service.Partie;
+import util.AideGUI;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -56,13 +57,39 @@ public class InitFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				setVisible(false);
-				Frame_Main frame = new Frame_Main((int)spinner.getValue());
-				Partie.getPartie().start();
+				
+				try {
+					AideGUI.getInstance().deposerInt((int)spinner.getValue());
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							Frame_Main frame = new Frame_Main((int)spinner.getValue());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				
+				
+//				Partie.getPartie().start();
 			}
 		});
 		btnStart.setFont(new Font("Times New Roman", Font.BOLD, 48));
 		btnStart.setBounds(564, 461, 209, 58);
 		contentPane.add(btnStart);
+
 
 	}
 }

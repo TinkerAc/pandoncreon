@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Panel_handCard extends JPanel {
 	public Panel_handCard(Joueur player) {
 		super();
 		this.setSize(773, 107);
-		this.setLayout(new FlowLayout());
+		this.setLayout(new GridLayout(0, 7, 0, 0));
 		this.setBackground(Color.CYAN);
 		
 		this.player = player;

@@ -29,6 +29,7 @@ public class Panel_main extends JPanel {
 		this.setSize(1366, 768);
 		
 		ctrl = new Panel_control(Partie.getPartie().getJoueurs().get(0), this);
+		ctrl.setLocation(0, 468);
 		//ctrl = new Panel_control(new JoueurPhysique(), this);
 		listPPlayer = new ArrayList<Panel_player>();
 		
@@ -81,8 +82,8 @@ public class Panel_main extends JPanel {
 		
 		pCroyant = new Panel_croyantPublic();
 		pCroyant.setBounds(277, 219, 773, 201);
-		pGuide = new Panel_guide();
-		pGuide.setBounds(277, 429, 773, 107);
+		pGuide = new Panel_guide((JoueurPhysique)Partie.getPartie().getJoueurs().get(0));
+		pGuide.setBounds(277, 429, 773, 89);
 		
 		this.add(ctrl);
 		this.add(pCroyant);

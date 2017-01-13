@@ -25,7 +25,7 @@ public class Panel_player extends JPanel {
 	
 	public Panel_player(int numJoueur){
 		setSize(241, 193);
-		setLayout(null);
+		
 		information = new JPanel();
 		information.setBounds(0, 0, 73, 91);
 		information.setBackground(Color.ORANGE);

@@ -48,7 +48,7 @@ public class Panel_control extends JPanel {
 		this.main = main;
 		this.player = player;
 		
-		buttonGroup = new Panel_buttonGroup((JoueurPhysique)player);
+		buttonGroup = new Panel_buttonGroup();
 		handCard = new Panel_handCard(this.player);
 		info = new Panel_info(this.player);
 		

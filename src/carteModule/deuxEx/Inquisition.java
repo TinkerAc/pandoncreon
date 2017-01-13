@@ -11,6 +11,7 @@ import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.CartesSurTable;
 import service.Partie;
+import util.AideGUI;
 
 public class Inquisition extends DeuxEx {
 
@@ -39,16 +40,17 @@ public class Inquisition extends DeuxEx {
 			}
 			
 			System.out.println("choisir un nombre entier:");
-			Scanner sc = new Scanner(System.in);
+//			Scanner sc = new Scanner(System.in);
 			int n1;
 			while(true){
-				try{
-					n1 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n1 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n1 = AideGUI.getInstance().lireInt();
 				if(n1 >= 0 && n1 < this.joueur.getGuides().size()){
 					break;
 				}
@@ -83,13 +85,14 @@ public class Inquisition extends DeuxEx {
 				System.out.println("choisir un joueur:");
 				int n2;
 				while(true){
-					try{
-						n2 = sc.nextInt();
-					}catch(InputMismatchException e){
-						System.out.println("input ill¨¦gal, importer un nombre entier:");
-						sc.nextLine();
-						continue;
-					}
+//					try{
+//						n2 = sc.nextInt();
+//					}catch(InputMismatchException e){
+//						System.out.println("input ill¨¦gal, importer un nombre entier:");
+//						sc.nextLine();
+//						continue;
+//					}
+					n2 = AideGUI.getInstance().lireInt();
 					if(jsAuChoix.contains(n2)){
 						break;
 					}
@@ -101,13 +104,14 @@ public class Inquisition extends DeuxEx {
 				System.out.println("choisir un Guide Spirituel:");
 				int n3;
 				while(true){
-					try{
-						n3 = sc.nextInt();
-					}catch(InputMismatchException e){
-						System.out.println("input ill¨¦gal, importer un nombre entier:");
-						sc.nextLine();
-						continue;
-					}
+//					try{
+//						n3 = sc.nextInt();
+//					}catch(InputMismatchException e){
+//						System.out.println("input ill¨¦gal, importer un nombre entier:");
+//						sc.nextLine();
+//						continue;
+//					}
+					n3 = AideGUI.getInstance().lireInt();
 					if(n3 >= 0 && n3 < js.get(n2).getGuides().size()){
 						break;
 					}

@@ -9,6 +9,7 @@ import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.CartesSurTable;
 import service.Partie;
+import util.AideGUI;
 
 public class ClercNuit1 extends GuideSpirituel {
 
@@ -23,25 +24,25 @@ public class ClercNuit1 extends GuideSpirituel {
 	@Override
 	public void sacrifier(Joueur joueur) {
 		int a = this.getNbCroyant();
-		System.out.println("gagner " + a + " points d'Action, choisir de quel Origine : 'j' pour Jour, 'n' pour Nuit, 'e' pour Neant");
-		Scanner sc = new Scanner(System.in);
-		String s;
+		System.out.println("gagner " + a + " points d'Action, choisir de quel Origine : '0' pour Jour, '1' pour Nuit, '2' pour Neant");
+//		Scanner sc = new Scanner(System.in);
+		int s;
 		while(true){
-			s = sc.next();
-			if(s.equals("j")){
+			s = AideGUI.getInstance().lireInt();
+			if(s == 0){
 				this.joueur.setPointActionJour(this.joueur.getPointActionJour() + a);
 				break;
 			}
-			else if(s.equals("n")){
+			else if(s == 1){
 				this.joueur.setPointActionJour(this.joueur.getPointActionNuit() + a);
 				break;
 			}
-			else if(s.equals("e")){
+			else if(s == 2){
 				this.joueur.setPointActionJour(this.joueur.getPointActionNeant() + a);
 				break;
 			}
 			else{
-				System.out.println("input ill¨¦gal, importer 'j' ou 'n' ou 'e'");
+				System.out.println("input ill¨¦gal, importer '0' ou '1' ou '2'");
 			}
 		}
 		

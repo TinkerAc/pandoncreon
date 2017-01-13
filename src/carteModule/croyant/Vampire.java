@@ -7,6 +7,7 @@ import carteModule.Carte;
 import carteModule.Croyant;
 import carteModule.GuideSpirituel;
 import player.Joueur;
+import util.AideGUI;
 import util.Input;
 
 public class Vampire extends Croyant {
@@ -28,7 +29,8 @@ public class Vampire extends Croyant {
 		while(it.hasNext()) {
 			System.out.println("joueur" + it.next().getNumj());
 		}
-		int i = Input.getInt();
+//		int i = Input.getInt();
+		int i = AideGUI.getInstance().lireInt();
 		ArrayList<Croyant> cs = (ArrayList<Croyant>) js.get(i).getCroyants();
 		Iterator<Croyant> ic = cs.iterator();
 		int count = 0;
@@ -38,7 +40,8 @@ public class Vampire extends Croyant {
 			System.out.println(ic.next().toString());
 			count++;
 		}
-		int n = Input.getInt();
+//		int n = Input.getInt();
+		int n = AideGUI.getInstance().lireInt();
 		js.get(i).getCroyants().remove(n).sacrifier(js.get(i));
 
 		this.joueur.getCroyants().remove(this);

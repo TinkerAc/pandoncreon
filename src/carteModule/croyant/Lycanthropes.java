@@ -8,6 +8,7 @@ import carteModule.Croyant;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.CartesSurTable;
+import util.AideGUI;
 import util.Input;
 
 public class Lycanthropes extends Croyant {
@@ -33,7 +34,8 @@ public class Lycanthropes extends Croyant {
 			}
 		
 		}
-		int i = Input.getInt();
+//		int i = Input.getInt();
+		int i = AideGUI.getInstance().lireInt();
 		ArrayList<GuideSpirituel> gs = (ArrayList<GuideSpirituel> )js.get(i).getGuides();
 		int count = 0;
 		Iterator<GuideSpirituel> ig = gs.iterator();
@@ -44,7 +46,8 @@ public class Lycanthropes extends Croyant {
 		}
 		
 		System.out.println("choisir un Guide Spirituel :");
-		int n = Input.getInt();
+//		int n = Input.getInt();
+		int n = AideGUI.getInstance().lireInt();
 		ArrayList<Croyant> cs = (ArrayList<Croyant>)gs.get(n).getCroyants();
 		Iterator<Croyant> ic = cs.iterator();
 		CartesSurTable cst = CartesSurTable.getCartesSurTable();

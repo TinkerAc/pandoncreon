@@ -7,6 +7,7 @@ import carteModule.Carte;
 import carteModule.Croyant;
 import carteModule.GuideSpirituel;
 import player.Joueur;
+import util.AideGUI;
 import util.Input;
 
 public class Integristes extends Croyant {
@@ -39,7 +40,8 @@ public class Integristes extends Croyant {
 		while(it.hasNext()) {
 			System.out.println("joueur" + it.next().getNumj());
 		}
-		int i = Input.getInt();
+//		int i = Input.getInt();
+		int i = AideGUI.getInstance().lireInt();
 		js.get(i).sacrifier();
 
 	}

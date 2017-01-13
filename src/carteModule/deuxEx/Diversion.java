@@ -10,6 +10,7 @@ import carteModule.CarteAction;
 import carteModule.DeuxEx;
 import player.Joueur;
 import service.Partie;
+import util.AideGUI;
 
 public class Diversion extends DeuxEx {
 
@@ -34,16 +35,17 @@ public class Diversion extends DeuxEx {
 		}
 		System.out.println();
 		
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		int n1;
 		while(true){
-			try{
-				n1 = sc.nextInt();
-			}catch(InputMismatchException e){
-				System.out.println("input ill¨¦gal, importer un nombre entier:");
-				sc.nextLine();
-				continue;
-			}
+//			try{
+//				n1 = sc.nextInt();
+//			}catch(InputMismatchException e){
+//				System.out.println("input ill¨¦gal, importer un nombre entier:");
+//				sc.nextLine();
+//				continue;
+//			}
+			n1 = AideGUI.getInstance().lireInt();
 			if(jsAuChoix.contains(n1)){
 				break;
 			}
@@ -74,13 +76,14 @@ public class Diversion extends DeuxEx {
 			int n3;
 			int n4;
 			while(true){
-				try{
-					n2 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n2 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n2 = AideGUI.getInstance().lireInt();
 				if(n2 >= 0 && n2 < cem.size()){
 					break;
 				}
@@ -89,13 +92,14 @@ public class Diversion extends DeuxEx {
 				}
 			}
 			while(true){
-				try{
-					n3 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n3 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n3 = AideGUI.getInstance().lireInt();
 				if(n3 >= 0 && n3 < cem.size() && n3 != n2){
 					break;
 				}
@@ -104,13 +108,14 @@ public class Diversion extends DeuxEx {
 				}
 			}
 			while(true){
-				try{
-					n4 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n4 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n4 = AideGUI.getInstance().lireInt();
 				if(n4 >= 0 && n4 < cem.size() && n4 != n2 && n4 != n3){
 					break;
 				}

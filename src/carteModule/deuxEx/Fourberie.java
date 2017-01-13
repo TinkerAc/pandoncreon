@@ -11,6 +11,7 @@ import carteModule.DeuxEx;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.Partie;
+import util.AideGUI;
 
 public class Fourberie extends DeuxEx {
 
@@ -43,16 +44,17 @@ public class Fourberie extends DeuxEx {
 		}
 		
 		System.out.println("choisir un joueur:");
-		Scanner sc = new Scanner(System.in);
-		int n1 = sc.nextInt();
+//		Scanner sc = new Scanner(System.in);
+		int n1;
 		while(true){
-			try{
-				n1 = sc.nextInt();
-			}catch(InputMismatchException e){
-				System.out.println("input ill¨¦gal, importer un nombre entier:");
-				sc.nextLine();
-				continue;
-			}
+//			try{
+//				n1 = sc.nextInt();
+//			}catch(InputMismatchException e){
+//				System.out.println("input ill¨¦gal, importer un nombre entier:");
+//				sc.nextLine();
+//				continue;
+//			}
+			n1 = AideGUI.getInstance().lireInt();
 			if(jsAuChoix.contains(n1)){
 				break;
 			}
@@ -82,13 +84,14 @@ public class Fourberie extends DeuxEx {
 			int n2;
 			int n3;
 			while(true){
-				try{
-					n2 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n2 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n2 = AideGUI.getInstance().lireInt();
 				if(n2 >= 0 && n2 < js.get(n1).getCroyants().size()){
 					break;
 				}
@@ -97,13 +100,14 @@ public class Fourberie extends DeuxEx {
 				}
 			}
 			while(true){
-				try{
-					n3 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n3 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n3 = AideGUI.getInstance().lireInt();
 				if(n3 >= 0 && n3 < js.get(n1).getCroyants().size() && n3 != n2){
 					break;
 				}

@@ -12,6 +12,7 @@ import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.CartesSurTable;
 import service.Partie;
+import util.AideGUI;
 
 public class Ascete extends GuideSpirituel {
 
@@ -49,16 +50,17 @@ public class Ascete extends GuideSpirituel {
 		}
 		else{
 			System.out.println("choisir un joueur:");
-			Scanner sc = new Scanner(System.in);
+//			Scanner sc = new Scanner(System.in);
 			int n1;
 			while(true){
-				try{
-					n1 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n1 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n1 = AideGUI.getInstance().lireInt();
 				if(jsAuChoix.contains(n1)){
 					break;
 				}
@@ -79,13 +81,14 @@ public class Ascete extends GuideSpirituel {
 				int n2;
 				int n3;
 				while(true){
-					try{
-						n2 = sc.nextInt();
-					}catch(InputMismatchException e){
-						System.out.println("input ill¨¦gal, importer un nombre entier:");
-						sc.nextLine();
-						continue;
-					}
+//					try{
+//						n2 = sc.nextInt();
+//					}catch(InputMismatchException e){
+//						System.out.println("input ill¨¦gal, importer un nombre entier:");
+//						sc.nextLine();
+//						continue;
+//					}
+					n2 = AideGUI.getInstance().lireInt();
 					if(n2 >= 0 && n2 < js.get(n1).getCroyants().size()){
 						break;
 					}
@@ -94,13 +97,14 @@ public class Ascete extends GuideSpirituel {
 					}
 				}
 				while(true){
-					try{
-						n3 = sc.nextInt();
-					}catch(InputMismatchException e){
-						System.out.println("input ill¨¦gal, importer un nombre entier:");
-						sc.nextLine();
-						continue;
-					}
+//					try{
+//						n3 = sc.nextInt();
+//					}catch(InputMismatchException e){
+//						System.out.println("input ill¨¦gal, importer un nombre entier:");
+//						sc.nextLine();
+//						continue;
+//					}
+					n3 = AideGUI.getInstance().lireInt();
 					if(n3 >= 0 && n3 < js.get(n1).getCroyants().size() && n3 != n2){
 						break;
 					}

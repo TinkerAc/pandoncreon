@@ -7,6 +7,7 @@ import carteModule.Croyant;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.Partie;
+import util.AideGUI;
 import util.Input;
 
 public class Pilladrs extends Croyant {
@@ -14,7 +15,7 @@ public class Pilladrs extends Croyant {
 	public Pilladrs() {
 		super();
 		this.setNbPriere(4);
-		this.nom = "Pilladrs";
+		this.nom = "Pillards";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{Carte.NATURE,Carte.MYSTIQUE,Carte.SYMBOLES};
 		this.description = "R¨¦cup¨¦rez les points d'Action d'une Divinit¨¦ n'ayant pas encore jou¨¦ durant ce tour. Les points d'Action gardent leur Origine. La Divinit¨¦ perd ses points.";
@@ -31,7 +32,8 @@ public class Pilladrs extends Croyant {
 			}
 		}
 		System.out.println("choisir un joueur:");
-		int i = Input.getInt();
+//		int i = Input.getInt();
+		int i = AideGUI.getInstance().lireInt();
 		Joueur jT = js.get(i);
 		joueur.setPointActionJour(joueur.getPointActionJour() + jT.getPointActionJour());
 		joueur.setPointActionNeant(joueur.getPointActionNeant() + jT.getPointActionNeant());

@@ -11,6 +11,7 @@ import carteModule.Croyant;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.Partie;
+import util.AideGUI;
 
 public class Aliene3 extends Croyant {
 	
@@ -37,16 +38,17 @@ public class Aliene3 extends Croyant {
 		}
 		System.out.println();
 		
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		int n1;
 		while(true){
-			try{
-				n1 = sc.nextInt();
-			}catch(InputMismatchException e){
-				System.out.println("input ill¨¦gal, importer un nombre entier:");
-				sc.nextLine();
-				continue;
-			}
+//			try{
+//				n1 = sc.nextInt();
+//			}catch(InputMismatchException e){
+//				System.out.println("input ill¨¦gal, importer un nombre entier:");
+//				sc.nextLine();
+//				continue;
+//			}
+			n1 = AideGUI.getInstance().lireInt();
 			if(jsAuChoix.contains(n1)){
 				break;
 			}
@@ -76,13 +78,14 @@ public class Aliene3 extends Croyant {
 			int n2;
 			int n3;
 			while(true){
-				try{
-					n2 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n2 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n2 = AideGUI.getInstance().lireInt();
 				if(n2 >= 0 && n2 < cem.size()){
 					break;
 				}
@@ -91,13 +94,14 @@ public class Aliene3 extends Croyant {
 				}
 			}
 			while(true){
-				try{
-					n3 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n3 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n3 = AideGUI.getInstance().lireInt();
 				if(n3 >= 0 && n3 < cem.size() && n3 != n2){
 					break;
 				}

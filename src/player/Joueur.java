@@ -96,7 +96,10 @@ public abstract class Joueur {
 	}
 	
 
-	public abstract void process();
+	public void process() {
+		this.process = new Process((Joueur) this);
+		this.process.start();
+	}
 	
 	public abstract void poserCroyant(Croyant c);
 	public abstract void poserGuide(GuideSpirituel g);

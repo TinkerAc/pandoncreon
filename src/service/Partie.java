@@ -11,10 +11,11 @@ import carteModule.Croyant;
 import player.Joueur;
 import player.JoueurAI;
 import player.JoueurPhysique;
+import util.AideGUI;
 
 public class Partie {
 	
-	private static Partie partie = new Partie();
+	private static Partie partie;
 	
 	private int nbJoueurs;
 	private ArrayList<Joueur> joueurs;
@@ -22,15 +23,17 @@ public class Partie {
 	private Tour tour;
 	private Tour currentTour;
 	private CartesSurTable carteSurTable;
-	private CartesDivinite cartesDivinites = CartesDivinite.getInstance();
 	
 	private Partie() {
+		this.setNbJoueurs(0);
 		this.joueurs = new ArrayList<Joueur>();
 		this.cartes = Cartes.getInstance();
 		this.setCarteSurTable(CartesSurTable.getCartesSurTable());
-		//this.commencerPartie();
 	}
 	public static Partie getPartie() {
+		if(partie == null){
+			partie = new Partie();
+		}
 		return partie;
 	}
 	
@@ -38,6 +41,7 @@ public class Partie {
 	
 	public void addJoueurs() {
 		joueurs.add(new JoueurAI());
+		this.setNbJoueurs(this.getNbJoueurs() + 1);
 	}
 	
 	public void deleteJoueurs() {
@@ -107,24 +111,25 @@ public class Partie {
 		
 		//测试代码 ，用后删除！！！
 		System.out.println("Initialiser le nombre de joueurs:");
+//		Scanner sc = new Scanner(System.in);
+//		int n = 0;
+//		boolean FLAG = false;
+//		while(!FLAG) {
+//			try {
+//				n = sc.nextInt();
+//				FLAG = true;
+//			}catch(Exception e) {
+//				System.out.println("input illégal, importer encore une fois!");
+//				sc.next();
+//				FLAG = false;
+//			}
+//		}
+		int n = AideGUI.getInstance().lireInt();
 		
-		/*Scanner sc = new Scanner(System.in);
-		int n = 0;
-		boolean FLAG = false;
-		while(!FLAG) {
-			try {
-				n = sc.nextInt();
-				FLAG = true;
-			}catch(Exception e) {
-				System.out.println("input illégal, importer encore une fois!");
-				sc.next();
-				FLAG = false;
-			}
-		}*/
 		this.joueurs.add(new JoueurPhysique());
-		
+		this.setNbJoueurs(this.getNbJoueurs());
 		//添加玩家
-		for(int i = 0;i < this.nbJoueurs - 1; i++) {
+		for(int i = 0;i < n - 1; i++) {
 			this.addJoueurs();
 		}
 		
@@ -146,6 +151,7 @@ public class Partie {
 		//测试代码 ，用后删除！！！
 		System.out.println("le premier tour commence");
 		tour.commencerNouveauTour();*/
+		start();
 	}
 	
 	public void start() {
@@ -202,6 +208,11 @@ public class Partie {
 			}
 		}
 	}
+	
+	
+	
+	
+	
 	
 	
 	

@@ -11,6 +11,7 @@ import carteModule.DeuxEx;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.Partie;
+import util.AideGUI;
 
 public class OrdreCeleste extends DeuxEx {
 
@@ -47,16 +48,17 @@ public class OrdreCeleste extends DeuxEx {
 			System.out.println("Personne a un Guide Spirituel.");
 		}
 		else{
-			Scanner sc = new Scanner(System.in);
+//			Scanner sc = new Scanner(System.in);
 			int n1;
 			while(true){
-				try{
-					n1 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n1 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n1 = AideGUI.getInstance().lireInt();
 				if(jsAuChoix.contains(n1)){
 					break;
 				}
@@ -77,13 +79,14 @@ public class OrdreCeleste extends DeuxEx {
 			System.out.println("choisir un Guide Spirituel:");
 			int n2;
 			while(true){
-				try{
-					n2 = sc.nextInt();
-				}catch(InputMismatchException e){
-					System.out.println("input ill¨¦gal, importer un nombre entier:");
-					sc.nextLine();
-					continue;
-				}
+//				try{
+//					n2 = sc.nextInt();
+//				}catch(InputMismatchException e){
+//					System.out.println("input ill¨¦gal, importer un nombre entier:");
+//					sc.nextLine();
+//					continue;
+//				}
+				n2 = AideGUI.getInstance().lireInt();
 				if(gsAuChoix.contains(n2)){
 					break;
 				}

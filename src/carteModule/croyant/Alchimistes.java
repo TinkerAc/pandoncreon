@@ -9,6 +9,7 @@ import carteModule.Croyant;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.Partie;
+import util.AideGUI;
 import util.Input;
 
 public class Alchimistes extends Croyant {
@@ -16,7 +17,7 @@ public class Alchimistes extends Croyant {
 	public Alchimistes() {
 		super();
 		this.setNbPriere(2);
-		this.nom = "Alchimistes1";
+		this.nom = "Alchimiste1";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{Carte.NATURE,Carte.CHAOS,Carte.SYMBOLES};
 		this.description = "Emp¨ºche une Divinit¨¦ poss¨¦dant le Dogme Humain ou Mystique de sacrifier une de ses cartes de Croyants durant ce tour de jeu.";
@@ -41,7 +42,8 @@ public class Alchimistes extends Croyant {
 		
 		System.out.println("choisir un joueur:");
 		while(true) {
-			int i = Input.getInt();
+//			int i = Input.getInt();
+			int i = AideGUI.getInstance().lireInt();
 			boolean isExist = false;
 			for(int j = 0; j < jsPourChoisir.size(); j++) {
 				if(i == jsPourChoisir.get(j).getNumj()) {

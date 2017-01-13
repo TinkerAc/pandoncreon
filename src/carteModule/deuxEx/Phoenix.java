@@ -8,6 +8,7 @@ import carteModule.Croyant;
 import carteModule.DeuxEx;
 import carteModule.GuideSpirituel;
 import player.Joueur;
+import util.AideGUI;
 
 public class Phoenix extends DeuxEx {
 
@@ -40,21 +41,21 @@ public class Phoenix extends DeuxEx {
 				count2++;
 			}
 		}
-		System.out.println("'g' pour un Guide Spirituel et 'c' pour un Croyant");
-		Scanner sc = new Scanner(System.in);
-		String s1 = sc.next();
-		if(s1.equals("g")){
+		System.out.println("'0' pour un Guide Spirituel et '1' pour un Croyant");
+//		Scanner sc = new Scanner(System.in);
+		int s1 = AideGUI.getInstance().lireInt();
+		if(s1 == 0){
 			System.out.println("choisir le Guide Spirituel:");
-			int n1 = sc.nextInt();
+			int n1 = AideGUI.getInstance().lireInt();
 			this.joueur.getGuides().get(n1).sacrifier(joueur);
 			this.joueur.getCartesEnMain().remove(this);
 		}
-		if(s1.equals("c")){
+		if(s1 == 1){
 			System.out.println("choisir d'abord de quel Guide Spirituel:");
-			int n2 = sc.nextInt();
+			int n2 = AideGUI.getInstance().lireInt();
 			gs = this.joueur.getGuides().get(n2);
 			System.out.println("choisir le Croyant:");
-			int n3 = sc.nextInt();
+			int n3 = AideGUI.getInstance().lireInt();
 			gs.getCroyants().get(n3).sacrifier(joueur);
 			this.joueur.getCartesEnMain().remove(this);
 		}

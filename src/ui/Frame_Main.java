@@ -26,7 +26,6 @@ public class Frame_Main extends JFrame {
 		this.setLayout(new FlowLayout());
 		
 		Partie.getPartie().setNbJoueurs(n);
-		Partie.getPartie().commencerPartie();
 		this.main = new Panel_main(Partie.getPartie().getNbJoueurs() - 1);
 		
 		this.setContentPane(main);

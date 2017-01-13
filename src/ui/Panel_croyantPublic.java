@@ -23,6 +23,14 @@ public class Panel_croyantPublic extends JPanel {
 		}
 		
 	}
+	
+	public void paint() {
+		ArrayList<CarteAction> listCroyants = CST.getCroyantPublic();
+		Iterator<CarteAction> it = listCroyants.iterator();
+		while(it.hasNext()) {
+			this.add(new Panel_card(it.next()));
+		}
+	}
 }
 
 

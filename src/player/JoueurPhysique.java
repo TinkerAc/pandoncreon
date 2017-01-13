@@ -12,7 +12,7 @@ import carteModule.*;
 import service.CartesSurTable;
 import service.Partie;
 import service.Process;
-import service.ProcessPlayer;
+import util.AideGUI;
 import util.Input;
 
 
@@ -21,11 +21,10 @@ public class JoueurPhysique extends Joueur {
 	
 	public JoueurPhysique() {
 		super();
-		
 	}
 	
 	public void defausser() {
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		boolean end = false;
 		try {
 			do{
@@ -35,7 +34,8 @@ public class JoueurPhysique extends Joueur {
 				}
 				showCards();
 				System.out.println("choisir une carte que vous vouler d¨¦fausser:");
-				int i = sc.nextInt();
+//				int i = sc.nextInt();
+				int i = AideGUI.getInstance().lireInt();
 				if(i >= 0 && i < cartesEnMain.size()) {
 					CarteAction ca = cartesEnMain.get(i);
 					cartesEnMain.remove(ca);
@@ -43,8 +43,8 @@ public class JoueurPhysique extends Joueur {
 					System.out.println("Cette carte n'existe pas! Choisir une autre carte.");
 					continue;
 				}
-				System.out.println("importer 'No' pour terminer, importer les autres pour continuer ¨¤ d¨¦fausser");
-				end = sc.next().equals("No");
+				System.out.println("importer '14' pour terminer, importer les autres pour continuer ¨¤ d¨¦fausser");
+				end = (AideGUI.getInstance().lireInt() == 14);
 			}while(!end);
 		}catch(Exception e) {
 			System.out.println("input ill¨¦gal, importer encore une fois!");
@@ -63,21 +63,28 @@ public class JoueurPhysique extends Joueur {
 		showPointAction();
 		System.out.println("choisir une carte:");
 		showCards();
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		int i = -1;
 		boolean FLAG = false;
 		while(!FLAG) {
-			try{
-				i = sc.nextInt();
-				if(i >= 0 && i < cartesEnMain.size()) {
-					FLAG = true;
-				}else {
-					System.out.println("Cette carte ne peut pas ¨ºtre choisie, importer un autre nombre entier:");
-					FLAG = false;
-				}
-			}catch(InputMismatchException e) {
-				System.out.println("input ill¨¦gal");
-				sc.next();
+//			try{
+//				i = sc.nextInt();
+//				if(i >= 0 && i < cartesEnMain.size()) {
+//					FLAG = true;
+//				}else {
+//					System.out.println("Cette carte ne peut pas ¨ºtre choisie, importer un autre nombre entier:");
+//					FLAG = false;
+//				}
+//			}catch(InputMismatchException e) {
+//				System.out.println("input ill¨¦gal");
+//				sc.next();
+//				FLAG = false;
+//			}
+			i = AideGUI.getInstance().lireInt();
+			if(i >= 0 && i < cartesEnMain.size()) {
+				FLAG = true;
+			}else {
+				System.out.println("Cette carte ne peut pas ¨ºtre choisie, importer un autre nombre entier:");
 				FLAG = false;
 			}
 		}
@@ -157,7 +164,8 @@ public class JoueurPhysique extends Joueur {
 			j++;
 		}
 		System.out.println("choisir une carte:");
-		int i = Input.getInt() - 1;
+//		int i = Input.getInt() - 1;
+		int i = AideGUI.getInstance().lireInt() - 1;
 		if(c.get(i).getType() == "croyant") {
 			
 			c.get(i).sacrifier(this);
@@ -177,11 +185,13 @@ public class JoueurPhysique extends Joueur {
 	}
 	public void choisirUneOperation() {
 		
-		//System.out.println("choisir une op¨¦ration: 0:d¨¦fausser cartes 1:piocher cartes 2:utiliser carte 3:sacrifier carte 4:utiliser capacit¨¦");
+		Scanner sc = new Scanner(System.in);
+//		System.out.println("choisir une op¨¦ration: 0:d¨¦fausser cartes 1:piocher cartes 2:utiliser carte 3:sacrifier carte 4:utiliser capacit¨¦");
+		System.out.println("choisir une op¨¦ration: d¨¦fausser cartes; piocher cartes; utiliser carte; sacrifier carte; utiliser capacit¨¦");
 		
-		//int n = Input.getInt();
+		int n = AideGUI.getInstance().lireInt();
 		
-		switch (-1) {
+		switch (n) {
 		case 0:
 			defausser();
 			break;
@@ -246,7 +256,7 @@ public class JoueurPhysique extends Joueur {
 
 	@Override
 	public void poserGuide(GuideSpirituel guide) {
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		this.getGuides().add(guide);
 		
 		while(true) {
@@ -275,19 +285,23 @@ public class JoueurPhysique extends Joueur {
 			int n = -1;
 			boolean FLAG = false;
 			while(!FLAG) {
-				try{
-					n = sc.nextInt();
-					if(n >= 0 && n < CST.getCroyantPublic().size()) {
-						FLAG = true;
-					}else {
-						System.out.println("Ce Croyant ne peut pas ¨ºtre choisi, choisir un autre nombre entier:");
-						sc.next();
-						FLAG = false;
-					}
-				}catch(InputMismatchException e) {
-					System.out.println("input ill¨¦gal");
-					sc.next();
-					FLAG = false;
+//				try{
+//					n = sc.nextInt();
+//					if(n >= 0 && n < CST.getCroyantPublic().size()) {
+//						FLAG = true;
+//					}else {
+//						System.out.println("Ce Croyant ne peut pas ¨ºtre choisi, choisir un autre nombre entier:");
+//						sc.next();
+//						FLAG = false;
+//					}
+//				}catch(InputMismatchException e) {
+//					System.out.println("input ill¨¦gal");
+//					sc.next();
+//					FLAG = false;
+//				}
+				n = AideGUI.getInstance().lireInt();
+				if(n >= 0 && n < CST.getCroyantPublic().size()) {
+					FLAG = true;
 				}
 			}
 			
@@ -309,13 +323,6 @@ public class JoueurPhysique extends Joueur {
 	@Override
 	public void sacrifierGuide(GuideSpirituel g) {
 		g.sacrifier(this);
-	}
-
-	@Override
-	public void process() {
-		// TODO Auto-generated method stub
-		this.process = new ProcessPlayer(this);
-		this.process.start();
 	}
 
 	

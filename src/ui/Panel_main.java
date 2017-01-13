@@ -22,6 +22,8 @@ public class Panel_main extends JPanel {
 	//精神引领面板
 	Panel_guide pGuide;
 	
+	Panel_numberGroup pNumber;
+	
 	
 	public Panel_main(int nbAI) {
 		super();
@@ -84,10 +86,13 @@ public class Panel_main extends JPanel {
 		pCroyant.setBounds(277, 219, 773, 201);
 		pGuide = new Panel_guide((JoueurPhysique)Partie.getPartie().getJoueurs().get(0));
 		pGuide.setBounds(277, 429, 773, 89);
+		pNumber = new Panel_numberGroup();
+		pNumber.setLocation(0, 425);
 		
 		this.add(ctrl);
 		this.add(pCroyant);
 		this.add(pGuide);
+		this.add(pNumber);
 		
 		this.setVisible(true);
 		System.out.println("主面板创建完成");

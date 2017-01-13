@@ -9,6 +9,7 @@ import carteModule.Croyant;
 import carteModule.GuideSpirituel;
 import player.Joueur;
 import service.Partie;
+import util.AideGUI;
 import util.Input;
 
 public class Aliene2 extends Croyant {
@@ -42,7 +43,8 @@ public class Aliene2 extends Croyant {
 		
 		System.out.println("choisir un joueur:");
 		while(true) {
-			int i = Input.getInt();
+//			int i = Input.getInt();
+			int i = AideGUI.getInstance().lireInt();
 			boolean isExist = false;
 			for(int j = 0; j < jsPourChoisir.size(); j++) {
 				if(i == jsPourChoisir.get(j).getNumj()) {

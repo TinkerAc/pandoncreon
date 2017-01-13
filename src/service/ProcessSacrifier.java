@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import carteModule.CarteAction;
 import player.Joueur;
+import util.AideGUI;
 
 /**
  * 
@@ -18,14 +19,15 @@ public class ProcessSacrifier {
 		this.joueur = joueur;
 	}
 	public void start() {
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		for(Iterator<CarteAction> it = joueur.getCartesEnMain().iterator(); it.hasNext(); ) {
 			if(it.next().getType() == "croyant") {
 				System.out.println(it.toString());
 			}
 		}
-		System.out.println("choisir une croyants:");
-		int n1 = sc.nextInt();
+		System.out.println("choisir un croyant:");
+//		int n1 = sc.nextInt();
+		int n1 = AideGUI.getInstance().lireInt();
 		joueur.getCartesEnMain().remove(n1).sacrifier(joueur);
 	}
 }

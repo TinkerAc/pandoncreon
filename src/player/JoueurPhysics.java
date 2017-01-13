@@ -294,6 +294,12 @@ public class JoueurPhysics extends Joueur {
 		g.sacrifier(this);
 	}
 
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
  }
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 import player.Joueur;
 
 public class Process {
-	private Joueur joueur;
+	protected Joueur joueur;
 	
 	public Process(Joueur j) {
 		this.joueur = j;

@@ -33,7 +33,7 @@ public class Frame_Main extends JFrame {
 		
 		this.setVisible(true);
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		//Partie.getPartie().start();
 	}
 
 	

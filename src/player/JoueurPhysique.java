@@ -12,6 +12,7 @@ import carteModule.*;
 import service.CartesSurTable;
 import service.Partie;
 import service.Process;
+import service.ProcessPlayer;
 import util.Input;
 
 
@@ -20,6 +21,7 @@ public class JoueurPhysique extends Joueur {
 	
 	public JoueurPhysique() {
 		super();
+		
 	}
 	
 	public void defausser() {
@@ -175,23 +177,11 @@ public class JoueurPhysique extends Joueur {
 	}
 	public void choisirUneOperation() {
 		
-		Scanner sc = new Scanner(System.in);
-		System.out.println("choisir une op¨¦ration: 0:d¨¦fausser cartes 1:piocher cartes 2:utiliser carte 3:sacrifier carte 4:utiliser capacit¨¦");
+		//System.out.println("choisir une op¨¦ration: 0:d¨¦fausser cartes 1:piocher cartes 2:utiliser carte 3:sacrifier carte 4:utiliser capacit¨¦");
 		
-		boolean FLAG = false;
-		int n = -1;
-		while(!FLAG) {
-			try {
-				n = sc.nextInt();
-				FLAG = true;
-			}catch(Exception e) {
-				System.out.println("input ill¨¦gal, importer encore une fois!");
-				sc.next();
-				FLAG = false;
-			}
-		}
+		//int n = Input.getInt();
 		
-		switch (n) {
+		switch (-1) {
 		case 0:
 			defausser();
 			break;
@@ -319,6 +309,13 @@ public class JoueurPhysique extends Joueur {
 	@Override
 	public void sacrifierGuide(GuideSpirituel g) {
 		g.sacrifier(this);
+	}
+
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		this.process = new ProcessPlayer(this);
+		this.process.start();
 	}
 
 	

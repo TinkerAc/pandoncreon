@@ -3,6 +3,7 @@ package test;
 import javax.swing.JFrame;
 
 import carteModule.Apocalypse;
+import service.Partie;
 import ui.Frame_Main;
 import ui.InitFrame;
 import ui.Panel_buttonGroup;
@@ -13,9 +14,14 @@ public class UITest {
 
 public static void main(String args[]) {
 	
+
 		InitFrame f = new InitFrame();
-		//Frame_Main f = new Frame_Main(2);
+
+		
+		//InitFrame f = new InitFrame();
+		//Frame_Main f1 = new Frame_Main(2);
 		//f.add(new Panel_buttonGroup());
+		//Partie.getPartie().start();
 	}
 
 }

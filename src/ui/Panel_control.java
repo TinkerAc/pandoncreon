@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import player.Joueur;
+import player.JoueurPhysique;
 
 /**
  * Íæ¼Ò¿ØÖÆÃæ°å
@@ -47,7 +48,7 @@ public class Panel_control extends JPanel {
 		this.main = main;
 		this.player = player;
 		
-		buttonGroup = new Panel_buttonGroup();
+		buttonGroup = new Panel_buttonGroup((JoueurPhysique)player);
 		handCard = new Panel_handCard(this.player);
 		info = new Panel_info(this.player);
 		

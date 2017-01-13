@@ -12,6 +12,7 @@ import carteModule.Croyant;
 import carteModule.DeuxEx;
 import carteModule.GuideSpirituel;
 import service.Partie;
+import service.Process;
 
 public class JoueurAI extends Joueur {
 
@@ -237,6 +238,11 @@ public class JoueurAI extends Joueur {
 		}
 	}
 
+	public void process() {
+		this.process = new Process((JoueurAI)this);
+		this.process.start();
+	}
+	
 	@Override
 	public void sacrifierCroyant() {
 		

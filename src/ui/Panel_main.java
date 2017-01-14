@@ -41,7 +41,7 @@ public class Panel_main extends JPanel {
 		this.setSize(1366, 768);
 		
 		ctrl = new Panel_control(Partie.getPartie().getJoueurs().get(0), this);
-		ctrl.setLocation(0, 468);
+		ctrl.setLocation(0, 518);
 		//ctrl = new Panel_control(new JoueurPhysique(), this);
 		listPPlayer = new ArrayList<Panel_player>();
 		

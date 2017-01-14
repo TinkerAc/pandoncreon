@@ -42,14 +42,14 @@ public class InitFrame extends JFrame {
 		lblPandocreon.setBounds(449, 157, 430, 77);
 		contentPane.add(lblPandocreon);
 		
-		JLabel lblChoisirLeNombre = new JLabel("choisir le nombre de AI");
+		JLabel lblChoisirLeNombre = new JLabel("choisir le nombre de joueurs");
 		lblChoisirLeNombre.setFont(new Font("Times New Roman", Font.PLAIN, 36));
 		lblChoisirLeNombre.setBounds(466, 334, 341, 32);
 		contentPane.add(lblChoisirLeNombre);
 		
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(821, 334, 37, 32);
-		spinner.setModel(new SpinnerNumberModel(1, 1, 7, 1));
+		spinner.setModel(new SpinnerNumberModel(2, 2, 8, 1));
 		contentPane.add(spinner);
 		
 		JButton btnStart = new JButton("START");

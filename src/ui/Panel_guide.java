@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -29,7 +30,7 @@ public class Panel_guide extends JPanel {
 	public Panel_guide(JoueurPhysique player) {
 		super();
 		this.player = player;
-		setLayout(new GridLayout(0, 10, 0, 0));
+		setLayout(new GridLayout(0, 8, 0, 0));
 //		lCards = new ArrayList<Panel_card>();
 //		unit = new ArrayList<JPanel>();
 //		
@@ -62,11 +63,11 @@ public class Panel_guide extends JPanel {
 			GuideSpirituel g = it.next();
 			lCards.add(new Panel_card((GuideSpirituel)g));
 			unit.add(new Panel_card(g));
-			unit.add(new Panel_card(g.getCroyants()));
+//			unit.add(new Panel_card(g.getCroyants()));
 		}
 
 		Iterator<JPanel> it2  = unit.iterator();
-		while(it.hasNext()) {
+		while(it2.hasNext()) {
 			this.add((JPanel)it2.next());
 		}
 		validate();
@@ -75,7 +76,7 @@ public class Panel_guide extends JPanel {
 	public void paintComponent(Graphics g){
 		drawBufferedImage();
 	    g.drawImage(image, 0, 0, this);
-		
+	    setBackground(Color.BLACK);
 	}
 
 }

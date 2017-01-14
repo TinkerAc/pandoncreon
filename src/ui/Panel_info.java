@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -16,7 +18,7 @@ import javax.swing.JTable;
 import carteModule.CarteAction;
 import player.Joueur;
 
-public class Panel_info extends JPanel {
+public class Panel_info extends JPanel implements Observer{
 	
 	//个人信息面板
 	private JPanel info;
@@ -42,6 +44,7 @@ public class Panel_info extends JPanel {
 		this.setLayout(null);
 		
 		this.player = player;
+		player.addObserver(this);
 		
 		this.info = new JPanel();
 		info.setBounds(0, 0, 266, 50);
@@ -117,6 +120,14 @@ public class Panel_info extends JPanel {
 		drawBufferedImage();
 	    g.drawImage(image, 0, 0, this);
 		
+	}
+
+
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		repaint();
 	}
 	
 }

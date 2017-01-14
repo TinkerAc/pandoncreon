@@ -20,7 +20,7 @@ public class Frame_Main extends JFrame {
 	
 	public Frame_Main(int n) {
 		super();
-		this.setTitle("…µ±∆”Œœ∑");
+		this.setTitle("PANDOCREON DIVINAE");
 		this.setSize(1366, 768);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setLayout(new FlowLayout());

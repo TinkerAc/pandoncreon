@@ -2,6 +2,7 @@ package player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Random;
 
 import carteManager.Cartes;
@@ -11,6 +12,7 @@ import carteModule.Croyant;
 import carteModule.Divinite;
 import carteModule.GuideSpirituel;
 import service.CartesSurTable;
+import service.Partie;
 import service.Process;
 
 /**
@@ -24,7 +26,7 @@ import service.Process;
  * 
  * */
 
-public abstract class Joueur {
+public abstract class Joueur extends Observable{
 	protected ArrayList<CarteAction> cartesEnMain;
 	protected Divinite carteDivinite;
 	protected int pointActionJour;
@@ -37,7 +39,7 @@ public abstract class Joueur {
 	protected static int NombreJ = 0;
 	protected Process process;
 	protected Joueur nextJoueur;
-	protected CartesSurTable CST = CartesSurTable.getCartesSurTable();
+	protected CartesSurTable CST = Partie.getPartie().getCarteSurTable();
 	protected boolean isDone; //判断一圈游戏中是否已经操作结束
 	protected boolean EnableSacrifier;
 	protected boolean EnableGetPoint;
@@ -128,24 +130,32 @@ public abstract class Joueur {
 	}
 	public void setPointActionJour(int pointActionJour) {
 		this.pointActionJour = pointActionJour;
+		setChanged();
+		notifyObservers();
 	}
 	public int getPointActionNeant() {
 		return pointActionNeant;
 	}
 	public void setPointActionNeant(int pointActionNeant) {
 		this.pointActionNeant = pointActionNeant;
+		setChanged();
+		notifyObservers();
 	}
 	public int getPointActionNuit() {
 		return pointActionNuit;
 	}
 	public void setPointActionNuit(int pointActionNuit) {
 		this.pointActionNuit = pointActionNuit;
+		setChanged();
+		notifyObservers();
 	}
 	public int getNbPriere() {
 		return nbPriere;
 	}
 	public void setNbPriere(int nbPriere) {
 		this.nbPriere = nbPriere;
+		setChanged();
+		notifyObservers();
 	}
 	public List<Croyant> getCroyants() {
 		return croyants;

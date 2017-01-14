@@ -16,7 +16,7 @@ import util.AideGUI;
 import util.Input;
 
 
-public class JoueurPhysique extends Joueur {
+public class JoueurPhysique extends Joueur{
 	
 	
 	public JoueurPhysique() {
@@ -43,8 +43,8 @@ public class JoueurPhysique extends Joueur {
 					System.out.println("Cette carte n'existe pas! Choisir une autre carte.");
 					continue;
 				}
-				System.out.println("importer '14' pour terminer, importer les autres pour continuer ¨¤ d¨¦fausser");
-				end = (AideGUI.getInstance().lireInt() == 14);
+				System.out.println("importer 'terminer' pour terminer, importer 'continuer' autres pour continuer ¨¤ d¨¦fausser");
+				end = (AideGUI.getInstance().lireInt() == 88);
 			}while(!end);
 		}catch(Exception e) {
 			System.out.println("input ill¨¦gal, importer encore une fois!");
@@ -138,7 +138,12 @@ public class JoueurPhysique extends Joueur {
 					return;
 				}
 			}
-			Partie.getPartie().ApocalypseProcess(this);
+			try {
+				Partie.getPartie().ApocalypseProcess(this, ap);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		}
 		
@@ -199,7 +204,12 @@ public class JoueurPhysique extends Joueur {
 			piocher(Partie.getPartie().getCartes());
 			break;
 		case 2:
-			utiliser();
+			try {
+				utiliser();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case 3:
 			sacrifier();

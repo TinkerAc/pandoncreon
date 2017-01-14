@@ -21,7 +21,7 @@ public class Panel_croyantPublic extends JPanel {
 	
 	public Panel_croyantPublic() {
 		super();
-		this.setLayout(new GridLayout(3, 12, 0, 0));
+		this.setLayout(new GridLayout(0, 6, 0, 0));
 		
 //		ArrayList<CarteAction> listCroyants = CST.getCroyantPublic();
 //		Iterator<CarteAction> it = listCroyants.iterator();

@@ -1,5 +1,6 @@
 package player;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
@@ -25,26 +26,32 @@ public class JoueurAI extends Joueur {
 		this.getCartesEnMain().clear();
 	}
 
-	@Override
-	public void utiliser() {
-		Iterator<CarteAction> it = this.cartesEnMain.iterator();
-		while(it.hasNext()) {
-			CarteAction c = (CarteAction)it.next();
+	
+	public void utiliser(CarteAction c) throws Exception {
+//		Iterator<CarteAction> it = this.cartesEnMain.iterator();
+//		while(it.hasNext()) {
+//			CarteAction c = (CarteAction)it.next();
 			switch(c.getOrigine()) {
 			case "jour":
 				if(this.getPointActionJour() > 0) {
 
-					if(c.getType() == "croyant") {
+					if(c.getType() == "Croyant") {
 						this.poserCroyant((Croyant) c);
 						System.out.println("joueurAI" + this.numj + " a pos¨¦ un croyant");
 						System.out.println(c.toString());
 					}
-					if(c.getType() == "guide") {
+					if(c.getType() == "Guide") {
+						if(CST.getCroyantPublic().size() == 0){
+							defausser();
+							return;
+						}
 						if(CST.getCroyantPublic().size() > 0) {
 							this.poserGuide((GuideSpirituel)c);
+							System.out.println("joueurAI" + this.numj + " a pos¨¦ un Guide");
+							System.out.println(c.toString());
 							
 						}else {
-							continue;
+//							continue;
 						}
 					}
 					/*if(c.getType() == "DeuxEx") {
@@ -55,29 +62,33 @@ public class JoueurAI extends Joueur {
 						Apocalypse ap = (Apocalypse)c;
 						pointActionJour--;
 						ap.setJoueur(null);
-						Partie.getPartie().ApocalypseProcess(this);
+						Partie.getPartie().ApocalypseProcess(this, ap);
 					}
 					
 				}
 				else{
-					System.out.println("Point d'Action n'est pas suffisant, ¨¦chouant d'uti");
+					System.out.println("Point d'Action n'est pas suffisant, ¨¦chouant d'utiliser une carte");
 				}
 				break;
 			case "neant":
 				if(this.getPointActionNeant() > 0) {
 
-					if(c.getType() == "croyant") {
+					if(c.getType() == "Croyant") {
 						this.poserCroyant((Croyant) c);
 						System.out.println("joueurAI" + this.numj + " a pos¨¦ un croyant");
 						System.out.println(c.toString());
 					}
-					if(c.getType() == "guide") {
+					if(c.getType() == "Guide") {
+						if(CST.getCroyantPublic().size() == 0){
+							defausser();
+							return;
+						}
 						if(CST.getCroyantPublic().size() > 0) {
 							this.poserGuide((GuideSpirituel)c);
 							System.out.println("joueurAI" + this.numj + " a pos¨¦ un guide");
 							System.out.println(c.toString());
 						}else {
-							continue;
+//							continue;
 						}
 					}
 					/*if(c.getType() == "DeuxEx") {
@@ -88,27 +99,33 @@ public class JoueurAI extends Joueur {
 						Apocalypse ap = (Apocalypse)c;
 						pointActionNeant--;
 						ap.setJoueur(null);
-						Partie.getPartie().ApocalypseProcess(this);
+						Partie.getPartie().ApocalypseProcess(this, ap);
 					}
 					
 				}
 				else{
-					System.out.println("Point d'Action n'est pas suffisant, la m¨¦thode utiliser() a ¨¦chou¨¦");
+					System.out.println("Point d'Action n'est pas suffisant, ¨¦chouant d'utiliser une carte");
 				}
 				break;
 			case "nuit":
 				if(this.getPointActionNuit() > 0) {
 
-					if(c.getType() == "croyant") {
+					if(c.getType() == "Croyant") {
 						this.poserCroyant((Croyant) c);
 						System.out.println("joueurAI" + this.numj + " a pos¨¦ un croyant");
 						System.out.println(c.toString());
 					}
-					if(c.getType() == "guide") {
+					if(c.getType() == "Guide") {
+						if(CST.getCroyantPublic().size() == 0){
+							defausser();
+							return;
+						}
 						if(CST.getCroyantPublic().size() > 0) {
 							this.poserGuide((GuideSpirituel)c);
+							System.out.println("joueurAI" + this.numj + " a pos¨¦ un Guide");
+							System.out.println(c.toString());
 						}else {
-							continue;
+//							continue;
 						}
 					}
 					/*if(c.getType() == "DeuxEx") {
@@ -117,19 +134,23 @@ public class JoueurAI extends Joueur {
 					}*/
 					if(c.getType() == "Apocalypse") {
 						Apocalypse ap = (Apocalypse)c;
-						pointActionNeant--;
+						pointActionNuit--;
 						ap.setJoueur(null);
-						Partie.getPartie().ApocalypseProcess(this);
+						Partie.getPartie().ApocalypseProcess(this, ap);
 					}
 					
 				}
 				else{
-					System.out.println("Point d'Action n'est pas suffisant, la m¨¦thode utiliser() a ¨¦chou¨¦");
+					System.out.println("Point d'Action n'est pas suffisant, ¨¦chouant d'utiliser une carte");
 				}
 				break;
 			}
-			
-		}
+			if(c.getType().equals("Apocalypse")){
+				Apocalypse ap = (Apocalypse)c;
+				System.out.println("joueurAI" + this.numj + " a pos¨¦ un Apocalypse");
+				Partie.getPartie().ApocalypseProcess(this, ap);
+			}
+//		}
 	}
 
 	@Override
@@ -148,13 +169,32 @@ public class JoueurAI extends Joueur {
 			piocher(Partie.getPartie().getCartes());
 			return;
 		}
-		if(this.getPointActionJour() > 0 || this.getPointActionNeant() > 0 || this.getPointActionNuit() > 0) {
-			utiliser();
-			return;
-		}else {
-			defausser();
-			return;
+		ArrayList<CarteAction> ca = this.getCartesEnMain();
+		Iterator<CarteAction> it = ca.iterator();
+		while(it.hasNext()){
+			CarteAction c = it.next();
+			if((this.getCarteDivinite().getOrigine().equals("crepuscule") || this.getCarteDivinite().getOrigine().equals("aube")) && (!c.getType().equals("DeuxEx") && (c.getOrigine().equals("neant") || c.getOrigine().equals("sansOrigine")))){
+				try {
+					utiliser(c);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return;
+			}
+			else if((c.getOrigine().equals(this.getCarteDivinite().getOrigine()) || c.getOrigine().equals("sans Origine")) && (!c.getType().equals("DeuxEx"))){
+				try {
+					utiliser(c);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return;
+			}
 		}
+		
+		defausser();
+		return;
 	}
 
 	@Override
@@ -169,7 +209,7 @@ public class JoueurAI extends Joueur {
 				System.out.println("poser Croyant a r¨¦ussi");
 			}else {
 				System.out.println("Point d'Action n'est pas suffisant");
-				cartesEnMain.add(cc);
+//				cartesEnMain.add(cc);
 			}
 			break;
 		case Carte.NEANT:
@@ -181,7 +221,7 @@ public class JoueurAI extends Joueur {
 				System.out.println("poser Croyant a r¨¦ussi");
 			}else {
 				System.out.println("Point d'Action n'est pas suffisant");
-				cartesEnMain.add(cc);
+//				cartesEnMain.add(cc);
 			}
 			break;
 		
@@ -194,7 +234,7 @@ public class JoueurAI extends Joueur {
 				System.out.println("poser Croyant a r¨¦ussi");
 			}else {
 				System.out.println("Point d'Action n'est pas suffisant");
-				cartesEnMain.add(cc);
+//				cartesEnMain.add(cc);
 			}
 			break;
 		default :
@@ -217,13 +257,13 @@ public class JoueurAI extends Joueur {
 		while(true) {
 			if(CST.getCroyantPublic().size() == 0) {
 				System.out.println("Il n'y a pas de Croyants au milieu de la table!");
-				this.cartesEnMain.add(guide);
+				this.cartesEnMain.remove(guide);
 				break;
 			}
 			if(guide.getNbCroyant() == guide.getNbCroyantMax()) {
 				System.out.println("Le nombre de Croyants atteint le max!");
 				System.out.println("Le tour de ce joueur termine");
-				this.cartesEnMain.add(guide);
+				this.cartesEnMain.remove(guide);
 				break;
 			}
 			
@@ -235,6 +275,7 @@ public class JoueurAI extends Joueur {
 			nbPriere += ca.getNbPriere();
 			System.out.println("Guide Spirituel a r¨¦ussi!");
 		}
+		this.getGuides().add(guide);
 	}
 
 	@Override
@@ -245,6 +286,12 @@ public class JoueurAI extends Joueur {
 
 	@Override
 	public void sacrifierGuide(GuideSpirituel g) {
+		
+	}
+
+	@Override
+	public void utiliser() {
+		// TODO Auto-generated method stub
 		
 	}
 	

@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import carteManager.Cartes;
 import carteManager.CartesDivinite;
+import carteModule.Apocalypse;
 import carteModule.Croyant;
 import player.Joueur;
 import player.JoueurAI;
@@ -72,6 +73,7 @@ public class Partie {
 						return -1;
 					}
 				}
+				i++;
 			}
 			return index;
 		}else {
@@ -160,8 +162,8 @@ public class Partie {
 	}
 	
 	
-	public void terminerPartie() {
-		
+	public void terminerPartie() throws Exception {
+		Thread.sleep(1000000);
 	}
 	/*
 	 * 
@@ -169,11 +171,11 @@ public class Partie {
 	 * 暂时先这样了。。
 	 * 
 	 * */
-	public void ApocalypseProcess(Joueur j) {
+	public void ApocalypseProcess(Joueur j, Apocalypse ap) throws Exception {
 		int index = this.compareNbPriere();
 		if(this.getNbJoueurs() <= 3) {
 			if(index != -1) {
-				System.out.println("joueur" + this.joueurs.get(index).getNumj() + "gagne!!!");
+				System.out.println("joueur" + this.joueurs.get(index).getNumj() + " gagne!!!");
 				this.terminerPartie();
 			}else {
 				System.out.println("Apocalypse n'a pas d'effet!");
@@ -181,6 +183,7 @@ public class Partie {
 				this.tour = new Tour(this.joueurs, j.getNumj());
 				tour.setEnableApocalypse(false);
 				System.out.println("un nouveau tour commence!");
+				j.getCartesEnMain().remove(ap);
 				tour.commencerNouveauTour();
 			}
 		}else {
@@ -197,6 +200,7 @@ public class Partie {
 				this.tour = new Tour(this.joueurs, j.getNumj());
 				tour.setEnableApocalypse(false);
 				System.out.println("un nouveau tour commence!");
+				j.getCartesEnMain().remove(ap);
 				tour.commencerNouveauTour();
 			}else {
 				System.out.println("Apocalypse n'a pas d'effet!");
@@ -204,6 +208,7 @@ public class Partie {
 				this.tour = new Tour(this.joueurs, j.getNumj());
 				tour.setEnableApocalypse(false);
 				System.out.println("un nouveau tour commence!");
+				j.getCartesEnMain().remove(ap);
 				tour.commencerNouveauTour();
 			}
 		}

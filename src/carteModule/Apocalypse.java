@@ -10,10 +10,10 @@ public class Apocalypse extends CarteAction{
 	
 	public Apocalypse() {
 		super();
-		this.type = "apocalypse";
+		this.type = "Apocalypse";
 		this.nom = "Apocalypse";
 		this.dogmes = null;
-		this.origine = origines[new Random().nextInt(5)];
+		this.origine = "sans Origine";
 	}
 
 	@Override

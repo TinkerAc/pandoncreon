@@ -24,6 +24,8 @@ public class Panel_main extends JPanel {
 	
 	Panel_numberGroup pNumber;
 	
+	Panel_ConTer pC;
+	
 	private static Panel_main pm;
 	
 	public static Panel_main getPM(int n) {
@@ -96,11 +98,14 @@ public class Panel_main extends JPanel {
 		pGuide.setBounds(277, 429, 773, 89);
 		pNumber = new Panel_numberGroup(this);
 		pNumber.setLocation(0, 425);
+		pC = new Panel_ConTer();
+		pC.setLocation(1050, 425);
 		
 		this.add(ctrl);
 		this.add(pCroyant);
 		this.add(pGuide);
 		this.add(pNumber);
+		this.add(pC);
 		
 		this.setVisible(true);
 		System.out.println("主面板创建完成");

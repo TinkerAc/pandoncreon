@@ -29,6 +29,7 @@ public class Panel_numberGroup extends JPanel {
 	private JButton n13;
 	private JButton n14;
 	
+	
 	public Panel_numberGroup(Panel_main pm){
 		this.pm = pm;
 		setSize(277, 43);
@@ -50,6 +51,7 @@ public class Panel_numberGroup extends JPanel {
 		n13 = new JButton("13");
 		n14 = new JButton("14");
 		
+		
 		add(n0);
 		add(n1);
 		add(n2);
@@ -65,6 +67,7 @@ public class Panel_numberGroup extends JPanel {
 		add(n12);
 		add(n13);
 		add(n14);
+		
 		
 		n0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -308,7 +311,7 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				//pm.ctrl.handCard.repaint();
+				pm.ctrl.handCard.repaint();
 				pm.ctrl.info.repaint();
 				pm.pGuide.repaint();
 				pm.pCroyant.repaint();
@@ -326,7 +329,17 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
+		
+		
 	}
 }

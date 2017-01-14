@@ -1,14 +1,18 @@
 package ui;
 
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JPanel;
 
+import carteModule.CarteAction;
 import carteModule.GuideSpirituel;
 import player.JoueurPhysique;
+import service.Partie;
 
 public class Panel_guide extends JPanel {
 
@@ -20,6 +24,7 @@ public class Panel_guide extends JPanel {
 	private JoueurPhysique player;
 	private List<Panel_card> lCards;
 	private List<JPanel> unit;
+	private Image image;
 	
 	public Panel_guide(JoueurPhysique player) {
 		super();
@@ -42,8 +47,13 @@ public class Panel_guide extends JPanel {
 //		}
 	}
 	
-	public void paintComponent(){
-		removeAll();
+
+	
+	private void drawBufferedImage() {
+		// 创建缓冲区对象
+	    image = createImage(this.getWidth(), this.getHeight());
+	    
+	    removeAll();
 		lCards = new ArrayList<Panel_card>();
 		unit = new ArrayList<JPanel>();
 		
@@ -60,6 +70,12 @@ public class Panel_guide extends JPanel {
 			this.add((JPanel)it2.next());
 		}
 		validate();
+	}
+	
+	public void paintComponent(Graphics g){
+		drawBufferedImage();
+	    g.drawImage(image, 0, 0, this);
+		
 	}
 
 }

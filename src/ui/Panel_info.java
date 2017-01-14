@@ -3,6 +3,9 @@ package ui;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import carteModule.CarteAction;
 import player.Joueur;
 
 public class Panel_info extends JPanel {
@@ -31,6 +35,7 @@ public class Panel_info extends JPanel {
 	//经文数标签
 	private JLabel priere;
 	private JLabel nPriere;
+	private Image image;
 	
 	public Panel_info(Joueur player) {
 		super();
@@ -69,8 +74,13 @@ public class Panel_info extends JPanel {
 		this.add(divinite);
 	}
 	
-	public void paintComponent(Graphics g){
-		removeAll();
+
+	
+	private void drawBufferedImage() {
+		// 创建缓冲区对象
+	    image = createImage(this.getWidth(), this.getHeight());
+	    
+	    removeAll();
 		this.info = new JPanel();
 		info.setBounds(0, 0, 266, 50);
 		String[] headers = {"Jour","Neant","Nuit"};	
@@ -101,6 +111,12 @@ public class Panel_info extends JPanel {
 		this.add(info);
 		this.add(divinite);
 		validate();
+	}
+	
+	public void paintComponent(Graphics g){
+		drawBufferedImage();
+	    g.drawImage(image, 0, 0, this);
+		
 	}
 	
 }

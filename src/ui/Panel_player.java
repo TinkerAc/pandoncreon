@@ -3,9 +3,13 @@ package ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.*;
 
+import carteModule.CarteAction;
 import player.Joueur;
 import service.Partie;
 
@@ -27,6 +31,7 @@ public class Panel_player extends JPanel {
 	private JLabel nbPriere;
 	private JLabel nbEnMain;
 	private Joueur j;
+	private Image image;
 	
 	public Panel_player(int numJoueur, Joueur j){
 		this.j = j;
@@ -118,8 +123,13 @@ public class Panel_player extends JPanel {
 //		information.add(nbNeant);
 	}
 	
-	public void paintComponent(Graphics g){
-		removeAll();
+
+	
+	private void drawBufferedImage() {
+		// 创建缓冲区对象
+	    image = createImage(this.getWidth(), this.getHeight());
+	    
+	    removeAll();
 		information = new JPanel();
 		information.setBounds(0, 0, 73, 91);
 		information.setBackground(Color.ORANGE);
@@ -205,5 +215,11 @@ public class Panel_player extends JPanel {
 		nbNeant.setBounds(64, 73, 8, 18);
 		information.add(nbNeant);
 		validate();
+	}
+	
+	public void paintComponent(Graphics g){
+		drawBufferedImage();
+	    g.drawImage(image, 0, 0, this);
+		
 	}
 }

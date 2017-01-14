@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,6 +24,8 @@ public class Panel_handCard extends JPanel {
 	Joueur player;
 	//牌组
 	List<Panel_card> listCards;
+	
+	private Image image;
 	
 	public Panel_handCard(Joueur player) {
 		super();
@@ -45,8 +48,11 @@ public class Panel_handCard extends JPanel {
 		
 	}
 	
-	public void paintComponent(Graphics g){
-		removeAll();
+	private void drawBufferedImage() {
+		// 创建缓冲区对象
+	    image = createImage(this.getWidth(), this.getHeight());
+	    
+	    removeAll();
 		listCards = new ArrayList<Panel_card>();
 		
 		Iterator<CarteAction> it = player.getCartesEnMain().iterator();
@@ -59,6 +65,12 @@ public class Panel_handCard extends JPanel {
 			this.add((Panel_card)ic.next());
 		}
 		validate();
+	}
+	
+	public void paintComponent(Graphics g){
+		drawBufferedImage();
+	    g.drawImage(image, 0, 0, this);
+		
 	}
 	
 	

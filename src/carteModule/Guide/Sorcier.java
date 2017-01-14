@@ -20,6 +20,7 @@ public class Sorcier extends GuideSpirituel {
 		this.nom = "Sorcier";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{"symboles","mystique"};
+		this.setNbCroyantMax(3);
 		this.description = "Echangez l'un de vos Guides Spirituels avec un d'une autre Divinit¨¦. Vous choisissez les deux guides Spirituels en question. Les Croyants restent attach¨¦s aux m¨ºmes cartes.";
 	}
 	

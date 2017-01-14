@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,6 +31,22 @@ public class Panel_handCard extends JPanel {
 		this.setBackground(Color.CYAN);
 		
 		this.player = player;
+//		listCards = new ArrayList<Panel_card>();
+//		
+//		Iterator<CarteAction> it = player.getCartesEnMain().iterator();
+//		while(it.hasNext()) {
+//			CarteAction c = (CarteAction)it.next();
+//			listCards.add(new Panel_card(c));
+//		}
+//		Iterator<Panel_card> ic = listCards.iterator();
+//		while(ic.hasNext()) {
+//			this.add((Panel_card)ic.next());
+//		}
+		
+	}
+	
+	public void paintComponent(Graphics g){
+		removeAll();
 		listCards = new ArrayList<Panel_card>();
 		
 		Iterator<CarteAction> it = player.getCartesEnMain().iterator();
@@ -41,9 +58,8 @@ public class Panel_handCard extends JPanel {
 		while(ic.hasNext()) {
 			this.add((Panel_card)ic.next());
 		}
-		
+		validate();
 	}
-	
 	
 	
 }

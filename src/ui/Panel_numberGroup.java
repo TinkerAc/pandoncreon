@@ -3,6 +3,7 @@ package ui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -11,6 +12,7 @@ import util.AideGUI;
 
 public class Panel_numberGroup extends JPanel {
 
+	Panel_main pm;
 	private JButton n0;
 	private JButton n1;
 	private JButton n2;
@@ -27,7 +29,8 @@ public class Panel_numberGroup extends JPanel {
 	private JButton n13;
 	private JButton n14;
 	
-	public Panel_numberGroup(){
+	public Panel_numberGroup(Panel_main pm){
+		this.pm = pm;
 		setSize(277, 43);
 		setLayout(new GridLayout(0, 5, 0, 0));
 		
@@ -71,6 +74,14 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
 		n1.addActionListener(new ActionListener() {
@@ -80,6 +91,14 @@ public class Panel_numberGroup extends JPanel {
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
 				}
 			}
 		});
@@ -91,6 +110,14 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
 		n3.addActionListener(new ActionListener() {
@@ -100,6 +127,14 @@ public class Panel_numberGroup extends JPanel {
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
 				}
 			}
 		});
@@ -111,6 +146,14 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
 		n5.addActionListener(new ActionListener() {
@@ -120,6 +163,14 @@ public class Panel_numberGroup extends JPanel {
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
 				}
 			}
 		});
@@ -131,6 +182,14 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
 		n7.addActionListener(new ActionListener() {
@@ -140,6 +199,14 @@ public class Panel_numberGroup extends JPanel {
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
 				}
 			}
 		});
@@ -151,6 +218,14 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
 		n9.addActionListener(new ActionListener() {
@@ -160,6 +235,14 @@ public class Panel_numberGroup extends JPanel {
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
 				}
 			}
 		});
@@ -171,6 +254,14 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
 		n11.addActionListener(new ActionListener() {
@@ -180,6 +271,14 @@ public class Panel_numberGroup extends JPanel {
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
 				}
 			}
 		});
@@ -191,6 +290,14 @@ public class Panel_numberGroup extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
+				}
 			}
 		});
 		n13.addActionListener(new ActionListener() {
@@ -200,6 +307,14 @@ public class Panel_numberGroup extends JPanel {
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}
+				//pm.ctrl.handCard.repaint();
+				pm.ctrl.info.repaint();
+				pm.pGuide.repaint();
+				pm.pCroyant.repaint();
+				Iterator<Panel_player> it = pm.listPPlayer.iterator();
+				while(it.hasNext()){
+					it.next().repaint();
 				}
 			}
 		});

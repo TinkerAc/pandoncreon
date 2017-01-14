@@ -11,6 +11,7 @@ public class Martyr3 extends GuideSpirituel {
 		this.nom = "MartyrN¨¦ant";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{Carte.NATURE,Carte.CHAOS};
+		this.setNbCroyantMax(2);
 		this.description = "Equivalent ¨¤ la pose d'une carte Apocalypse.";
 	}
 

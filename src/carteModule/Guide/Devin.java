@@ -21,6 +21,7 @@ public class Devin extends GuideSpirituel {
 		this.nom = "Devin";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{"mystique","nature"};
+		this.setNbCroyantMax(1);
 		this.description = "Oblige une Divinit¨¦ ayant le Dogme Nature ou Mystique ¨¤ sacrifier l'un de ses Guides Spirituels.";
 	}
 	

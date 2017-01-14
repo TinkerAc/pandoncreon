@@ -19,6 +19,7 @@ public class Paladin extends GuideSpirituel {
 		this.nom = "Paladin";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{"mystique","humain"};
+		this.setNbCroyantMax(3);
 		this.description = "Tous les Croyants, d'Origine Nuit ou N¨¦ant et ayant le Dogme Nature, actuellement sur la table sont d¨¦fauss¨¦s. Les capacit¨¦s sp¨¦ciales ne sont pas jou¨¦es.";
 	}
 	

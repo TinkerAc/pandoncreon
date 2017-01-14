@@ -20,6 +20,7 @@ public class Shaman extends GuideSpirituel {
 		this.nom = "Shaman";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{"symboles","nature"};
+		this.setNbCroyantMax(3);
 		this.description = "Sacrifie tous les Croyants d'Origine N¨¦ant d'une Divinit¨¦ ayant le Dogme Humain. Les capacit¨¦s sp¨¦cials sont jou¨¦es normalement.";
 	}
 	

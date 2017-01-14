@@ -65,7 +65,6 @@ public class Panel_buttonGroup extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					AideGUI.getInstance().deposerInt(2);
-					
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

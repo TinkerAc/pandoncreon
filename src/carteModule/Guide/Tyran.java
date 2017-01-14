@@ -18,6 +18,7 @@ public class Tyran extends GuideSpirituel {
 		this.nom = "Tyran";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{"symboles","chaos"};
+		this.setNbCroyantMax(3);
 		this.description = "D¨¦fausse tous les Croyants ayant le Dogme Mystique actuellement au centre de la table.";
 	}
 	

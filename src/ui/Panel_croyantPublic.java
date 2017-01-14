@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -15,21 +16,23 @@ public class Panel_croyantPublic extends JPanel {
 	
 	public Panel_croyantPublic() {
 		super();
-		this.setLayout(new FlowLayout());
-		ArrayList<CarteAction> listCroyants = CST.getCroyantPublic();
-		Iterator<CarteAction> it = listCroyants.iterator();
-		while(it.hasNext()) {
-			this.add(new Panel_card(it.next()));
-		}
+		this.setLayout(new GridLayout(3, 12, 0, 0));
+//		ArrayList<CarteAction> listCroyants = CST.getCroyantPublic();
+//		Iterator<CarteAction> it = listCroyants.iterator();
+//		while(it.hasNext()) {
+//			this.add(new Panel_card(it.next()));
+//		}
 		
 	}
 	
-	public void paint() {
+	public void paintComponent(){
+		removeAll();
 		ArrayList<CarteAction> listCroyants = CST.getCroyantPublic();
 		Iterator<CarteAction> it = listCroyants.iterator();
 		while(it.hasNext()) {
 			this.add(new Panel_card(it.next()));
 		}
+		validate();
 	}
 }
 

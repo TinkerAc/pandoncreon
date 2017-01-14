@@ -6,7 +6,7 @@ import player.Joueur;
 
 public class Apocalypse extends CarteAction{
 
-	private static final String[] origines = {Carte.JOUR, Carte.NEANT, Carte.NUIT, null, null};
+	private static final String[] origines = {Carte.JOUR, Carte.NEANT, Carte.NUIT, "sans Origine", "sans Origine"};
 	
 	public Apocalypse() {
 		super();

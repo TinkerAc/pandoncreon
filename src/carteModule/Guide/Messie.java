@@ -11,6 +11,7 @@ public class Messie extends GuideSpirituel {
 		this.nom = "Messie";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{Carte.MYSTIQUE,Carte.HUMAIN};
+		this.setNbCroyantMax(3);
 		this.description = "Le joueur pose le d¨¦ de Cosmogonie sur la face qu'il d¨¦sire et commence un nouveau tour de jeu.";
 	}
 

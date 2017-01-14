@@ -21,6 +21,7 @@ public class Ascete extends GuideSpirituel {
 		this.nom = "Asc¨¨te";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{"symboles","humain"};
+		this.setNbCroyantMax(1);
 		this.description = "Sacrifie 2 cartes Croyants d'une Divinit¨¦ ayant le Dogme Humain ou Symboles. Les capacit¨¦s sp¨¦ciales sont jou¨¦es normalement.";
 	}
 	

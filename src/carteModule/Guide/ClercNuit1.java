@@ -18,6 +18,7 @@ public class ClercNuit1 extends GuideSpirituel {
 		this.nom = "ClercNuit1";
 		this.origine = Carte.NUIT;
 		this.dogmes = new String[]{"symboles","nature"};
+		this.setNbCroyantMax(2);
 		this.description = "Fait gagner un nombre de points d'Action ¨¦gal au nombre de cartes de Croyants rattach¨¦es. L'Origine des points d'Action est au choix du joueur.";
 	}
 	

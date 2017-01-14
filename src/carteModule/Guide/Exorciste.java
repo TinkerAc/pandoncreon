@@ -21,6 +21,7 @@ public class Exorciste extends GuideSpirituel {
 		this.nom = "Exorciste";
 		this.origine = Carte.JOUR;
 		this.dogmes = new String[]{"chaos","mystique"};
+		this.setNbCroyantMax(1);
 		this.description = "Une Divinit¨¦ d'Origine Nuit ou ayant les Dogmes Mystique et Chaos reprend dans sa main l'un de ses Guides Spirituels. Les Croyants qui y ¨¦taient attach¨¦s sont d¨¦fauss¨¦s.";
 	}
 	

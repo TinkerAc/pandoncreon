@@ -13,7 +13,9 @@ public class CartesSurTable {
 		setGuides(new ArrayList<CarteAction>());
 	}
 	public static CartesSurTable getCartesSurTable() {
-		cartesSurTable = new CartesSurTable();
+		if(cartesSurTable == null){
+			cartesSurTable = new CartesSurTable();
+		}
 		return cartesSurTable;
 	}
 	

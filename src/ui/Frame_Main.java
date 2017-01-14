@@ -26,13 +26,14 @@ public class Frame_Main extends JFrame {
 		this.setLayout(new FlowLayout());
 		
 		Partie.getPartie().setNbJoueurs(n);
-		this.main = new Panel_main(Partie.getPartie().getNbJoueurs() - 1);
+		//this.main = new Panel_main(Partie.getPartie().getNbJoueurs() - 1);
+		this.main = Panel_main.getPM(Partie.getPartie().getNbJoueurs() - 1);
 		
 		this.setContentPane(main);
 		
 		this.setVisible(true);
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//Partie.getPartie().start();
+		
 	}
 
 	

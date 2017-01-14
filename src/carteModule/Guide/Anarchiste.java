@@ -21,6 +21,7 @@ public class Anarchiste extends GuideSpirituel {
 		this.nom = "Anarchiste";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{"chaos","humain"};
+		this.setNbCroyantMax(3);
 		this.description = "Sacrifie un Guide Spirituel, si lui ou sa Divinit¨¦ ne croit pas au Dogme Chaos. Les capacit¨¦s sp¨¦ciales sont jou¨¦es normalement.";
 	}
 	

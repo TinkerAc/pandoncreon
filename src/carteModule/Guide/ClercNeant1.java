@@ -18,6 +18,7 @@ public class ClercNeant1 extends GuideSpirituel {
 		this.nom = "ClercN¨¦ant1";
 		this.origine = Carte.NEANT;
 		this.dogmes = new String[]{"mystique","nature"};
+		this.setNbCroyantMax(2);
 		this.description = "Fait gagner un nombre de points d'Action ¨¦gal au nombre de cartes de Croyants rattach¨¦es. L'Origine des points d'Action est au choix du joueur.";
 	}
 	

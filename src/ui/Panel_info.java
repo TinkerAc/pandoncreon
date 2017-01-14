@@ -69,7 +69,39 @@ public class Panel_info extends JPanel {
 		this.add(divinite);
 	}
 	
-	
+	public void paintComponent(Graphics g){
+		removeAll();
+		this.info = new JPanel();
+		info.setBounds(0, 0, 266, 50);
+		String[] headers = {"Jour","Neant","Nuit"};	
+		Object[][] points = new Object[][]{{player.getPointActionJour(), player.getPointActionNeant(), player.getPointActionNuit()}};
+		this.pointAction = new JTable(points, headers);
+		pointAction.setPreferredScrollableViewportSize(new Dimension(150,20));
+		pointAction.getTableHeader().setReorderingAllowed(false);
+		scr = new JScrollPane(pointAction);
+		scr.setSize(200, 20);
+		scr.setLocation(0, 20);
+		
+		this.priere = new JLabel("nbPriere:");
+		priere.setBounds(150, 0, 100, 20);
+		this.nPriere = new JLabel(new Integer(player.getNbPriere()).toString());
+		nPriere.setBounds(250, 0, 16, 20);
+		info.add(scr);
+		info.add(priere);
+		info.add(nPriere);
+		
+		this.divinite = new JPanel() {
+			public void paintComponent(Graphics g) {
+				ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("img/" + player.getCarteDivinite().getName() +".png"));
+				g.drawImage(icon.getImage(), 0, 0, this.getSize().width, this.getSize().height, this);
+			}
+		};
+		divinite.setBounds(0, 50, 266, 168);
+		
+		this.add(info);
+		this.add(divinite);
+		validate();
+	}
 	
 }
 

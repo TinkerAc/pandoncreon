@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,29 +24,43 @@ public class Panel_guide extends JPanel {
 	public Panel_guide(JoueurPhysique player) {
 		super();
 		this.player = player;
+		setLayout(new GridLayout(0, 10, 0, 0));
+//		lCards = new ArrayList<Panel_card>();
+//		unit = new ArrayList<JPanel>();
+//		
+//		Iterator<GuideSpirituel> it = player.getGuides().iterator();
+//		while(it.hasNext()) {
+//			GuideSpirituel g = it.next();
+//			lCards.add(new Panel_card((GuideSpirituel)g));
+//			unit.add(new Panel_card(g));
+//			unit.add(new Panel_card(g.getCroyants()));
+//		}
+//
+//		Iterator<JPanel> it2  = unit.iterator();
+//		while(it.hasNext()) {
+//			this.add((JPanel)it2.next());
+//		}
+	}
+	
+	public void paintComponent(){
+		removeAll();
 		lCards = new ArrayList<Panel_card>();
 		unit = new ArrayList<JPanel>();
 		
-		Runnable run = new Runnable() {
-			@Override
-			public void run() {
-				Iterator<GuideSpirituel> it = player.getGuides().iterator();
-				while(it.hasNext()) {
-					GuideSpirituel g = it.next();
-					lCards.add(new Panel_card((GuideSpirituel)g));
-					unit.add(new Panel_card(g));
-					unit.add(new Panel_card(g.getCroyants()));
-				}
-				
-			}
-		};
-		new Thread(run).start();
-		Iterator<JPanel> it  = unit.iterator();
+		Iterator<GuideSpirituel> it = player.getGuides().iterator();
 		while(it.hasNext()) {
-			this.add((JPanel)it.next());
+			GuideSpirituel g = it.next();
+			lCards.add(new Panel_card((GuideSpirituel)g));
+			unit.add(new Panel_card(g));
+			unit.add(new Panel_card(g.getCroyants()));
 		}
+
+		Iterator<JPanel> it2  = unit.iterator();
+		while(it.hasNext()) {
+			this.add((JPanel)it2.next());
+		}
+		validate();
 	}
-	
 
 }
 

@@ -1,2 +1,2 @@
 # pandoncreon
-cnmb法国桌游pandocreon
+法国桌游pandocreon
